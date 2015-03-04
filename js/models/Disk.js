@@ -1,10 +1,11 @@
 define([
   'jquery',
   'underscore',
-  'backbone'
-], function($, _, Backbone){
+  'backbone',
+  'modules/consts'
+], function($, _, Backbone, Consts){
 	var Disk = Backbone.Model.extend({
-		urlRoot : basePath + '/api/ticket',
+		urlRoot : Consts.basePath + '/api/ticket',
 		stale: ['editMode', 'CUSTOMER_ID'],
 		toJSON: function() {
 			return _.omit(this.attributes, this.stale);

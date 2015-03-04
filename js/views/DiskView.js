@@ -6,7 +6,7 @@ define([
   'text!templates/disk.html'
 ], function($, _, Backbone, Marionette, diskTpl){
 var DiskView = Backbone.Marionette.ItemView.extend({
-	template : diskTpl,
+	template : _.template(diskTpl),
 	tagName: 'li',
 }); 
   return DiskView;

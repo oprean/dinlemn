@@ -19,13 +19,13 @@
     border-radius: 10px;  
 }
 
-.wood_plaque h1 {
+ul.disks {
+	list-style-type: none;
+	padding: 0px;
+}
 
-  /*color: transparent;
-  text-shadow: 0px 2px 3px rgba(255,255,255,0.5);*/
-  -webkit-background-clip: text;
-     -moz-background-clip: text;
-          background-clip: text;
+ul.disks li{
+	padding-top: 10px;
 }
 
 .disk {
