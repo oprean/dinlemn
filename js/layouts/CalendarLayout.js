@@ -13,6 +13,10 @@ define([
 		plaque : '#plaque',
 		months : '#disks'
 	},
+	
+	events : {
+		'click #export' : 'export'
+	},
 
 	initialize : function(options) {
 		this.plaqueView = new PlaqueView();
@@ -23,6 +27,12 @@ define([
 		this.showChildView('plaque', this.plaqueView);
 		this.showChildView('months', this.monthsLayout);
 	},
+	
+	export : function() {
+		console.log('export');
+		var month1 = this.monthsLayout.getRegion('month1');
+		console.log(month1.currentView.collection.toJSON());
+	}
   });
 
   return CalendarLayout;

@@ -6,10 +6,12 @@ define([
 ], function($, _, Backbone, Consts){
 	var Disk = Backbone.Model.extend({
 		urlRoot : Consts.basePath + '/api/ticket',
-		stale: ['editMode', 'CUSTOMER_ID'],
-		toJSON: function() {
-			return _.omit(this.attributes, this.stale);
-		}
+		defaults : {
+			name : 'none',
+			day : '00',
+			type : 'round',
+			material : 'wood'
+		},
 	});
 
 	return Disk;
