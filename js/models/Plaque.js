@@ -4,10 +4,20 @@ define([
   'backbone'
 ], function($, _, Backbone){
 	var Plaque = Backbone.Model.extend({
-		urlRoot : basePath + '/api/ticket',
-		stale: ['editMode', 'CUSTOMER_ID'],
-		toJSON: function() {
-			return _.omit(this.attributes, this.stale);
+		defaults : {
+			title : 'Aniversarile familiei',
+			month1 : 'Ianuarie',
+			month2 : 'Februarie',
+			month3 : 'Martie',
+			month4 : 'Aprilie',
+			month5 : 'Mai',
+			month6 : 'Iunie',
+			month7 : 'Iulie',
+			month8 : 'August',
+			month9 : 'Septembrie',
+			month10 : 'Octombrie',
+			month11 : 'Noiembrie',
+			month12 : 'Decembrie'
 		}
 	});
 
