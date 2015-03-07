@@ -41,11 +41,12 @@ require([
   'underscore',
   'backbone',
   'marionette',
-  'layouts/CalendarLayout'
+  'layouts/CalendarLayout',
+  'jquery.bootstrap'
     ], function ($, _, Backbone, Marionette, CalendarLayout) {    
         var app = new Backbone.Marionette.Application();
 		app.addRegions({
-			calendarRegion: "#calendar",
+			calendarRegion: "#calendar-container",
 			previewRegion: '#preview'
 		});
 		

@@ -5,13 +5,13 @@ define([
   'marionette',
   'text!templates/calendar.html',
   'views/PlaqueView',
-  'layouts/MonthsLayout'
-], function($, _, Backbone, Marionette, calendarTpl, PlaqueView, MonthsLayout){
+  'views/DisksView'
+], function($, _, Backbone, Marionette, calendarTpl, PlaqueView, DisksView){
   var CalendarLayout = Backbone.Marionette.LayoutView.extend({
 	template : calendarTpl,
 	regions : {
-		plaque : '#plaque',
-		months : '#disks'
+		plaque : '#plaque-container',
+		disks : '#disks-container'
 	},
 	
 	events : {
@@ -20,18 +20,16 @@ define([
 
 	initialize : function(options) {
 		this.plaqueView = new PlaqueView();
-		this.monthsLayout = new MonthsLayout();
+		this.disksView = new DisksView();
 	},
 
 	onBeforeShow : function() {
 		this.showChildView('plaque', this.plaqueView);
-		this.showChildView('months', this.monthsLayout);
+		this.showChildView('disks', this.disksView);
 	},
 	
 	export : function() {
 		console.log('export');
-		var month1 = this.monthsLayout.getRegion('month1');
-		console.log(month1.currentView.collection.toJSON());
 	}
   });
 

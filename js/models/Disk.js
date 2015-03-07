@@ -2,10 +2,10 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'modules/consts'
-], function($, _, Backbone, Consts){
+  'modules/Constants'
+], function($, _, Backbone, Constants){
 	var Disk = Backbone.Model.extend({
-		urlRoot : Consts.basePath + '/api/ticket',
+		urlRoot : Constants.basePath + '/api/ticket',
 		defaults : {
 			name : 'none',
 			day : '00',
