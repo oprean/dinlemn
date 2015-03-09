@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
 ], function($, _, Backbone){
-	var ColumnHeader = Backbone.Model.extend({
+	var Header = Backbone.Model.extend({
 		defaults : {
 			headerName : 'Column name',
 			headerFont : 'Arial',
@@ -11,5 +11,5 @@ define([
 		}
 	});
 
-	return ColumnHeader;
+	return Header;
 });

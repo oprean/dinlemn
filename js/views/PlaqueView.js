@@ -5,12 +5,12 @@ define([
   'marionette',
   'text!templates/plaque.html',
   'models/Plaque',
-  'models/ColumnHeader',
-  'collections/ColumnHeaders',
+  'models/Header',
+  'collections/Headers',
   'views/ColumnHeaderView',
   'modules/Constants',
   'modules/Events',
-], function($, _, Backbone, Marionette, plaqueTpl, Plaque, ColumnHeader, ColumnHeaders, ColumnHeaderView, Constants, vent){
+], function($, _, Backbone, Marionette, plaqueTpl, Plaque, Header, Headers, ColumnHeaderView, Constants, vent){
 	var PlaqueView = Backbone.Marionette.CompositeView.extend({
 		childView : ColumnHeaderView,
 		childViewContainer: "ul.headers",
@@ -24,8 +24,19 @@ define([
 		},
 		
 		initialize : function() {
+			self = this;
 			this.model = new Plaque();
-			this.collection = new ColumnHeaders(); 
+			this.collection = new Headers(); 
+			this.listenTo(vent, 'column.del', function(header){
+				console.log('del header!');
+				console.log(header.cid);
+				console.log(self.collection);
+				var h = self.collection.get(header.cid);
+				console.log(h);
+				self.collection.remove(h);
+				console.log(self.collection);
+				this.render();
+			});
 		},
 		
 		templateHelpers : function() {
@@ -49,9 +60,10 @@ define([
 		},
 		
 		addColumn : function() {	
-			var columnHeader = new ColumnHeader();
-			this.collection.add(columnHeader);
-			vent.trigger('column.new', columnHeader);
+			var header = new Header();
+			this.collection.add(header);
+			console.log(this.collection);
+			vent.trigger('column.new', header);
 		},
 		
 		selectWood : function(e) {
