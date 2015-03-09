@@ -5,7 +5,7 @@ define([
   'models/Disk'
 ], function($, _, Backbone, Disk){
   var ColumnDisks = Backbone.Collection.extend({ 
-  	model: Disk
+  	model: Disk,
   });
 
   return ColumnDisks;

@@ -49,8 +49,9 @@ define([
 		},
 		
 		addColumn : function() {	
-			this.collection.add(new ColumnHeader());
-			vent.trigger('column.new');
+			var columnHeader = new ColumnHeader();
+			this.collection.add(columnHeader);
+			vent.trigger('column.new', columnHeader);
 		},
 		
 		selectWood : function(e) {

@@ -19,15 +19,6 @@ define([
 			'blur .headerName' : 'save'
 		},
 		
-		/*initialize : function() {
-			self = this;
-			this.listenTo(vent, 'column.new', function(){
-				var plaqueWidth = $("#plaque-container").width();
-				var columnWidth = plaqueWidth / 100;
-				self.model.set({width:columnWidth});
-			});
-		},*/
-		
 		edit : function(e) {
 			$(e.target).attr('contenteditable', true);
 			$(e.target).focus();

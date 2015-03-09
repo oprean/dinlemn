@@ -15,11 +15,11 @@ define([
 		initialize : function() {
 			self = this;
 			this.collection = new ColumnsDisks();
-			this.listenTo(vent, 'column.new', function(){
+			this.listenTo(vent, 'column.new', function(columnHeader){
 				console.log('add new disk colomn!');
 				self.collection.add(new ColumnDisks());
 			});
-		}
+		},
 	});
 
 	return DisksView;
