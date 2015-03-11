@@ -27,16 +27,9 @@ define([
 			self = this;
 			this.model = new Plaque();
 			this.collection = new Headers(); 
+			var headers = this.collection; 
 			this.listenTo(vent, 'column.del', function(header){
-				console.log('del header!');
-				console.log(header.get('hid'));
-				console.log('plaque headers collection on remove header:');
-				console.log(self.collection);
-				var h = self.collection.findWhere({'hid':header.get('hid')});
-				console.log(h);
-				self.collection.remove(h);
-				console.log(self.collection);
-				this.render();
+				headers.remove(header);
 			});
 		},
 		
@@ -63,13 +56,10 @@ define([
 		addColumn : function() {	
 			var header = new Header();
 			this.collection.add(header);
-			console.log('plaque headers collection on add new column:');
-			console.log(this.collection);
 			vent.trigger('column.new', header);
 		},
 		
 		selectWood : function(e) {
-			console.log($(e.target).val());
 			this.model.set('wood', $(e.target).val());
 			this.render();
 		}

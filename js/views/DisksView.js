@@ -17,7 +17,6 @@ define([
 			self = this;
 			this.collection = new Columns();
 			this.listenTo(vent, 'column.new', function(columnHeader){
-				console.log('add new disk column!');
 				self.collection.add(new Column({
 					header : columnHeader,
 					disks : new Disks()

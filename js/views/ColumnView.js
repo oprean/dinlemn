@@ -29,13 +29,12 @@ define([
 		},
 		
 		add : function() {
-			console.log(this.header);
 			this.collection.add(new Disk());
 		},
 		
 		removeColumn : function() {
 			vent.trigger('column.del', this.header);
-			//this.destroy();
+			this.destroy();
 		},
 	});
 
