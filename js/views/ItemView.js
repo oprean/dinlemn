@@ -11,7 +11,8 @@ define([
 		events : {
 			'click .editable' : 'edit',
 			'blur .editable' : 'save',
-			'click .close' : 'del'
+			'click .close' : 'del',
+			//'click .edit' : 'modalEdit'
 		},
 		
 		initialize : function(options) {
@@ -21,6 +22,10 @@ define([
 		edit : function(e) {
 			$(e.target).attr('contenteditable', true);
 			$(e.target).focus();
+		},
+
+		modalEdit : function(e) {
+			console.log('modal popup');
 		},
 		
 		del : function() {
