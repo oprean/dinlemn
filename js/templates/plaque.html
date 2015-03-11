@@ -11,12 +11,12 @@
   </ul>
 </div-->
 <form class="form-inline">
-<select id="selectWood" class="form-control input-sm pull-right">
+<select id="selectWood" style="width: 100px" class="form-control input-sm pull-right">
 	<% _.each(woodTypes, function(w) { %>
 		<option <%= ((w==wood)?'selected':'') %>> <%= w %></option>
 	<% }) %>
 </select>
-<button id="addColumn" type="button" class="btn btn-success btn-xs pull-right">Add column</button>
+<button id="addColumn" type="button" class="btn btn-success btn-sm pull-right">Add column</button>
 </form>
 
 <h1><%= title %></h1>

@@ -3,10 +3,10 @@ define([
 	var Constants = {
 		basePath : '/api/ticket',
 		woodTypes : [
-			'default',
-			'dark',
-			'blue',
-			'old'
+			'purty_wood',
+			'retina_wood',
+			'tileable_wood_texture',
+			'wood_pattern'
 		]
 		
 	};

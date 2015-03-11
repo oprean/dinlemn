@@ -6,7 +6,7 @@ define([
 	var Plaque = Backbone.Model.extend({
 		defaults : {
 			title : 'Family Birthdays',
-			wood : 'default',
+			wood : 'purty_wood',
 			width : null,
 			height : null,
 			columns : []

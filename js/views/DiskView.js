@@ -12,7 +12,7 @@ define([
 		events : {
 			'click .view' : 'edit',
 			'click .save' : 'save',
-			'click .del' : 'del'
+			'click .close' : 'del'
 		},
 		
 		initialize : function(options) {

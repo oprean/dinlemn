@@ -41,18 +41,23 @@ require([
   'underscore',
   'backbone',
   'marionette',
-  'layouts/CalendarLayout',
+  'views/NavbarView',
+  'views/CarouselView',
+  'layouts/EditorLayout',
   'jquery.bootstrap'
-    ], function ($, _, Backbone, Marionette, CalendarLayout) {    
+    ], function ($, _, Backbone, Marionette, NavbarView, CarouselView, EditorLayout) {    
         var app = new Backbone.Marionette.Application();
 		app.addRegions({
-			calendarRegion: "#calendar-container",
-			previewRegion: '#preview'
+			navbarRegion : "#navbar-container",
+			carouselRegion : "#carousel-container",
+			editorRegion: "#editor-container",
 		});
 		
 		app.addInitializer(function(){
 			if( ! Backbone.History.started) Backbone.history.start();
-			app.calendarRegion.show(new CalendarLayout());
+			//app.navbarRegion.show(new NavbarView());
+			//app.carouselRegion.show(new CarouselView());
+			app.editorRegion.show(new EditorLayout());
 		});
 		
 		app.start();
