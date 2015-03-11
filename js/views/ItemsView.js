@@ -5,11 +5,11 @@ define([
   'marionette',
   'views/ColumnView',
   'collections/Columns',
-  'collections/Disks',
+  'collections/Items',
   'models/Column',
   'modules/Events',
-], function($, _, Backbone, Marionette, ColumnView, Columns, Disks, Column, vent){
-	var DisksView = Marionette.CollectionView.extend({
+], function($, _, Backbone, Marionette, ColumnView, Columns, Items, Column, vent){
+	var ItemsView = Marionette.CollectionView.extend({
 		childView: ColumnView,
 		className : 'columns text-center',
 		tagName : 'ul',
@@ -19,11 +19,11 @@ define([
 			this.listenTo(vent, 'column.new', function(columnHeader){
 				self.collection.add(new Column({
 					header : columnHeader,
-					disks : new Disks()
+					items : new Items()
 				}));
 			});
 		},
 	});
 
-	return DisksView;
+	return ItemsView;
 });

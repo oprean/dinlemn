@@ -5,13 +5,13 @@ define([
   'marionette',
   'text!templates/editor.html',
   'views/PlaqueView',
-  'views/DisksView'
-], function($, _, Backbone, Marionette, editorTpl, PlaqueView, DisksView){
+  'views/ItemsView'
+], function($, _, Backbone, Marionette, editorTpl, PlaqueView, ItemsView){
   var EditorLayout = Backbone.Marionette.LayoutView.extend({
 	template : editorTpl,
 	regions : {
 		plaque : '#plaque-container',
-		disks : '#disks-container'
+		items : '#items-container'
 	},
 	
 	events : {
@@ -20,12 +20,12 @@ define([
 
 	initialize : function(options) {
 		this.plaqueView = new PlaqueView();
-		this.disksView = new DisksView();
+		this.itemsView = new ItemsView();
 	},
 
 	onBeforeShow : function() {
 		this.showChildView('plaque', this.plaqueView);
-		this.showChildView('disks', this.disksView);
+		this.showChildView('items', this.itemsView);
 	},
 	
 	export : function() {

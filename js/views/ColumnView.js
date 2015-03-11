@@ -3,38 +3,40 @@ define([
   'underscore',
   'backbone',
   'marionette',
-  'views/DiskView',
+  'views/ItemView',
   'text!templates/column.html',
-  'models/Disk',
+  'models/Item',
   'modules/Events'
-], function($, _, Backbone, Marionette, DiskView, columnTpl, Disk, vent){
+], function($, _, Backbone, Marionette, ItemView, columnTpl, Item, vent){
 	var DiskColumnView = Backbone.Marionette.CompositeView.extend({
 		template : _.template(columnTpl),
 		tagName : 'li',
 		className : 'column',
-		childView : DiskView,
-		childViewContainer: "ul.disks",
+		childView : ItemView,
+		childViewContainer: "ul.items",
 		
 		events : {
 			'click .addNew' : 'add',
 			'click .close' : 'removeColumn'
 		},
 		initialize : function() {
-			this.collection = this.model.get('disks');
+			this.collection = this.model.get('items');
 			this.header = this.model.get('header');
 		},
 
 		childViewOptions : function () { 
-			return { disks : this.collection }; 
+			return { items : this.collection }; 
 		},
 		
 		add : function() {
-			this.collection.add(new Disk());
+			this.collection.add(new Item());
 		},
 		
 		removeColumn : function() {
-			vent.trigger('column.del', this.header);
-			this.destroy();
+			if (confirm("Are you sure you want to remove this column?")) {
+				vent.trigger('column.del', this.header);
+				this.destroy();
+			}
 		},
 	});
 

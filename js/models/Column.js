@@ -6,7 +6,7 @@ define([
 	var Column = Backbone.Model.extend({
 		defaults : {
 			header : null,
-			disks : null
+			items : null
 		}
 	});
 

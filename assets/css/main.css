@@ -16,6 +16,7 @@
 
 ul.columns {
 	list-style-type: none;
+	padding: 0px;
 }
 
 ul.columns li {
@@ -34,12 +35,12 @@ ul.headers li {
 	width: 100px;
 }
 
-ul.disks {
+ul.items {
 	list-style-type: none;
 	padding: 0px;
 }
 
-ul.disks li{
+ul.items li{
 	padding-top: 10px;
 	display: block;
 }
@@ -71,7 +72,7 @@ ul.disks li{
     width:100%;
     padding-top:50%;
     line-height:1em;
-    margin-top:-0.9em;
+    margin-top:-2.2em;
     text-align:center;
     color: #000000;
     font-weight: bolder;

@@ -5,7 +5,7 @@ define([
   'marionette',
   'text!templates/header.html',
   'modules/Events'
-], function($, _, Backbone, Marionette, headerTpl, headerEditTpl, vent){
+], function($, _, Backbone, Marionette, headerTpl, vent){
 	var ColumnHeaderView = Backbone.Marionette.ItemView.extend({
 		template : _.template(headerTpl),
 		tagName: 'li',
