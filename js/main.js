@@ -13,7 +13,7 @@ require.config({
 		"backbone.validation":"//cdnjs.cloudflare.com/ajax/libs/backbone.validation/0.11.3/backbone-validation-min",
 		"text":"//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text",
 		"html2canvas" : "//cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas",
-		"backbone.modal" : "lib/backbone.modal-bundled"
+		"backbone.modal" : "lib/backbone.modal-bundled",
 	},
 	"shim":{
 		"jquery.bootstrap": {
@@ -26,7 +26,7 @@ require.config({
 			"deps":["jquery","underscore"],
 			"exports":"Backbone"
 		},
-		"marionette":{
+		"backbone.marionette":{
 			"deps":["jquery","underscore","backbone"],
 			"exports":"Marionette"
 		},
@@ -53,7 +53,7 @@ require([
   'modules/Events',
   'jquery.bootstrap',
   'html2canvas',
-  'backbone.modal'
+  'backbone.modal',
     ], function ($, _, Backbone, Marionette, NavbarView, CarouselView, EditorLayout, Controller, vent) {    
         var app = new Backbone.Marionette.Application();
 		app.addRegions({
@@ -67,7 +67,6 @@ require([
 		});
 		
 		app.addInitializer(function(){
-			self = this;
 			if( ! Backbone.History.started) Backbone.history.start();
 			//app.navbarRegion.show(new NavbarView());
 			//app.carouselRegion.show(new CarouselView());
