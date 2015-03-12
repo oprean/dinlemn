@@ -11,10 +11,15 @@ require.config({
 		"moment":"//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min",
 		"contextmenu":"//cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/1.6.5/jquery.contextMenu.min",
 		"backbone.validation":"//cdnjs.cloudflare.com/ajax/libs/backbone.validation/0.11.3/backbone-validation-min",
-		"text":"//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text"
+		"text":"//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text",
+		"html2canvas" : "//cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas",
+		"backbone.modal" : "lib/backbone.modal-bundled"
 	},
 	"shim":{
-		 "jquery.bootstrap": {
+		"jquery.bootstrap": {
+			"deps": ["jquery"]
+		},
+		"html2canvas": {
 			"deps": ["jquery"]
 		},
 		"backbone":{
@@ -44,20 +49,30 @@ require([
   'views/NavbarView',
   'views/CarouselView',
   'layouts/EditorLayout',
-  'jquery.bootstrap'
-    ], function ($, _, Backbone, Marionette, NavbarView, CarouselView, EditorLayout) {    
+  'modules/Controller',
+  'modules/Events',
+  'jquery.bootstrap',
+  'html2canvas',
+  'backbone.modal'
+    ], function ($, _, Backbone, Marionette, NavbarView, CarouselView, EditorLayout, Controller, vent) {    
         var app = new Backbone.Marionette.Application();
 		app.addRegions({
 			navbarRegion : "#navbar-container",
 			carouselRegion : "#carousel-container",
 			editorRegion: "#editor-container",
+			modalsRegion: {
+				selector: '#modals-container',
+				regionClass: Backbone.Marionette.Modals
+			}
 		});
 		
 		app.addInitializer(function(){
+			self = this;
 			if( ! Backbone.History.started) Backbone.history.start();
 			//app.navbarRegion.show(new NavbarView());
 			//app.carouselRegion.show(new CarouselView());
 			app.editorRegion.show(new EditorLayout());
+			var controller = new Controller(app);
 		});
 		
 		app.start();

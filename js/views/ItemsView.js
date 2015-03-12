@@ -14,7 +14,7 @@ define([
 		className : 'columns text-center',
 		tagName : 'ul',
 		initialize : function() {
-			self = this;
+			var self = this;
 			this.collection = new Columns();
 			this.listenTo(vent, 'column.new', function(columnHeader){
 				self.collection.add(new Column({

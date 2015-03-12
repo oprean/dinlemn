@@ -5,32 +5,28 @@ define([
   'marionette',
   'text!templates/editor.html',
   'views/PlaqueView',
-  'views/ItemsView'
-], function($, _, Backbone, Marionette, editorTpl, PlaqueView, ItemsView){
+  'views/ItemsView',
+  'views/ControlsView'
+], function($, _, Backbone, Marionette, editorTpl, PlaqueView, ItemsView, ControlsView){
   var EditorLayout = Backbone.Marionette.LayoutView.extend({
-	template : editorTpl,
+	template : _.template(editorTpl),
 	regions : {
+		controls : '#controls-container',
 		plaque : '#plaque-container',
 		items : '#items-container'
 	},
 	
-	events : {
-		'click #export' : 'export'
-	},
-
 	initialize : function(options) {
+		this.controlsView = new ControlsView();
 		this.plaqueView = new PlaqueView();
 		this.itemsView = new ItemsView();
 	},
 
 	onBeforeShow : function() {
+		//this.showChildView('controls', this.controlsView);
 		this.showChildView('plaque', this.plaqueView);
 		this.showChildView('items', this.itemsView);
 	},
-	
-	export : function() {
-		console.log('export');
-	}
   });
 
   return EditorLayout;

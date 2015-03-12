@@ -1,22 +1,11 @@
-<!--div class="btn-group pull-right">
-  <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    Select wood <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div-->
 <form class="form-inline">
-<select id="selectWood" style="width: 100px" class="form-control input-sm pull-right">
+<select id="selectWood" class="form-control input-sm pull-left">
 	<% _.each(woodTypes, function(w) { %>
 		<option <%= ((w==wood)?'selected':'') %>> <%= w %></option>
 	<% }) %>
 </select>
-<button id="addColumn" type="button" class="btn btn-primary btn-sm pull-right">Add column</button>
+<button id="addColumn" title="Add new column" type="button" class="close"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></button>
+<button id="editPlaque" type="button" class="close"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
 </form>
 <br />
 <h1><%= title %></h1>

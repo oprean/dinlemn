@@ -8,9 +8,10 @@ define([
   'models/Header',
   'collections/Headers',
   'views/ColumnHeaderView',
+  'views/modals/EditPlaqueView',
   'modules/Constants',
   'modules/Events',
-], function($, _, Backbone, Marionette, plaqueTpl, Plaque, Header, Headers, ColumnHeaderView, Constants, vent){
+], function($, _, Backbone, Marionette, plaqueTpl, Plaque, Header, Headers, ColumnHeaderView, EditPlaqueView, Constants, vent){
 	var PlaqueView = Backbone.Marionette.CompositeView.extend({
 		childView : ColumnHeaderView,
 		childViewContainer: "ul.headers",
@@ -20,16 +21,16 @@ define([
 			'click h1' : 'edit',
 			'blur h1' : 'save',
 			'click #addColumn' : 'addColumn',
+			'click #editPlaque' : 'editPlaque',
 			'change #selectWood' : 'selectWood'
 		},
 		
 		initialize : function() {
-			self = this;
+			var self = this;
 			this.model = new Plaque();
 			this.collection = new Headers(); 
-			var headers = this.collection; 
 			this.listenTo(vent, 'column.del', function(header){
-				headers.remove(header);
+				self.collection.remove(header);
 			});
 		},
 		
@@ -46,6 +47,11 @@ define([
 		edit : function(e) {
 			$(e.target).attr('contenteditable',true);
 			$(e.target).focus();
+		},
+
+		editPlaque : function() {
+			var editPlaqueView = new EditPlaqueView({model:this.model});
+			vent.trigger('showModal', editPlaqueView);
 		},
 
 		save : function(e) {
