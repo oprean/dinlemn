@@ -6,19 +6,29 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Title</label>
     <div class="col-sm-10">
-        <input type="email" class="form-control" id="inputEmail3" placeholder="header" value="<%= title %>">
+        <input type="email" class="form-control" id="title" placeholder="header" value="<%= title %>">
+    </div>
+  </div>
+<div class="form-group">
+    <label for="wood" class="col-sm-2 control-label">Wood</label>
+    <div class="col-sm-10">
+		<select id="selectWood" class="form-control input-sm">
+			<% _.each(woodTypes, function(w) { %>
+				<option <%= ((w==wood)?'selected':'') %>> <%= w %></option>
+			<% }) %>
+		</select>
     </div>
   </div>
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Width</label>
+    <label for="width" class="col-sm-2 control-label">Width</label>
     <div class="col-sm-10">
-        <input type="number" class="form-control" id="inputEmail3" placeholder="width(mm)..." value="<%= width %>">
+        <input type="number" class="form-control" id="width" placeholder="width(mm)..." value="<%= width %>">
     </div>
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Height</label>
+    <label for="height" class="col-sm-2 control-label">Height</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control" id="inputEmail5" placeholder="height(mm)...">
+      <input type="number" class="form-control" id="height" placeholder="height(mm)..." value="<%= height %>">
     </div>
   </div>
 </form>
