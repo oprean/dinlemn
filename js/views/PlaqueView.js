@@ -25,6 +25,10 @@ define([
 			'change #selectWood' : 'selectWood'
 		},
 		
+		modelEvents : {
+			'change' : 'render'
+		},
+		
 		initialize : function() {
 			var self = this;
 			this.model = new Plaque();
@@ -42,6 +46,9 @@ define([
 		
 		onRender : function() {		
 			this.$el.css('background-image', 'url("assets/img/plaque/' + this.model.get('wood') + '.png")');
+			if (this.model.get('width')!=null) this.$el.css('width', this.model.get('width'));
+			if (this.model.get('height')!=null) this.$el.css('height', this.model.get('height'));
+			
 		},
 		
 		edit : function(e) {

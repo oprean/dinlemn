@@ -3,17 +3,16 @@ define([
   'underscore',
   'backbone',
   'modules/Constants',
-  'text!templates/plaque-edit.html'
-], function($, _, Backbone, Constants, editPlaqueTpl){
-	var EditPlaqueView = Backbone.Modal.extend({
-		template: _.template(editPlaqueTpl),
+  'text!templates/item-edit.html'
+], function($, _, Backbone, Constants, editItemTpl){
+	var EditItemView = Backbone.Modal.extend({
+		template: _.template(editItemTpl),
 		submitEl: '.btn-submit',
 		cancelEl: '.btn-cancel',
 		events : {
 			
 		},
 		initialize : function() {
-			this.model.set({woodTypes : Constants.woodTypes });
 			console.log('init modal');
 		},
 		
@@ -32,5 +31,5 @@ define([
 			
 	});
 
-	return EditPlaqueView;
+	return EditItemView;
 });

@@ -3,16 +3,18 @@ define([
   'underscore',
   'backbone',
   'marionette',
+  'views/modals/EditItemView',
   'text!templates/item.html',
-], function($, _, Backbone, Marionette, itemTpl){
+  'modules/Events'
+], function($, _, Backbone, Marionette, EditItemView, itemTpl, vent){
 	var ItemView = Backbone.Marionette.ItemView.extend({
 		template : _.template(itemTpl),
 		tagName: 'li',
 		events : {
 			'click .editable' : 'edit',
 			'blur .editable' : 'save',
-			'click .close' : 'del',
-			//'click .edit' : 'modalEdit'
+			'click .del' : 'del',
+			'click .edit' : 'modalEdit'
 		},
 		
 		initialize : function(options) {
@@ -25,7 +27,9 @@ define([
 		},
 
 		modalEdit : function(e) {
-			console.log('modal popup');
+			var editItemView = new EditItemView({model:this.model});
+			vent.trigger('showModal', editItemView);
+			e.stopPropagation();
 		},
 		
 		del : function() {

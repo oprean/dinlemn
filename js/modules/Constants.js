@@ -7,7 +7,16 @@ define([
 			'retina_wood',
 			'tileable_wood_texture',
 			'wood_pattern'
-		]
+		],
+		itemTypes : [
+			'round',
+			'square',
+		],
+		materials : [
+			'wood',
+			'bone',
+			'glass'
+		],
 		
 	};
 	return Constants;
