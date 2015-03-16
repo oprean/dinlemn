@@ -17,6 +17,10 @@ define([
 			'click .edit' : 'modalEdit'
 		},
 		
+		modelEvents : {
+			'change' : 'render'
+		},
+		
 		initialize : function(options) {
 			this.columnItems = options.items;
 		},
@@ -43,6 +47,11 @@ define([
 			this.model.set($(e.target).data('field'),$(e.target).html());
 			$(e.target).removeAttr('contenteditable');	
 		},
+		
+		onRender : function() {
+			if (this.model.get('width')!=null) this.$el.css('width', this.model.get('width'));
+			if (this.model.get('height')!=null) this.$el.css('height', this.model.get('height'));
+		}
 	});
 	 
 	return ItemView;

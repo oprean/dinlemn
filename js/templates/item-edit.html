@@ -3,6 +3,40 @@
 </div>
 <div class="bbm-modal__section">
 <form class="form-horizontal">
+  <div class="form-group">
+    <label for="line1" class="col-sm-2 control-label">Line 1</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="line1" placeholder="header" value="<%= line1 %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="line2" class="col-sm-2 control-label">Line 2</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="line2" placeholder="header" value="<%= line2 %>">
+    </div>
+  </div>
+<div class="form-group">
+    <label for="wood" class="col-sm-2 control-label">Wood</label>
+    <div class="col-sm-10">
+		<select id="wood" class="form-control input-sm">
+			<% _.each(woodTypes, function(w) { %>
+				<option <%= ((w==wood)?'selected':'') %>> <%= w %></option>
+			<% }) %>
+		</select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="width" class="col-sm-2 control-label">Width</label>
+    <div class="col-sm-10">
+        <input type="number" class="form-control" id="width" placeholder="width(mm)..." value="<%= width %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="height" class="col-sm-2 control-label">Height</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="height" placeholder="height(mm)..." value="<%= height %>">
+    </div>
+  </div>
 </form>
 </div>
 <div class="bbm-modal__bottombar">

@@ -15,10 +15,15 @@ define([
 		childView : ItemView,
 		childViewContainer: "ul.items",
 		
+		modelEvents : {
+			'change' : 'render'
+		},
+		
 		events : {
 			'click .addNew' : 'add',
 			'click .close' : 'removeColumn'
 		},
+		
 		initialize : function() {
 			this.collection = this.model.get('items');
 			this.header = this.model.get('header');

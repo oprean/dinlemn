@@ -9,9 +9,7 @@ define([
 		defaults : {
 			line1 : 'text1',
 			line2 : 'text2',
-			form : 'round',
-			type : 'text',
-			material : 'wood',
+			wood : 'wood',
 			width : null,
 			height : null
 		},

@@ -13,6 +13,7 @@ define([
 			
 		},
 		initialize : function() {
+			this.model.set({woodTypes : Constants.woodTypes });
 			console.log('init modal');
 		},
 		
@@ -22,8 +23,9 @@ define([
 		submit: function() {
 			console.log('submit');
 			this.model.set({
+				line1 : $('#line1').val(),
+				line2 : $('#line2').val(),
 				wood : $('#wood').val(),
-				title : $('#title').val(),
 				width : $('#width').val(),
 				height : $('#height').val(),
 			});
