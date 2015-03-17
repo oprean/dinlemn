@@ -10,6 +10,8 @@ define([
 			line1 : 'text1',
 			line2 : 'text2',
 			wood : 'wood',
+			image : null,
+			shape : 'round',
 			width : null,
 			height : null
 		},

@@ -8,9 +8,9 @@ define([
 			'tileable_wood_texture',
 			'wood_pattern'
 		],
-		itemTypes : [
+		shapeTypes : [
 			'round',
-			'square',
+			'rectangular',
 		],
 		materials : [
 			'wood',

@@ -51,6 +51,8 @@ define([
 		onRender : function() {
 			if (this.model.get('width')!=null) this.$el.css('width', this.model.get('width'));
 			if (this.model.get('height')!=null) this.$el.css('height', this.model.get('height'));
+			if (this.model.get('image')!=null) 
+				this.$el.css('background-image', 'url("' + this.model.get('image') + '")');
 		}
 	});
 	 

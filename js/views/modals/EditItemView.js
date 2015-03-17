@@ -14,6 +14,7 @@ define([
 		},
 		initialize : function() {
 			this.model.set({woodTypes : Constants.woodTypes });
+			this.model.set({shapeTypes : Constants.shapeTypes });
 			console.log('init modal');
 		},
 		
@@ -25,6 +26,8 @@ define([
 			this.model.set({
 				line1 : $('#line1').val(),
 				line2 : $('#line2').val(),
+				shape : $('#shape').val(),
+				image : $('#image').val(),
 				wood : $('#wood').val(),
 				width : $('#width').val(),
 				height : $('#height').val(),
