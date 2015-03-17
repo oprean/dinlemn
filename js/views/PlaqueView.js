@@ -15,7 +15,7 @@ define([
 	var PlaqueView = Backbone.Marionette.CompositeView.extend({
 		childView : ColumnHeaderView,
 		childViewContainer: "ul.headers",
-		className : 'plaque',
+		className : 'plaque text-center center-block',
 		template :  _.template(plaqueTpl),
 		events : {
 			'click h1' : 'edit',

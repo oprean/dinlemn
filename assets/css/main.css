@@ -1,6 +1,17 @@
-#editor-container {
-	background: url("../img/wall/graphy.png") right top;	
+/******************* containers *********************/
+#plaque-container {
+	text-align: center;
 }
+#work-container {
+	padding: 20px;
+	text-align: center;
+	background: url("../img/wall/graphy.png") right top;
+	-moz-box-shadow:inset 0px -0px 10px #000000;
+	-webkit-box-shadow:inset 0px -0px 10px #000000;
+	box-shadow:inset 0px -0px 10px #000000;	
+}
+
+
 .plaque {
     padding: 10px;
     margin-bottom: 10px;
