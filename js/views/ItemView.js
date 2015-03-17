@@ -4,11 +4,14 @@ define([
   'backbone',
   'marionette',
   'views/modals/EditItemView',
-  'text!templates/item.html',
+  'text!templates/item-default.html',
+  'text!templates/item-round.html',
+  'text!templates/item-rectangle.html',
   'modules/Events'
-], function($, _, Backbone, Marionette, EditItemView, itemTpl, vent){
+], function($, _, Backbone, Marionette, EditItemView, itemDefaultTpl, itemRoundTpl, itemRectangleTpl, vent){
 	var ItemView = Backbone.Marionette.ItemView.extend({
-		template : _.template(itemTpl),
+		//template : _.template(itemDefaultTpl),
+		className : 'item',
 		tagName: 'li',
 		events : {
 			'click .editable' : 'edit',
@@ -19,6 +22,22 @@ define([
 		
 		modelEvents : {
 			'change' : 'render'
+		},
+		
+		onBeforeRender : function() {
+			var tpl = null;
+			switch(this.model.get('shape')) {
+				case 'round':
+					tpl = itemRoundTpl;
+					break;
+				case 'rectangular':
+					tpl = itemRectangularTpl;
+					break;
+				default:
+					tpl = itemDefaultTpl;
+					break;
+			}
+			this.template = _.template(tpl);
 		},
 		
 		initialize : function(options) {
