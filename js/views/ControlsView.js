@@ -4,12 +4,18 @@ define([
   'backbone',
   'marionette',
   'text!templates/controls.html',
-], function($, _, Backbone, Marionette, controlsTpl){
+  'modules/Events'
+], function($, _, Backbone, Marionette, controlsTpl, vent){
 	var ControlsView = Backbone.Marionette.ItemView.extend({
 		template : _.template(controlsTpl),
 		events : {
 			'click #export2png' : 'export2png',
-			'click #export2json' : 'export2json'
+			'click #export2json' : 'export2json',
+			'click #save' : 'save'
+		},
+		
+		save : function() {
+			vent.trigger('save.editor');
 		},
 		
 		export2png : function() {

@@ -11,6 +11,10 @@
 	box-shadow:inset 0px -0px 10px #000000;	
 }
 
+#credits-container {
+	font-size: 0.7em;
+	margin-bottom: -10px;
+}
 
 .plaque {
     padding: 10px;

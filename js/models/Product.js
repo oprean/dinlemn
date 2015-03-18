@@ -1,17 +1,19 @@
 define([
   'jquery',
   'underscore',
-  'backbone'
-], function($, _, Backbone){
+  'backbone',
+  'models/Plaque',
+  'collections/Columns',
+], function($, _, Backbone, Plaque, Columns){
 	var Product = Backbone.Model.extend({
 		defaults : {
-			title : 'Family Birthdays',
-			author : null,
+			name : 'local.last.save',
+			author : 'Guest',
 			type : 'purty_wood',
 			date : null,
-			plaque : null,
+			plaque : new Plaque(),
 			headers : null,
-			columns : null,
+			columns : new Columns(),
 		}
 	});
 

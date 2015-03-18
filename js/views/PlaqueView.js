@@ -29,9 +29,9 @@ define([
 			'change' : 'render'
 		},
 		
-		initialize : function() {
+		initialize : function(options) {
 			var self = this;
-			this.model = new Plaque();
+			this.model = new Plaque(options.model);
 			this.collection = new Headers(); 
 			this.listenTo(vent, 'column.del', function(header){
 				self.collection.remove(header);
