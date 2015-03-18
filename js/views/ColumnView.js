@@ -34,6 +34,10 @@ define([
 		childViewOptions : function () { 
 			return { items : this.collection }; 
 		},
+		
+		onRender : function() {
+			if (this.header.get('width')!=null) this.$el.css('width', this.header.get('width'));
+		},
 	
 		addItem : function(e) {
 			this.collection.add(new Item());
@@ -42,7 +46,6 @@ define([
 		editColumn : function(e) {
 			var editColumnView = new EditColumnView({model:this.model});
 			vent.trigger('showModal', editColumnView);
-			//e.stopPropagation();
 		},
 
 		

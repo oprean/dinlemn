@@ -25,9 +25,13 @@ define([
 		},
 	
 		save : function(e) {
-			this.model.set('headerName',$(e.target).html());
+			this.model.set('title',$(e.target).html());
 			$(e.target).removeAttr('contenteditable');			
 		},
+		
+		onRender : function() {
+			if (this.model.get('width')!=null) this.$el.css('width', this.model.get('width'));
+		}
 	}); 
 
 	return ColumnHeaderView;

@@ -23,7 +23,7 @@ define([
 	},
 
 	onBeforeShow : function() {
-		//this.showChildView('controls', this.controlsView);
+		this.showChildView('controls', this.controlsView);
 		this.showChildView('plaque', this.plaqueView);
 		this.showChildView('items', this.itemsView);
 	},

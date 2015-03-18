@@ -17,7 +17,8 @@ define([
 			console.log('init modal');
 		},
 		
-		onRender : function() {
+		onShow : function() {
+			console.log('onShow');
 		},
 		
 		submit: function() {

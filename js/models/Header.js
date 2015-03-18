@@ -5,8 +5,7 @@ define([
 ], function($, _, Backbone){
 	var Header = Backbone.Model.extend({
 		defaults : {
-			headerName : 'Column name',
-			headerFont : 'Arial',
+			title : 'Column name',
 			width : 100
 		}
 	});

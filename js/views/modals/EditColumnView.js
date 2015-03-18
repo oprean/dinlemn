@@ -13,14 +13,19 @@ define([
 			
 		},
 		initialize : function() {
+			var header = this.model.get('header');
 			console.log('init modal');
+			this.model.set({
+				title : header.get('title'),
+				width : header.get('width'), 
+			});
 		},
 		
 		submit: function() {
 			console.log('submit');
 			var header = this.model.get('header');
 			header.set({
-				headerName : $('#title').val(),
+				title : $('#title').val(),
 				width : $('#width').val(),
 			});
 		}	

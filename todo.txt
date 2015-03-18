@@ -1,0 +1,10 @@
+- save to localStorage (http://stackoverflow.com/questions/13294216/exporting-backbone-js-collection-to-plain-text-on-hard-disk-importing-back)
+- trigger save when
+- item sorting
+- change work background
+- order form
+- preview mode
+- carousel
+- navbar
+- gallery
+- about
