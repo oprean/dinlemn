@@ -59,13 +59,24 @@ ul.items li{
 	display: block;
 }
 
-.disk {
+.item {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    padding: 5px;
+}
+
+.item-rect {
+	-moz-box-shadow: 0px -1px 5px #000000;
+    -webkit-box-shadow: 0px -1px 5px #000000;
+    box-shadow: 0px -1px 5px #000000;
+}
+
+.item-round {
     width:100px;
 }
-.disk:after {
+
+.item-round:after {
     content: "";
     display: block;
     width: 100%;
@@ -77,14 +88,12 @@ ul.items li{
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-
     -moz-box-shadow: 0px -1px 5px #000000;
     -webkit-box-shadow: 0px -1px 5px #000000;
     box-shadow: 0px -1px 5px #000000;
-
-
 }
-.disk div {
+
+.item-round div {
     float:left;
     width:100%;
     padding-top:50%;

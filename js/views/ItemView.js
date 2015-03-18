@@ -6,12 +6,12 @@ define([
   'views/modals/EditItemView',
   'text!templates/item-default.html',
   'text!templates/item-round.html',
-  'text!templates/item-rectangle.html',
+  'text!templates/item-rect.html',
   'modules/Events'
-], function($, _, Backbone, Marionette, EditItemView, itemDefaultTpl, itemRoundTpl, itemRectangleTpl, vent){
+], function($, _, Backbone, Marionette, EditItemView, itemDefaultTpl, itemRoundTpl, itemRectTpl, vent){
 	var ItemView = Backbone.Marionette.ItemView.extend({
 		//template : _.template(itemDefaultTpl),
-		className : 'item',
+		className : 'item-container',
 		tagName: 'li',
 		events : {
 			'click .editable' : 'edit',
@@ -31,7 +31,7 @@ define([
 					tpl = itemRoundTpl;
 					break;
 				case 'rectangular':
-					tpl = itemRectangularTpl;
+					tpl = itemRectTpl;
 					break;
 				default:
 					tpl = itemDefaultTpl;
@@ -70,8 +70,10 @@ define([
 		onRender : function() {
 			if (this.model.get('width')!=null) this.$el.css('width', this.model.get('width'));
 			if (this.model.get('height')!=null) this.$el.css('height', this.model.get('height'));
-			if (this.model.get('image')!=null) 
+			if (this.model.get('image')!=null) { 
 				this.$el.css('background-image', 'url("' + this.model.get('image') + '")');
+				this.$el.css('background-size', 'cover');
+			}
 		}
 	});
 	 

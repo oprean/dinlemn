@@ -20,8 +20,9 @@ define([
 		},
 		
 		events : {
-			'click .addNew' : 'add',
-			'click .close' : 'removeColumn'
+			'click .addItem' : 'addItem',
+			'click .editColumn' : 'editColumn',
+			'click .removeColumn' : 'removeColumn'
 		},
 		
 		initialize : function() {
@@ -32,10 +33,15 @@ define([
 		childViewOptions : function () { 
 			return { items : this.collection }; 
 		},
-		
-		add : function() {
+	
+		addItem : function(e) {
 			this.collection.add(new Item());
 		},
+
+		editColumn : function(e) {
+			console.log('edit column popup');
+		},
+
 		
 		removeColumn : function() {
 			if (confirm("Are you sure you want to remove this column?")) {
