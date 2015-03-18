@@ -4,10 +4,11 @@ define([
   'backbone',
   'marionette',
   'views/ItemView',
+  'views/modals/EditColumnView',
   'text!templates/column.html',
   'models/Item',
   'modules/Events'
-], function($, _, Backbone, Marionette, ItemView, columnTpl, Item, vent){
+], function($, _, Backbone, Marionette, ItemView, EditColumnView, columnTpl, Item, vent){
 	var DiskColumnView = Backbone.Marionette.CompositeView.extend({
 		template : _.template(columnTpl),
 		tagName : 'li',
@@ -39,7 +40,9 @@ define([
 		},
 
 		editColumn : function(e) {
-			console.log('edit column popup');
+			var editColumnView = new EditColumnView({model:this.model});
+			vent.trigger('showModal', editColumnView);
+			//e.stopPropagation();
 		},
 
 		
