@@ -11,11 +11,16 @@ define([
 		events : {
 			'click #export2png' : 'export2png',
 			'click #export2json' : 'export2json',
+			'click #preview' : 'preview',
 			'click #save' : 'save'
 		},
 		
+		preview : function() {
+			vent.trigger('editor.preview');
+		},
+		
 		save : function() {
-			vent.trigger('save.editor');
+			vent.trigger('editor.save');
 		},
 		
 		export2png : function() {

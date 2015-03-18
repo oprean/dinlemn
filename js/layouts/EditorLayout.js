@@ -31,7 +31,7 @@ define([
 		} else {
 			console.log(this.model);
 		}
-		this.listenTo(vent, 'save.editor', function(){
+		this.listenTo(vent, 'editor.save', function(){
 			self.save();
 		});
 		this.controlsView = new ControlsView();
