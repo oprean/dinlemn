@@ -7,11 +7,11 @@ define([
   'models/Product',
   'text!templates/editor.html',
   'views/PlaqueView',
-  'views/ItemsView',
+  'views/ColumnsView',
   'views/ControlsView',
   'modules/Events',
   'moment',
-], function($, _, Backbone, Marionette, Products, Product, editorTpl, PlaqueView, ItemsView, ControlsView, vent, moment){
+], function($, _, Backbone, Marionette, Products, Product, editorTpl, PlaqueView, ColumnsView, ControlsView, vent, moment){
   var EditorLayout = Backbone.Marionette.LayoutView.extend({
 	template : _.template(editorTpl),
 	regions : {
@@ -36,7 +36,7 @@ define([
 		});
 		this.controlsView = new ControlsView();
 		this.plaqueView = new PlaqueView({model: this.model.get('plaque')});
-		this.itemsView = new ItemsView();
+		this.itemsView = new ColumnsView();
 	},
 
 	save : function() {

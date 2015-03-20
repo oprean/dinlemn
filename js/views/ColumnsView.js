@@ -9,7 +9,7 @@ define([
   'models/Column',
   'modules/Events',
 ], function($, _, Backbone, Marionette, ColumnView, Columns, Items, Column, vent){
-	var ItemsView = Marionette.CollectionView.extend({
+	var ColumnsView = Marionette.CollectionView.extend({
 		childView: ColumnView,
 		className : 'columns text-center',
 		tagName : 'ul',
@@ -25,5 +25,5 @@ define([
 		},
 	});
 
-	return ItemsView;
+	return ColumnsView;
 });
