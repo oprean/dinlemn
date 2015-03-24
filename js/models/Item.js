@@ -15,6 +15,20 @@ define([
 			width : null,
 			height : null
 		},
+		
+		validation : {
+			width : {
+				range : [100, 500],
+				required : false
+			},
+			height : {
+				range : [50, 100],
+				required : false
+			},
+			image : {
+				required : false
+			}
+		}
 	});
 
 	return Item;

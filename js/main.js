@@ -50,6 +50,7 @@ require([
   'layouts/EditorLayout',
   'modules/Controller',
   'modules/Events',
+  'modules/backbone.validation.bootstrap',
   'jquery.bootstrap',
   'html2canvas',
   'backbone.modal',

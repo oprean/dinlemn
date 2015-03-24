@@ -2,11 +2,13 @@ define([
   'jquery',
   'underscore',
   'backbone',
-], function($, _, Backbone){
+  'models/Header',
+  'collections/Items',
+], function($, _, Backbone, Header, Items){
 	var Column = Backbone.Model.extend({
 		defaults : {
-			header : null,
-			items : null,
+			header : new Header(),
+			items : new Items(),
 		}
 	});
 

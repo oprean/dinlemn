@@ -9,7 +9,21 @@ define([
 			wood : 'purty_wood',
 			width : null,
 			height : null,
-			columns : []
+		},
+		
+		validation : {
+			title : {
+				rangeLength : [3, 200],
+				required : true
+			},
+			width : {
+				range : [100, 500],
+				required : false
+			},
+			height : {
+				range : [50, 100],
+				required : false
+			},
 		}
 	});
 

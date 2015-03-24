@@ -9,28 +9,34 @@ define([
 		template: _.template(editPlaqueTpl),
 		submitEl: '.btn-submit',
 		cancelEl: '.btn-cancel',
-		events : {
-			
-		},
+
 		initialize : function() {
 			this.model.set({woodTypes : Constants.woodTypes });
-			console.log('init modal');
+			this.realModel = this.model;
+			this.model = this.realModel.clone();
 		},
 		
 		onShow : function() {
-			console.log('onShow');
+			Backbone.Validation.bind(this);
 		},
-		
-		submit: function() {
-			console.log('submit');
-			this.model.set({
+
+		fillModel : function(model) {
+			model.set({
 				wood : $('#wood').val(),
 				title : $('#title').val(),
 				width : $('#width').val(),
 				height : $('#height').val(),
 			});
-		}	
-			
+		},
+		
+		beforeSubmit : function() {
+			this.fillModel(this.model);
+			return this.model.isValid(true);
+		},
+		
+		submit: function() {
+			this.fillModel(this.realModel);
+		}				
 	});
 
 	return EditPlaqueView;

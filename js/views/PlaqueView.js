@@ -46,9 +46,10 @@ define([
 		
 		onRender : function() {		
 			this.$el.css('background-image', 'url("assets/img/plaque/' + this.model.get('wood') + '.png")');
-			if (this.model.get('width')!=null) this.$el.css('width', this.model.get('width'));
-			if (this.model.get('height')!=null) this.$el.css('height', this.model.get('height'));
-			
+			if (this.model.get('width')!=null && this.model.get('width')!=0) 
+				this.$el.css('width', this.model.get('width') * Constants.scale);
+			if (this.model.get('height')!=null && this.model.get('height')!=0) 
+				this.$el.css('height', this.model.get('height') * Constants.scale);
 		},
 		
 		edit : function(e) {
