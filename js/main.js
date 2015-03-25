@@ -12,6 +12,9 @@ require.config({
 		"backbone.validation":"lib/backbone-validation-min",
 		"text":"lib/text",
 		"html2canvas" : "lib/html2canvas.min",
+		
+		//"backbone.modal" : "lib/backbone.modal",
+		//"backbone.marionette.modals" : "lib/backbone.marionette.modals"
 		"backbone.modal" : "lib/backbone.modal-bundled",
 	},
 	"shim":{
@@ -36,7 +39,7 @@ require.config({
 		"backbone.validation":{
 			"deps":["backbone"],
 			"exports":"Backbone"
-		}
+		},
 	}
 });
 
@@ -54,6 +57,7 @@ require([
   'jquery.bootstrap',
   'html2canvas',
   'backbone.modal',
+  //"backbone.marionette.modals",
     ], function ($, _, Backbone, Marionette, NavbarView, CarouselView, EditorLayout, Controller, vent) {    
         var app = new Backbone.Marionette.Application();
 		app.addRegions({
