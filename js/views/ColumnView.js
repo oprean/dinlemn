@@ -2,7 +2,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'marionette',
+  'backbone.marionette',
   'views/ItemView',
   'views/modals/EditColumnView',
   'text!templates/column.html',

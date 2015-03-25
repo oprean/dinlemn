@@ -2,7 +2,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'marionette',
+  'backbone.marionette',
   'text!templates/plaque.html',
   'models/Plaque',
   'models/Header',

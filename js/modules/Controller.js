@@ -2,7 +2,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'marionette',
+  'backbone.marionette',
   'modules/Events',
 ], function($, _, Backbone, Marionette, vent){
 	var Controller = Marionette.Object.extend({

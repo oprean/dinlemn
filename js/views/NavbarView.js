@@ -2,7 +2,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'marionette',
+  'backbone.marionette',
   'text!templates/navbar.html',
 ], function($, _, Backbone, Marionette, navbarTpl){
 	var NavbarView = Backbone.Marionette.ItemView.extend({

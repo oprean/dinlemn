@@ -2,7 +2,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'marionette'
+  'backbone.marionette',
 ], function($, _, Backbone, Marionette){
 	 return new Backbone.Wreqr.EventAggregator();
 });

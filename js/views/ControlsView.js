@@ -2,7 +2,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'marionette',
+  'backbone.marionette',
   'text!templates/controls.html',
   'modules/Events'
 ], function($, _, Backbone, Marionette, controlsTpl, vent){

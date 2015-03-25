@@ -2,7 +2,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'marionette',
+  'backbone.marionette',
   'collections/Products',
   'models/Product',
   'text!templates/editor.html',

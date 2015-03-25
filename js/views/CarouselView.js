@@ -2,7 +2,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'marionette',
+  'backbone.marionette',
   'text!templates/carousel.html',
 ], function($, _, Backbone, Marionette, carouselTpl){
 	var CarouselView = Backbone.Marionette.ItemView.extend({
