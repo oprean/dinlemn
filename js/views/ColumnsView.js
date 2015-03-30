@@ -13,15 +13,12 @@ define([
 		childView: ColumnView,
 		className : 'columns text-center',
 		tagName : 'ul',
-		initialize : function() {
+
+		initialize : function(options) {
+			console.log('init columns view');
 			var self = this;
-			this.collection = new Columns();
-			this.listenTo(vent, 'column.new', function(columnHeader){
-				self.collection.add(new Column({
-					header : columnHeader,
-					items : new Items()
-				}));
-			});
+			this.collection = options.dataModel.get('columns');
+			console.log(this.collection);
 		},
 	});
 

@@ -15,18 +15,9 @@ define([
 		className : 'column',
 		childView : ItemView,
 		childViewContainer: "ul.items",
-		
-		modelEvents : {
-			'change' : 'render'
-		},
-		
-		events : {
-			'click .addItem' : 'addItem',
-			'click .editColumn' : 'editColumn',
-			'click .removeColumn' : 'removeColumn'
-		},
-		
+			
 		initialize : function() {
+			var self = this;
 			this.collection = this.model.get('items');
 			this.header = this.model.get('header');
 		},
@@ -37,23 +28,6 @@ define([
 		
 		onRender : function() {
 			if (this.header.get('width')!=null) this.$el.css('width', this.header.get('width'));
-		},
-	
-		addItem : function(e) {
-			this.collection.add(new Item());
-		},
-
-		editColumn : function(e) {
-			var editColumnView = new EditColumnView({model:this.model});
-			vent.trigger('showModal', editColumnView);
-		},
-
-		
-		removeColumn : function() {
-			if (confirm("Are you sure you want to remove this column?")) {
-				vent.trigger('column.del', this.header);
-				this.destroy();
-			}
 		},
 	});
 

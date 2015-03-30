@@ -2,10 +2,10 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'collections/Items'
-], function($, _, Backbone, Items){
+  'models/Column'
+], function($, _, Backbone, Column){
   var Columns = Backbone.Collection.extend({ 
-  	model: Items
+  	model: Column
   });
 
   return Columns;

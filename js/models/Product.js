@@ -2,18 +2,13 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'models/Plaque',
-  'collections/Columns',
-], function($, _, Backbone, Plaque, Columns){
+], function($, _, Backbone){
 	var Product = Backbone.Model.extend({
 		defaults : {
 			name : 'local.last.save',
 			author : 'Guest',
-			type : 'purty_wood',
+			type : 'calendar',
 			date : null,
-			plaque : new Plaque(),
-			headers : null,
-			columns : new Columns(),
 		}
 	});
 

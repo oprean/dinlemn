@@ -13,6 +13,11 @@ define([
 			'round',
 			'rectangular',
 		],
+		productTypes : [
+			'calendar',
+			'book',
+			'picture'
+		],
 		materials : [
 			'wood',
 			'bone',

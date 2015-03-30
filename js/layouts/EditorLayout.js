@@ -4,55 +4,61 @@ define([
   'backbone',
   'backbone.marionette',
   'collections/Products',
-  'models/Product',
-  'text!templates/editor.html',
-  'views/PlaqueView',
-  'views/ColumnsView',
+  'models/Calendar',
+  'text!templates/editor-layout.html',
+  'layouts/CalendarLayout',
   'views/ControlsView',
   'modules/Events',
   'moment',
-], function($, _, Backbone, Marionette, Products, Product, editorTpl, PlaqueView, ColumnsView, ControlsView, vent, moment){
+], function($, _, Backbone, Marionette, Products, Calendar, productEditorTpl, CalendarLayout, ControlsView, vent, moment){
   var EditorLayout = Backbone.Marionette.LayoutView.extend({
-	template : _.template(editorTpl),
+	template : _.template(productEditorTpl),
 	regions : {
+		product : '#product-container',
 		controls : '#controls-container',
-		plaque : '#plaque-container',
-		items : '#items-container'
 	},
 	
-	initialize : function(options) {
+	initialize : function() {
 		var self = this;
-		this.model = new Product();
 		this.products = new Products();
 		this.products.fetch();
 		this.model = this.products.findWhere({name: 'local.last.save'});
 		if (this.model === undefined) {
-			this.model = new Product();
+			console.log('init a new product:');
+			this.model = new Calendar();
+			//this.products.add(this.model);
+			//this.model.save();
 		} else {
-			console.log(this.model);
+			console.log('loaded from local storage:');
 		}
+
 		this.listenTo(vent, 'editor.save', function(){
 			self.save();
 		});
 		this.controlsView = new ControlsView();
-		this.plaqueView = new PlaqueView({model: this.model.get('plaque')});
-		this.itemsView = new ColumnsView();
+		this.productLayout = this.getProductLayout();
 	},
 
+	getProductLayout : function() {
+		switch(this.model.get('type')) {
+			case 'calendar':
+				return new CalendarLayout({calendarData:this.model});
+			default :
+				return new CalendarLayout({calendarData:this.model});
+		}
+	},
+	
 	save : function() {
-		console.log('save');
+		console.log('save product to local storage');
 		this.model.set({
 			date : moment().format('MMMM Do YYYY h:mm:ss a'),
-			plaque : this.plaqueView.model
 		});
-		this.products.add(this.model);
 		this.model.save();
 	},
 
 	onBeforeShow : function() {
 		this.showChildView('controls', this.controlsView);
-		this.showChildView('plaque', this.plaqueView);
-		this.showChildView('items', this.itemsView);
+		this.showChildView('product', this.productLayout);
 	},
   });
 

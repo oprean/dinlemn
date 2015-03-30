@@ -2,13 +2,21 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'models/Header',
-  'collections/Items',
-], function($, _, Backbone, Header, Items){
+  'modules/Events'
+], function($, _, Backbone, vent){
 	var Column = Backbone.Model.extend({
 		defaults : {
-			header : new Header(),
-			items : new Items(),
+			header : null,
+			items : null,
+		},
+		
+		initialize : function() {
+			var self = this;
+			/*this.listenTo(vent, 'item.new', function(item){
+				console.log('listen column.new');
+				console.log(self);
+				self.items.add(item.data);
+			});*/
 		}
 	});
 
