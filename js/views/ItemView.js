@@ -10,7 +10,7 @@ define([
   'modules/Events'
 ], function($, _, Backbone, Marionette, EditItemView, itemDefaultTpl, itemRoundTpl, itemRectTpl, vent){
 	var ItemView = Backbone.Marionette.ItemView.extend({
-		//template : _.template(itemDefaultTpl),
+		template : _.template(itemDefaultTpl),
 		className : 'item-container',
 		tagName: 'li',
 		events : {
@@ -21,7 +21,8 @@ define([
 		},
 		
 		modelEvents : {
-			'change' : 'render'
+			'change' : 'render',
+			'change:width' : 'updateWidth'
 		},
 		
 		onBeforeRender : function() {
@@ -42,9 +43,18 @@ define([
 		
 		initialize : function(options) {
 			this.columnItems = options.items;
+			this.header = options.header;
 			this.listenTo(vent, 'editor.preview', function(){
 				this.$('.icon-btn').toggle();
 			});
+		},
+		
+		updateWidth : function() {
+			console.log('width change');
+			if(this.model.get('width') > this.header.get('width')) {
+				this.header.set({width:this.model.get('width')});
+			}
+			//vent.trigger('', editItemView);
 		},
 		
 		edit : function(e) {

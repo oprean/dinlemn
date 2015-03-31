@@ -2,8 +2,9 @@
 - trigger save when
 - item sorting
 - change work background
+- simple/facebook login
+- build calendar from fb friends
 - order form
-- preview mode
 - carousel
 - navbar
 - gallery

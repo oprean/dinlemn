@@ -26,13 +26,21 @@ define([
 		if (this.model === undefined) {
 			console.log('init a new product:');
 			this.model = new Calendar();
-			//this.products.add(this.model);
-			//this.model.save();
+			this.products.add(this.model);
+			this.model.save();
 		} else {
 			console.log('loaded from local storage:');
+			console.log(this.model);
+			//this.model = JSON.parse(this.model);
+			//var collection2 = new Backbone.Collection();
+			//var restored = collection2.reset(json2);
+
 		}
 
 		this.listenTo(vent, 'editor.save', function(){
+			var json = this.model.toJSON();
+			var serializedString = JSON.stringify(json);
+			console.log(serializedString);
 			self.save();
 		});
 		this.controlsView = new ControlsView();

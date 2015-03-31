@@ -26,7 +26,10 @@ define([
 		},
 
 		childViewOptions : function () { 
-			return { items : this.collection }; 
+			return { 
+				items : this.collection,
+				header : this.model 
+			}; 
 		},
 		
 		onRender : function() {
