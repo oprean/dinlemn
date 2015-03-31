@@ -39,6 +39,11 @@ define([
 				self.collection.remove(column.data);
 				self.render();
 			});
+			this.listenTo(vent, 'editor.preview', function(){
+				this.$('.icon-btn').toggle();
+				this.$('.edit-mode-only').toggle();
+				this.$('select').toggle();
+			});
 		},
 		
 		templateHelpers : function() {

@@ -42,6 +42,9 @@ define([
 		
 		initialize : function(options) {
 			this.columnItems = options.items;
+			this.listenTo(vent, 'editor.preview', function(){
+				this.$('.icon-btn').toggle();
+			});
 		},
 		
 		edit : function(e) {

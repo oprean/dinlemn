@@ -4,9 +4,9 @@
 		<option <%= ((w==wood)?'selected':'') %>> <%= w %></option>
 	<% }) %>
 </select>
-<button id="addColumn" title="Add new column" type="button" class="close"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></button>
-<button id="editPlaque" type="button" class="close"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+<button id="addColumn" title="Add new column" type="button" class="icon-btn pull-right"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></button>
+<button id="editPlaque" type="button" class="icon-btn pull-right"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
 </form>
-<br />
+<br class='edit-mode-only'/>
 <h1><%= title %></h1>
 <ul class="headers"></ul>

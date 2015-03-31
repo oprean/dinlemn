@@ -19,6 +19,10 @@ define([
 			var self = this;
 			this.collection = options.dataModel.get('columns');
 			console.log(this.collection);
+			this.listenTo(vent, 'column.del', function(column){
+				self.collection.remove(column.data);
+				self.render();
+			});
 		},
 	});
 
