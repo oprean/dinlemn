@@ -18,7 +18,8 @@ define([
 			console.log(this.collection); 
 			
 			this.listenTo(vent, 'column.del', function(column){
-				self.collection.remove(column);
+				self.collection.remove(column.data);
+				this.render();
 			});
 			
 			this.listenTo(vent, 'column.new', function(column){

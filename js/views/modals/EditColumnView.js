@@ -9,16 +9,31 @@ define([
 		template: _.template(editItemTpl),
 		submitEl: '.btn-submit',
 		cancelEl: '.btn-cancel',
-		events : {
-			
+		
+		initialize : function() {
+			this.realModel = this.model;
+			this.model = this.realModel.clone();
 		},
 		
-		submit: function() {
-			console.log('submit');
-			this.model.set({
+		onShow : function() {
+			Backbone.Validation.bind(this);
+		},
+
+		fillModel : function(model) {
+			model.set({
 				title : $('#title').val(),
 				width : $('#width').val(),
 			});
+		},
+		
+		beforeSubmit : function() {
+			this.fillModel(this.model);
+			return this.model.isValid(true);
+		},
+		
+		
+		submit: function() {
+			this.fillModel(this.realModel);
 		}	
 			
 	});

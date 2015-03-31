@@ -14,8 +14,10 @@ define([
 		
 		initialize : function() {
 			console.log('init header');
+			this.originalModel = this.model;
 			this.header = this.model.get('header');
 			this.column = this.model.get('items');
+			this.model = this.model.get('header');
 		},
 		
 		events : {
@@ -47,18 +49,13 @@ define([
 		
 		removeColumn : function() {
 			if (confirm("Are you sure you want to remove this column?")) {
-				this.model.destroy();
+				vent.trigger('column.del', {data:this.originalModel});
 			}
 		},
 		
-		templateHelpers : function() {
-			return {
-				title : this.header.get('title')	
-			};
-		},
-		
 		onRender : function() {
-			if (this.header.get('width')!=null) this.$el.css('width', this.header.get('width'));
+			//if (this.header.get('width')!=null) this.$el.css('width', this.header.get('width'));
+			if (this.model.get('width')!=null) this.$el.css('width', this.model.get('width'));
 		}
 	}); 
 
