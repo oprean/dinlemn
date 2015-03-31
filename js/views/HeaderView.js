@@ -12,6 +12,10 @@ define([
 		template : _.template(headerTpl),
 		tagName: 'li',
 		
+		modelEvents : {
+			'change' : 'render'
+		},
+		
 		initialize : function() {
 			console.log('init header');
 			console.log(this.model);
