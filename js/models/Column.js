@@ -9,15 +9,6 @@ define([
 			header : null,
 			items : null,
 		},
-		
-		initialize : function() {
-			var self = this;
-			/*this.listenTo(vent, 'item.new', function(item){
-				console.log('listen column.new');
-				console.log(self);
-				self.items.add(item.data);
-			});*/
-		}
 	});
 
 	return Column;

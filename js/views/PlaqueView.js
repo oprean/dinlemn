@@ -6,14 +6,18 @@ define([
   'text!templates/plaque.html',
   'models/Plaque',
   'models/Header',
-  'models/Column',
   'collections/Items',
+  'models/Column',
+  'collections/Columns',
+  'views/HeaderView',
   'views/modals/EditPlaqueView',
   'modules/Constants',
   'modules/Events',
-], function($, _, Backbone, Marionette, plaqueTpl, Plaque, Header, Column, Items, EditPlaqueView, Constants, vent){
-	var PlaqueView = Backbone.Marionette.ItemView.extend({
-		className : 'text-center center-block',
+], function($, _, Backbone, Marionette, plaqueTpl, Plaque, Header, Items, Column, Columns, HeaderView, EditPlaqueView, Constants, vent){
+	var PlaqueView = Backbone.Marionette.CompositeView.extend({
+		childView : HeaderView,
+		childViewContainer: "ul.headers",
+		className : 'plaque text-center center-block',
 		template :  _.template(plaqueTpl),
 		events : {
 			'click h1' : 'edit',
@@ -23,9 +27,18 @@ define([
 			'change #selectWood' : 'selectWood'
 		},
 		
+		modelEvents : {
+			'change' : 'render'
+		},
+		
 		initialize : function(options) {
 			var self = this;
 			this.model = options.dataModel.get('plaque');
+			this.collection = options.dataModel.get('columns');
+			this.listenTo(vent, 'column.del', function(column){
+				self.collection.remove(column.data);
+				self.render();
+			});
 		},
 		
 		templateHelpers : function() {
@@ -35,7 +48,7 @@ define([
 		},
 		
 		onRender : function() {		
-			//this.$el.css('background-image', 'url("assets/img/plaque/' + this.model.get('wood') + '.png")');
+			this.$el.css('background-image', 'url("assets/img/plaque/' + this.model.get('wood') + '.png")');
 			if (this.model.get('width')!=null && this.model.get('width')!=0) 
 				this.$el.css('width', this.model.get('width') * Constants.scale);
 			if (this.model.get('height')!=null && this.model.get('height')!=0) 
@@ -57,11 +70,12 @@ define([
 			$(e.target).removeAttr('contenteditable');			
 		},
 		
-		addColumn : function() {
-			vent.trigger('column.new', {data:new Column({
+		addColumn : function() {	
+			var column = new Column({
 				header : new Header(),
-				items : new Items(),
-			})});
+				items : new Items()
+			});
+			this.collection.add(column);
 		},
 		
 		selectWood : function(e) {
