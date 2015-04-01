@@ -41,7 +41,20 @@ define([
 		if (this.model.get('columns').cid === undefined) {
 			var columnsData = this.model.get('columns');
 			console.log(columnsData); 
-			this.model.set({'columns' : new Columns(JSON.stringify(columnsData.s))});
+			
+			/*var json2 = JSON.parse(serialized);
+			var collection2 = new Backbone.Collection();
+			var restored = collection2.reset(json2);*/
+			
+			//var json2 = JSON.parse(columnsData);
+			//var collection2 = new Columns();
+			//var restored = collection2.reset(columnsData);
+			//this.model.set({'columns' : columnsData});
+						
+			//this.model.set({'columns' : new Columns(JSON.stringify(columnsData.s))});
+			// continue from here!!!
+			this.model.set({'columns' : new Columns(columnsData.s)});
+
 		}
 	},
 
