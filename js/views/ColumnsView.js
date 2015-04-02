@@ -22,17 +22,7 @@ define([
 		initialize : function(options) {
 			console.log('init columns view');
 			var self = this;
-			this.collection = new Columns();
-			var columns = options.dataModel.get('columns');
-			_.each(columns, function(column){
-				var column = new Column({
-					header : new Header(column.header),
-					items : new Items(column.items)
-				});
-				self.collection.add(column);				
-			}); 
-			//this.collection.reset(options.dataModel.get('columns'));
-						
+			this.collection = options.dataModel.get('columns');			
 			console.log(this.collection);
 			this.listenTo(vent, 'column.del', function(column){
 				self.collection.remove(column.data);

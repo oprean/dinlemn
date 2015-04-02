@@ -31,10 +31,6 @@ define([
 		} else {
 			console.log('loaded from local storage:');
 			console.log(this.model);
-			//this.model = JSON.parse(this.model);
-			//var collection2 = new Backbone.Collection();
-			//var restored = collection2.reset(json2);
-
 		}
 
 		this.listenTo(vent, 'editor.save', function(){

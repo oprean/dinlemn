@@ -4,13 +4,16 @@ define([
   'backbone',
   'backbone.marionette',
   'models/Plaque',
+  'models/Column',
+  'models/Header',
   'collections/Columns',
+  'collections/Items',
   'text!templates/calendar-layout.html',
   'views/PlaqueView',
   'views/ColumnsView',
   'modules/Events',
   'moment',
-], function($, _, Backbone, Marionette, Plaque, Columns, calendarLayoutTpl, PlaqueView, ColumnsView, vent, moment){
+], function($, _, Backbone, Marionette, Plaque, Column, Header, Columns, Items, calendarLayoutTpl, PlaqueView, ColumnsView, vent, moment){
   var CalendarLayout = Backbone.Marionette.LayoutView.extend({
 	template : _.template(calendarLayoutTpl),
 	regions : {
@@ -40,21 +43,16 @@ define([
 		}
 		if (this.model.get('columns').cid === undefined) {
 			var columnsData = this.model.get('columns');
-			console.log(columnsData); 
-			
-			/*var json2 = JSON.parse(serialized);
-			var collection2 = new Backbone.Collection();
-			var restored = collection2.reset(json2);*/
-			
-			//var json2 = JSON.parse(columnsData);
-			//var collection2 = new Columns();
-			//var restored = collection2.reset(columnsData);
-			//this.model.set({'columns' : columnsData});
-						
-			//this.model.set({'columns' : new Columns(JSON.stringify(columnsData.s))});
-			// continue from here!!!
-			this.model.set({'columns' : new Columns(columnsData.s)});
-
+			var columns = new Columns();
+			console.log(columnsData);
+			_.each(columnsData, function(column){
+				var column = new Column({
+					header : new Header(column.header),
+					items : new Items()
+				});
+				columns.add(column);				
+			}); 
+			this.model.set({'columns' : columns});
 		}
 	},
 
