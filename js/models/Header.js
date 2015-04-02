@@ -6,7 +6,7 @@ define([
 	var Header = Backbone.Model.extend({
 		defaults : {
 			title : 'Column name',
-			width : 100
+			width : 25
 		}
 	});
 

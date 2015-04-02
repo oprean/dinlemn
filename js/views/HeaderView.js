@@ -6,8 +6,9 @@ define([
   'models/Item',
   'text!templates/header.html',
   'views/modals/EditColumnView',
+  'modules/Constants',
   'modules/Events'
-], function($, _, Backbone, Marionette, Item, headerTpl, EditColumnView, vent){
+], function($, _, Backbone, Marionette, Item, headerTpl, EditColumnView, Constants, vent){
 	var HeaderView = Backbone.Marionette.ItemView.extend({
 		template : _.template(headerTpl),
 		tagName: 'li',
@@ -59,8 +60,7 @@ define([
 		},
 		
 		onRender : function() {
-			//if (this.header.get('width')!=null) this.$el.css('width', this.header.get('width'));
-			if (this.model.get('width')!=null) this.$el.css('width', this.model.get('width'));
+			if (this.model.get('width')!=null) this.$el.css('width', this.model.get('width') * Constants.scale);
 		}
 	}); 
 

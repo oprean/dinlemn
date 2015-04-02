@@ -34,11 +34,13 @@ define([
 		}
 
 		this.listenTo(vent, 'editor.save', function(){
-			var json = this.model.toJSON();
-			var serializedString = JSON.stringify(json);
-			console.log(serializedString);
 			self.save();
 		});
+		
+		this.listenTo(vent, 'editor.new', function(){
+			self.new();
+		});
+				
 		this.controlsView = new ControlsView();
 		this.productLayout = this.getProductLayout();
 	},
@@ -50,6 +52,11 @@ define([
 			default :
 				return new CalendarLayout({calendarData:this.model});
 		}
+	},
+	
+	new : function() {
+		currentModel = this.products.findWhere({name: 'local.last.save'});
+		currentModel.destroy();
 	},
 	
 	save : function() {

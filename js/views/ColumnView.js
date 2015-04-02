@@ -6,8 +6,9 @@ define([
   'views/ItemView',
   'text!templates/column.html',
   'models/Item',
+  'modules/Constants',
   'modules/Events'
-], function($, _, Backbone, Marionette, ItemView, columnTpl, Item, vent){
+], function($, _, Backbone, Marionette, ItemView, columnTpl, Item, Constants, vent){
 	var ColumnView = Backbone.Marionette.CompositeView.extend({
 		template : _.template(columnTpl),
 		tagName : 'li',
@@ -33,7 +34,7 @@ define([
 		},
 		
 		onRender : function() {
-			if (this.model.get('width')!=null) this.$el.css('width', this.model.get('width'));
+			if (this.model.get('width')!=null) this.$el.css('width', this.model.get('width') * Constants.scale);
 		},
 	});
 

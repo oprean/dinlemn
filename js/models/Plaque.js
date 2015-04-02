@@ -7,7 +7,7 @@ define([
 		defaults : {
 			title : 'Family Birthdays',
 			wood : 'purty_wood',
-			width : null,
+			width : 320,
 			height : null,
 		},
 		

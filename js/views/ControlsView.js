@@ -9,6 +9,7 @@ define([
 	var ControlsView = Backbone.Marionette.ItemView.extend({
 		template : _.template(controlsTpl),
 		events : {
+			'click #new' : 'new',
 			'click #export2png' : 'export2png',
 			'click #export2json' : 'export2json',
 			'click #preview' : 'preview',
@@ -17,6 +18,10 @@ define([
 		
 		preview : function() {
 			vent.trigger('editor.preview');
+		},
+		
+		new : function() {
+			vent.trigger('editor.new');
 		},
 		
 		save : function() {

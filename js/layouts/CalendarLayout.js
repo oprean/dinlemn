@@ -6,6 +6,7 @@ define([
   'models/Plaque',
   'models/Column',
   'models/Header',
+  'models/Item',
   'collections/Columns',
   'collections/Items',
   'text!templates/calendar-layout.html',
@@ -13,7 +14,7 @@ define([
   'views/ColumnsView',
   'modules/Events',
   'moment',
-], function($, _, Backbone, Marionette, Plaque, Column, Header, Columns, Items, calendarLayoutTpl, PlaqueView, ColumnsView, vent, moment){
+], function($, _, Backbone, Marionette, Plaque, Column, Header, Item, Columns, Items, calendarLayoutTpl, PlaqueView, ColumnsView, vent, moment){
   var CalendarLayout = Backbone.Marionette.LayoutView.extend({
 	template : _.template(calendarLayoutTpl),
 	regions : {
@@ -46,9 +47,13 @@ define([
 			var columns = new Columns();
 			console.log(columnsData);
 			_.each(columnsData, function(column){
+				var items = new Items();
+				_.each(column.items, function(item){
+					items.add(new Item(item));
+				});
 				var column = new Column({
 					header : new Header(column.header),
-					items : new Items()
+					items : items
 				});
 				columns.add(column);				
 			}); 
