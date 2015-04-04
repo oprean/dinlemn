@@ -78,35 +78,27 @@ ul.items li{
 
 .item-round {
     width:100px;
-}
-
-.item-round:after {
-    content: "";
-    display: block;
-    width: 100%;
-    height:0;
-    padding-bottom: 100%;
-    background: url("../img/disk/default.jpg") no-repeat right top;
-    background-size: cover;
-    background-color: #cccccc;
+    height: 100px;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
+    border: 2px solid #000;
+    background-color: #00b7ea;
+    background: url("../img/disk/default.jpg") no-repeat right top;
+    background-size: cover;
+    padding: 10px;
+    line-height:150px;
+    text-align:center;
     -moz-box-shadow: 0px -1px 5px #000000;
     -webkit-box-shadow: 0px -1px 5px #000000;
     box-shadow: 0px -1px 5px #000000;
 }
 
 .item-round div {
-    float:left;
-    width:100%;
-    padding-top:50%;
-    line-height:1em;
-    margin-top:-2.2em;
-    text-align:center;
-    color: #000000;
-    font-weight: bolder;
-    text-shadow:0px 0px 4px #cccccc;
+    font-size:13px;
+    line-height: normal;
+    display:inline-block;
+    vertical-align: middle;
 }
 
 [contenteditable=true] {
