@@ -13,7 +13,8 @@ define([
   'views/modals/EditPlaqueView',
   'modules/Constants',
   'modules/Events',
-], function($, _, Backbone, Marionette, plaqueTpl, Plaque, Header, Items, Column, Columns, HeaderView, EditPlaqueView, Constants, vent){
+  'modules/behaviors.sortable'
+], function($, _, Backbone, Marionette, plaqueTpl, Plaque, Header, Items, Column, Columns, HeaderView, EditPlaqueView, Constants, vent, Sortable){
 	var PlaqueView = Backbone.Marionette.CompositeView.extend({
 		childView : HeaderView,
 		childViewContainer: "ul.headers",
@@ -29,6 +30,15 @@ define([
 		
 		modelEvents : {
 			'change' : 'render'
+		},
+		
+		behaviors: { 
+		    Sortable:{ 
+		    	behaviorClass : Sortable,
+		        containment:'parent',
+		        //axis:'x',
+		        //handle:'ul.headers'
+		    }
 		},
 		
 		initialize : function(options) {
