@@ -1,6 +1,6 @@
 - save to localStorage (http://stackoverflow.com/questions/13294216/exporting-backbone-js-collection-to-plain-text-on-hard-disk-importing-back)
 - trigger save when
-- item sorting
+- item sorting (http://acquisio.github.io/backbone-marionette-sortable-view/)
 - change work background
 - simple/facebook login
 - build calendar from fb friends
