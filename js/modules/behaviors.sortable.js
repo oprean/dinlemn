@@ -17,7 +17,7 @@ define([
 	        for(var v in items){
 	            view=items[v];
 	            // Hook the element to the model by cid
-	            view.$el.attr('data-backbone-cid',view.model.cid);
+	            view.$el.attr('data-backbone-cid',view.originalModel.cid);
 	        }
 	        element = (this.options.element != undefined)?this.$(this.options.element):this.$el;
 	        element.sortable({ // Make the list sortable
@@ -28,7 +28,7 @@ define([
 	            handle:this.options.handle||false,
 	            revert: this.options.revert||false,
 	            update: function( event, ui ) {
-	                var model=collection.get(ui.item.data('backbone-cid')); 
+	                var model=collection.get(ui.item.data('backbone-cid'));
 	                // Get an attached model 
 	                collection.remove(model,{silent:true});
 	                 // On the quiet remove it from the collection 

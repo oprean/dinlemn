@@ -18,8 +18,6 @@ define([
 		},
 		
 		initialize : function() {
-			console.log('init header');
-			console.log(this.model);
 			this.originalModel = this.model;
 			this.header = this.model.get('header');
 			this.column = this.model.get('items');
