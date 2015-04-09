@@ -7,8 +7,9 @@ define([
   'text!templates/column.html',
   'models/Item',
   'modules/Constants',
-  'modules/Events'
-], function($, _, Backbone, Marionette, ItemView, columnTpl, Item, Constants, vent){
+  'modules/Events',
+  'modules/behaviors.sortable'
+], function($, _, Backbone, Marionette, ItemView, columnTpl, Item, Constants, vent, Sortable){
 	var ColumnView = Backbone.Marionette.CompositeView.extend({
 		template : _.template(columnTpl),
 		tagName : 'li',
@@ -19,6 +20,16 @@ define([
 		modelEvents : {
 			'change' : 'render'
 		},
+			
+		behaviors: { 
+		    Sortable:{ 
+		    	behaviorClass : Sortable,
+		        containment:'parent',
+		        element: 'ul.items',
+		        axis:'x',
+		    }
+		},
+		
 			
 		initialize : function() {
 			var self = this;

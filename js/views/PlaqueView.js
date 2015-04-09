@@ -36,8 +36,8 @@ define([
 		    Sortable:{ 
 		    	behaviorClass : Sortable,
 		        containment:'parent',
-		        //axis:'x',
-		        //handle:'ul.headers'
+		        element: 'ul.headers',
+		        axis:'x',
 		    }
 		},
 		

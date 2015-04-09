@@ -9,9 +9,9 @@ define([
 	console.log('load behaviour');
 	var Sortable = Marionette.Behavior.extend({ 
 	    onRender:function(){
-	    	console.log(this.options);
 	        var  collection=this.view.collection // Close the collection
-	            ,items=this.view.children._views // Get the list of  child elements 
+	            ,items=this.view.children._views // Get the list of  child elements
+	            ,element 
 	            ,view
 	            ;
 	        for(var v in items){
@@ -19,7 +19,8 @@ define([
 	            // Hook the element to the model by cid
 	            view.$el.attr('data-backbone-cid',view.model.cid);
 	        }
-	        this.$el.sortable({ // Make the list sortable
+	        element = (this.options.element != undefined)?this.$(this.options.element):this.$el;
+	        element.sortable({ // Make the list sortable
 	            axis: this.options.axis||false,
 	            grid: this.options.grid||false,
 	            containment: this.options.containment||false,
