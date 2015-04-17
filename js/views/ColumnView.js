@@ -21,14 +21,14 @@ define([
 			'change' : 'render'
 		},
 			
-		behaviors: { 
+		/*behaviors: { 
 		    Sortable:{ 
 		    	behaviorClass : Sortable,
 		        containment:'parent',
 		        element: 'ul.items',
 		        axis:'x',
 		    }
-		},
+		},*/
 		
 			
 		initialize : function() {

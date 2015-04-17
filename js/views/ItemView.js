@@ -17,7 +17,8 @@ define([
 			'click .editable' : 'edit',
 			'blur .editable' : 'save',
 			'click .del' : 'del',
-			'click .edit' : 'modalEdit'
+			'click .edit' : 'modalEdit',
+			'mouseover' : 'shake'
 		},
 		
 		modelEvents : {
@@ -47,6 +48,26 @@ define([
 			this.listenTo(vent, 'editor.preview', function(){
 				this.$('.icon-btn').toggle();
 			});
+		},
+		
+		shake : function() {
+			var d;
+			switch(_.random(0,3)) {
+				case 0:
+					d = 'right';
+					break;
+				case 1:
+					d = 'left';
+					break;
+				case 2:
+					d = 'up';
+					break;
+				case 3:
+					d = 'down';
+					break;
+			}
+			
+			this.$el.effect( "shake", {times: 1, distance: 2, direction:d});
 		},
 		
 		updateWidth : function() {
