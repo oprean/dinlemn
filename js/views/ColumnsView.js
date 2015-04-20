@@ -28,6 +28,9 @@ define([
 				self.collection.remove(column.data);
 				self.render();
 			});
+			this.listenTo(vent, 'sortable', function(){
+				self.render();
+			});
 		},
 	});
 

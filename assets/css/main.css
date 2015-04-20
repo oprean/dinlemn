@@ -64,10 +64,23 @@ ul.items li{
 }
 
 .item {
+	position:relative;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     padding: 5px;
+}
+
+.item-control {
+	position: absolute;
+	top: 0px;right: 0px;
+}
+
+.item-content {
+	height:100%;
+	vertical-align: bottom;
+	color: #000000;
+	/*font-size: 100%;*/
 }
 
 .item-rect {

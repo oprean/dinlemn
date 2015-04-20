@@ -4,8 +4,9 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
+  'modules/Events',
   'jqueryui',
-], function($, _, Backbone, Marionette){
+], function($, _, Backbone, Marionette, vent){
 	console.log('load behaviour');
 	var Sortable = Marionette.Behavior.extend({ 
 	    onRender:function(){
@@ -34,6 +35,7 @@ define([
 	                 // On the quiet remove it from the collection 
 	                collection.add(model,{at:ui.item.index(),silent:true});
 	                 //And sneakily add it to the necessary index
+	                vent.trigger('sortable');
 	            }
 	        });
 	    }
