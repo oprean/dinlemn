@@ -62,8 +62,14 @@ define([
 			};
 		},
 		
-		onRender : function() {		
-			this.$el.css('background-image', 'url("assets/img/plaque/' + this.model.get('wood') + '.png")');
+		onRender : function() {
+			if (this.model.get('image')!= null && this.model.get('image')!= '') {
+				this.$el.css('background-image', 'url("' + this.model.get('image') + '")');
+				this.$el.css('background-size', 'cover');			
+			} else {
+				this.$el.css('background-image', 'url("assets/img/plaque/' + this.model.get('wood') + '.png")');
+			}
+
 			if (this.model.get('width')!=null && this.model.get('width')!=0) 
 				this.$el.css('width', this.model.get('width') * Constants.scale);
 			if (this.model.get('height')!=null && this.model.get('height')!=0) 

@@ -23,6 +23,7 @@ define([
 		fillModel : function(model) {
 			model.set({
 				wood : $('#wood').val(),
+				image : $('#image').val(),
 				title : $('#title').val(),
 				width : $('#width').val(),
 				height : $('#height').val(),
