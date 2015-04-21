@@ -18,7 +18,7 @@ define([
 			'blur .editable' : 'save',
 			'click .del' : 'del',
 			'click .edit' : 'modalEdit',
-			//'mouseover' : 'shake'
+			'mouseover' : 'shake'
 		},
 		
 		modelEvents : {
