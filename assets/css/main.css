@@ -64,15 +64,18 @@ ul.items li{
 }
 
 .item {
+    width:100px;
+    height: 100px;
 	position:relative;
 	display: table;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     padding: 5px;
-	-moz-box-shadow: 0px -1px 5px #000000;
-    -webkit-box-shadow: 0px -1px 5px #000000;
-    box-shadow: 0px -1px 5px #000000;
+	-moz-box-shadow: 0px 0px 5px #000000;
+    -webkit-box-shadow: 0px 0px 5px #000000;
+    box-shadow: 0px 0px 5px #000000;
+    background-color: #C09853;
 }
 
 .item-control {
@@ -89,19 +92,19 @@ ul.items li{
 }
 
 .item-rect {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: url("../img/plaque/purty_wood.png") no-repeat right top;
+    background-size: cover;
 }
 
 .item-round {
-    width:100px;
-    height: 100px;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    border: 2px solid #000;
-    background-color: #00b7ea;
     background: url("../img/disk/default.jpg") no-repeat right top;
     background-size: cover;
-    padding: 10px;
 }
 
 .item-round div {

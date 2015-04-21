@@ -18,7 +18,7 @@ define([
 			'blur .editable' : 'save',
 			'click .del' : 'del',
 			'click .edit' : 'modalEdit',
-			'mouseover' : 'shake'
+			//'mouseover' : 'shake'
 		},
 		
 		modelEvents : {
@@ -104,9 +104,10 @@ define([
 		onRender : function() {
 			if (this.model.get('width')!=null) this.$el.css('width', this.model.get('width'));
 			if (this.model.get('height')!=null) this.$el.css('height', this.model.get('height'));
-			if (this.model.get('image')!=null) { 
-				this.$el.css('background-image', 'url("' + this.model.get('image') + '")');
-				this.$el.css('background-size', 'cover');
+			if (this.model.get('image')!=null && this.model.get('image')!='') { 
+				this.$('.item').css('background-image', 'url("' + this.model.get('image') + '")');
+				this.$('.item').css('background-size', 'cover');
+				//this.$('.item').css('filter', 'brightness(150%)'); 
 			}
 		}
 	});
