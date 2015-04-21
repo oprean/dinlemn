@@ -12,8 +12,8 @@ define([
 			wood : 'wood',
 			image : null,
 			shape : 'round',
-			width : null,
-			height : null
+			width : 25,
+			height : 25
 		},
 		
 		validation : {

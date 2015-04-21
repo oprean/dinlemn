@@ -3,12 +3,13 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
+  'modules/Constants',
   'views/modals/EditItemView',
   'text!templates/item-default.html',
   'text!templates/item-round.html',
   'text!templates/item-rect.html',
   'modules/Events'
-], function($, _, Backbone, Marionette, EditItemView, itemDefaultTpl, itemRoundTpl, itemRectTpl, vent){
+], function($, _, Backbone, Marionette, Constants, EditItemView, itemDefaultTpl, itemRoundTpl, itemRectTpl, vent){
 	var ItemView = Backbone.Marionette.ItemView.extend({
 		template : _.template(itemDefaultTpl),
 		className : 'item-container',
@@ -102,8 +103,8 @@ define([
 		},
 		
 		onRender : function() {
-			if (this.model.get('width')!=null) this.$el.css('width', this.model.get('width'));
-			if (this.model.get('height')!=null) this.$el.css('height', this.model.get('height'));
+			if (this.model.get('width')!=null) this.$('.item').css('width', this.model.get('width') * Constants.scale);
+			if (this.model.get('height')!=null) this.$('.item').css('height', this.model.get('height') * Constants.scale);
 			if (this.model.get('image')!=null && this.model.get('image')!='') { 
 				this.$('.item').css('background-image', 'url("' + this.model.get('image') + '")');
 				this.$('.item').css('background-size', 'cover');
