@@ -23,7 +23,7 @@ require.config({
 
 		"backgrid" : "lib/backgrid.min",
 		
-		"parse" : "//www.parsecdn.com/js/parse-1.4.0.min",
+		"parse" : "lib/parse-1.4.0.min",
 	},
 	"shim":{
 		"jquery.bootstrap": {
