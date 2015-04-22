@@ -10,6 +10,7 @@ define([
 		template : _.template(controlsTpl),
 		events : {
 			'click #new' : 'new',
+			'click #open' : 'open',
 			'click #export2png' : 'export2png',
 			'click #export2json' : 'export2json',
 			'click #preview' : 'preview',
@@ -23,6 +24,10 @@ define([
 		
 		new : function() {
 			vent.trigger('editor.new');
+		},
+		
+		open : function() {
+			vent.trigger('editor.open');
 		},
 		
 		save : function() {

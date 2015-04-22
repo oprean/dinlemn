@@ -21,7 +21,7 @@ define([
 		
 		beforeSubmit : function() {
 			var self = this;
-			Parse.User.logIn(this.$('#userName').val(), this.$('#userPassword').val(), {
+			Parse.User.logIn(this.$('#username').val(), this.$('#password').val(), {
 			  success: function(user) {
 				vent.trigger('user.login');
 			    return true;

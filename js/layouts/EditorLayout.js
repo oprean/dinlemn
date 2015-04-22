@@ -8,9 +8,10 @@ define([
   'text!templates/editor-layout.html',
   'layouts/CalendarLayout',
   'views/ControlsView',
+  'views/modals/OpenView',
   'modules/Events',
   'moment',
-], function($, _, Backbone, Marionette, Products, Calendar, productEditorTpl, CalendarLayout, ControlsView, vent, moment){
+], function($, _, Backbone, Marionette, Products, Calendar, productEditorTpl, CalendarLayout, ControlsView, OpenView, vent, moment){
   var EditorLayout = Backbone.Marionette.LayoutView.extend({
 	template : _.template(productEditorTpl),
 	regions : {
@@ -44,6 +45,10 @@ define([
 		this.listenTo(vent, 'editor.new', function(){
 			self.new();
 		});
+		
+		this.listenTo(vent, 'editor.open', function(){
+			self.open();
+		});
 				
 		this.controlsView = new ControlsView();
 		this.productLayout = this.getProductLayout();
@@ -61,6 +66,11 @@ define([
 	new : function() {
 		currentModel = this.products.findWhere({name: 'local.last.save'});
 		currentModel.destroy();
+	},
+	
+	open : function() {
+		var openView = new OpenView({model:this.model});
+		vent.trigger('showModal', openView);
 	},
 	
 	save : function() {
