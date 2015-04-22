@@ -3,20 +3,32 @@ define([
   'underscore',
   'backbone',
   'collections/WProducts',
+  'layouts/ProductsGridLayout',
   'modules/Constants',
   'text!templates/open.html'
-], function($, _, Backbone, WProducts, Constants, editPlaqueTpl){
+], function($, _, Backbone, WProducts, ProductsGridLayout, Constants, openTpl){
 	var OpenView = Backbone.Modal.extend({
-		template: _.template(editPlaqueTpl),
+		template: _.template(openTpl),
 		submitEl: '.btn-submit',
 		cancelEl: '.btn-cancel',
 
 		initialize : function() {
-			
+			this.products = new WProducts();
+			this.products.fetch({
+				success: function(collection) {
+					new ProductsGridLayout({products:collection});					
+				}
+			});
 		},
 		
 		onShow : function() {
+			var ww = $(window).width();
+			this.$('.bbm-modal').css('width', ww/2);
 			Backbone.Validation.bind(this);
+		},
+		
+		onRender: function() {
+			console.log('render');
 		},
 
 		beforeSubmit : function() {

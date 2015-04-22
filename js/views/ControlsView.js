@@ -40,10 +40,20 @@ define([
 		
 		export2png : function() {
 			console.log('export2png');
-		    html2canvas($('#editor-container'), {
-			    onrendered: function(canvas) {
-			    	document.body.appendChild(canvas);
-			    }
+			vent.trigger('editor.preview');
+		    html2canvas($('#product-container'), {
+              onrendered: function(canvas) {
+                var extra_canvas = document.createElement("canvas");
+                extra_canvas.setAttribute('width',70);
+                extra_canvas.setAttribute('height',70);
+                var ctx = extra_canvas.getContext('2d');
+                ctx.drawImage(canvas,0,0,canvas.width, canvas.height,0,0,70,70);
+                var dataURL = extra_canvas.toDataURL();
+                var img = $(document.createElement('img'));
+                img.attr('src', dataURL);
+                // insert the thumbnail at the top of the page
+                $('body').append(img);
+              },
 		    });
 		},
 		

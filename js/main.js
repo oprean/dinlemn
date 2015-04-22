@@ -15,7 +15,8 @@ require.config({
 		"moment":"lib/moment.min",
 
 		"text":"lib/text",
-		"html2canvas" : "lib/html2canvas.min",
+		//"html2canvas" : "lib/html2canvas.min",
+		"html2canvas" : "lib/html2canvas-stable",
 		
 		"backbone.modal" : "lib/backbone.modal",
 		"backbone.marionette.modals" : "lib/backbone.marionette.modals",
@@ -30,7 +31,8 @@ require.config({
 			"deps": ["jquery"]
 		},
 		"html2canvas": {
-			"deps": ["jquery"]
+			"deps": ["jquery"],
+			"exports":"html2canvas"
 		},
 		"backbone":{
 			"deps":["jquery","underscore"],

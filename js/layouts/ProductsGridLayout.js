@@ -3,17 +3,31 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
-], function($, _, Backbone, Marionette,WProducts){
+  'views/ProductPreview'
+], function($, _, Backbone, Marionette,ProductPreview){
 	var ProductsGridLayout = Backbone.Marionette.LayoutView.extend({
-		el:'.product.grid',
+		el:'.product-grid',
 		regions : {
 			grid : '.grid',
+			preview : '.preview',
 			paginator : '.paginator'
 		},
 
 		initialize : function(options) {
 			var self = this;
-			this.collection = options.products;				
+			products = options.products;
+
+			var ProductRow = Backgrid.Row.extend({
+			  events: {
+			    click: 'preview',
+			  },
+			  preview: function() {
+			    console.log(this.model);
+			    var productPreview = new ProductPreview({model:this.model});
+			    self.showChildView('preview', productPreview);
+			  }
+			});
+		
 			this.columns = [
 			  {
 			    name: "name",
@@ -29,22 +43,23 @@ define([
 			    sortable: false,
 			    cell: "string",
 			  },
+			  {
+			    name: "date",
+			    label: "Date",
+			    editable: false,
+			    sortable: false,
+			    cell: "string",
+			  },
 			];
 			
-			this.collection.fetch({
-				success : function(collection, response, options) {
-					self.backgridView = new Backgrid.Grid({
-					  className: 'backgrid items table table-striped table-bordered table-hover',
-					  columns: self.columns,
-					  collection: collection,
-					  emptyText: "A man without history is a tree without roots.",
-					});
-					self.showChildView('grid', self.backgridView);
-
-				},
-				error : function(collection, response, options) {
-				}
-			}); 
+			this.backgridView = new Backgrid.Grid({
+			  className: 'backgrid items table table-striped table-bordered table-hover table-condensed',
+			  row: ProductRow,
+			  columns: this.columns,
+			  collection: products,
+			  emptyText: "A man without history is a tree without roots.",
+			});
+			this.showChildView('grid', this.backgridView); 
 		},
 		
 		onRender : function() {

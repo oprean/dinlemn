@@ -139,3 +139,7 @@ button.icon-btn {
     opacity: 0.5;
     text-decoration: none;
 }
+
+.product-grid {
+	font-size: 0.7em;
+}

@@ -4,7 +4,8 @@ define([
   'backbone',
   'parse'
 ], function($, _, Backbone){
-	var WProduct = Parse.Object.extend('WoodItProduct',{
+	var WProduct = Parse.Object.extend({
+		className: 'WoodItProduct'
 	});
 
 	return WProduct;
