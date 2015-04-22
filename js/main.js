@@ -14,9 +14,11 @@ require.config({
 		"text":"lib/text",
 		"html2canvas" : "lib/html2canvas.min",
 		
-		//"backbone.modal" : "lib/backbone.modal",
-		//"backbone.marionette.modals" : "lib/backbone.marionette.modals"
-		"backbone.modal" : "lib/backbone.modal-bundled",
+		"backbone.modal" : "lib/backbone.modal",
+		"backbone.marionette.modals" : "lib/backbone.marionette.modals",
+		//"backbone.modal" : "lib/backbone.modal-bundled",
+		
+		"parse" : "http://www.parsecdn.com/js/parse-1.4.0.min",
 	},
 	"shim":{
 		"jquery.bootstrap": {
@@ -53,14 +55,16 @@ require([
   'views/CarouselView',
   'layouts/EditorLayout',
   'modules/Controller',
+  'modules/Constants',
   'modules/Events',
   'modules/backbone.validation.bootstrap',
   //'backbone.nested-models',
   'jquery.bootstrap',
   'html2canvas',
   'backbone.modal',
-  //"backbone.marionette.modals",
-    ], function ($, _, Backbone, Marionette, NavbarView, CarouselView, EditorLayout, Controller, vent) {    
+  'backbone.marionette.modals',
+  'parse',
+    ], function ($, _, Backbone, Marionette, NavbarView, CarouselView, EditorLayout, Controller, Constants, vent) {    
         var app = new Backbone.Marionette.Application();
 		app.addRegions({
 			navbarRegion : "#navbar-container",
@@ -73,8 +77,9 @@ require([
 		});
 		
 		app.addInitializer(function(){
+			Parse.initialize(Constants.parse.AppID, Constants.parse.JsKey);
 			if( ! Backbone.History.started) Backbone.history.start();
-			//app.navbarRegion.show(new NavbarView());
+			app.navbarRegion.show(new NavbarView());
 			//app.carouselRegion.show(new CarouselView());
 			app.editorRegion.show(new EditorLayout());
 			var controller = new Controller(app);
