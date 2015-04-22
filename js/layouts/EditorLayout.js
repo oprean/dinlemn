@@ -36,6 +36,10 @@ define([
 		this.listenTo(vent, 'editor.save', function(){
 			self.save();
 		});
+
+		this.listenTo(vent, 'editor.saveas', function(){
+			self.saveas();
+		});
 		
 		this.listenTo(vent, 'editor.new', function(){
 			self.new();
@@ -62,8 +66,29 @@ define([
 	save : function() {
 		console.log('save product to local storage');
 		this.model.set({
+			author : Parse.User.current().get('username'),
 			date : moment().format('MMMM Do YYYY h:mm:ss a'),
 		});
+		this.model.save();
+	},
+
+	saveas : function() {
+		console.log('save product to parse');
+		var WoodItProduct = Parse.Object.extend("WoodItProduct");
+		var product = new WoodItProduct();
+		      product.save({
+				author : Parse.User.current().get('username'),
+				date : moment().format('MMMM Do YYYY h:mm:ss a'),
+				name : '1234',
+				blueprint: JSON.stringify(this.model.toJSON())
+		      	}, {
+		      success: function(object) {
+		        console.log('save product to parse');
+		      },
+		      error: function(model, error) {
+		        console.log(error);
+		      }
+		    });
 		this.model.save();
 	},
 

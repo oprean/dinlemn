@@ -13,7 +13,8 @@ define([
 			'click #export2png' : 'export2png',
 			'click #export2json' : 'export2json',
 			'click #preview' : 'preview',
-			'click #save' : 'save'
+			'click #save' : 'save',
+			'click #saveas' : 'saveas'
 		},
 		
 		preview : function() {
@@ -26,6 +27,10 @@ define([
 		
 		save : function() {
 			vent.trigger('editor.save');
+		},
+		
+		saveas : function() {
+			vent.trigger('editor.saveas');
 		},
 		
 		export2png : function() {
