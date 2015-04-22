@@ -5,18 +5,23 @@ require.config({
  		"jquery.bootstrap": "lib/bootstrap.min",
 		"jqueryui":"lib/jquery-ui.min",
 		"underscore":"lib/lodash.min",
+		
 		"backbone":"lib/backbone-min",
 		"backbone.marionette":"lib/backbone.marionette.min",
 		"backbone.nested-models":"lib/backbone-nested-models.min",
 		"backbone.localStorage":"lib/backbone.localStorage.min",
+		"backbone.validation":"lib/backbone-validation-min",		
+		
 		"moment":"lib/moment.min",
-		"backbone.validation":"lib/backbone-validation-min",
+
 		"text":"lib/text",
 		"html2canvas" : "lib/html2canvas.min",
 		
 		"backbone.modal" : "lib/backbone.modal",
 		"backbone.marionette.modals" : "lib/backbone.marionette.modals",
 		//"backbone.modal" : "lib/backbone.modal-bundled",
+
+		"backgrid" : "lib/backgrid.min",
 		
 		"parse" : "//www.parsecdn.com/js/parse-1.4.0.min",
 	},
@@ -43,6 +48,10 @@ require.config({
 			"deps":["backbone"],
 			"exports":"Backbone"
 		},
+		"backgrid":{
+			"deps":["jquery", "underscore", "backbone"],
+			"exports": "Backgrid"
+		}
 	}
 });
 
@@ -63,6 +72,7 @@ require([
   'html2canvas',
   'backbone.modal',
   'backbone.marionette.modals',
+  'backgrid',
   'parse',
     ], function ($, _, Backbone, Marionette, NavbarView, CarouselView, EditorLayout, Controller, Constants, vent) {    
         var app = new Backbone.Marionette.Application();
