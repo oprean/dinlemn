@@ -18,7 +18,7 @@ require.config({
 		"backbone.marionette.modals" : "lib/backbone.marionette.modals",
 		//"backbone.modal" : "lib/backbone.modal-bundled",
 		
-		"parse" : "http://www.parsecdn.com/js/parse-1.4.0.min",
+		"parse" : "//www.parsecdn.com/js/parse-1.4.0.min",
 	},
 	"shim":{
 		"jquery.bootstrap": {
