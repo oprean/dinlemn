@@ -103,8 +103,10 @@ define([
 		},
 		
 		onRender : function() {
-			if (this.model.get('width')!=null) this.$('.item').css('width', this.model.get('width') * Constants.scale);
-			if (this.model.get('height')!=null) this.$('.item').css('height', this.model.get('height') * Constants.scale);
+			if (this.model.get('width')!=null && this.model.get('width')!='') 
+				this.$('.item').css('width', this.model.get('width') * Constants.scale);
+			if (this.model.get('height')!=null && this.model.get('height')!='') 
+				this.$('.item').css('height', this.model.get('height') * Constants.scale);
 			if (this.model.get('image')!=null && this.model.get('image')!='') { 
 				this.$('.item').css('background-image', 'url("' + this.model.get('image') + '")');
 				this.$('.item').css('background-size', 'cover');

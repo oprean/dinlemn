@@ -4,8 +4,9 @@ define([
   'backbone',
   'backbone.marionette',
   'text!templates/controls.html',
+  'modules/Constants',
   'modules/Events'
-], function($, _, Backbone, Marionette, controlsTpl, vent){
+], function($, _, Backbone, Marionette, controlsTpl, Constants, vent){
 	var ControlsView = Backbone.Marionette.ItemView.extend({
 		template : _.template(controlsTpl),
 		events : {
@@ -42,12 +43,15 @@ define([
 			console.log('export2png');
 			vent.trigger('editor.preview');
 		    html2canvas($('#product-container'), {
-              onrendered: function(canvas) {
+              onrendered: function(canvas) {         	
+              	var scale = (100 * Constants.thumbSize) / Math.max(canvas.width, canvas.height);
+              	var tw = (canvas.width * scale) / 100;
+              	var th = (canvas.height * scale) / 100;
                 var extra_canvas = document.createElement("canvas");
-                extra_canvas.setAttribute('width',70);
-                extra_canvas.setAttribute('height',70);
+                extra_canvas.setAttribute('width',tw);
+                extra_canvas.setAttribute('height',th);
                 var ctx = extra_canvas.getContext('2d');
-                ctx.drawImage(canvas,0,0,canvas.width, canvas.height,0,0,70,70);
+                ctx.drawImage(canvas,0,0,canvas.width, canvas.height,0,0,tw,th);
                 var dataURL = extra_canvas.toDataURL();
                 var img = $(document.createElement('img'));
                 img.attr('src', dataURL);

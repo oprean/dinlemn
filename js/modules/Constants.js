@@ -3,6 +3,7 @@ define([
 	var Constants = {
 		basePath : '/api/ticket',
 		scale : 4,
+		thumbSize : 200,
 		woodTypes : [
 			'purty_wood',
 			'retina_wood',
