@@ -3,6 +3,7 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
+  'modules/Utils',
   'collections/Products',
   'models/Calendar',
   'text!templates/editor-layout.html',
@@ -11,7 +12,7 @@ define([
   'views/modals/OpenView',
   'modules/Events',
   'moment',
-], function($, _, Backbone, Marionette, Products, Calendar, productEditorTpl, CalendarLayout, ControlsView, OpenView, vent, moment){
+], function($, _, Backbone, Marionette, Utils, Products, Calendar, productEditorTpl, CalendarLayout, ControlsView, OpenView, vent, moment){
   var EditorLayout = Backbone.Marionette.LayoutView.extend({
 	template : _.template(productEditorTpl),
 	regions : {
@@ -84,12 +85,14 @@ define([
 
 	saveas : function() {
 		console.log('save product to parse');
+		console.log(Utils.thumb($('#product-container')));
 		var WoodItProduct = Parse.Object.extend("WoodItProduct");
 		var product = new WoodItProduct();
 		      product.save({
 				author : Parse.User.current().get('username'),
 				date : moment().format('MMMM Do YYYY h:mm:ss a'),
 				name : '1234',
+				thumb : Utils.thumb($('#product-container')),
 				blueprint: JSON.stringify(this.model.toJSON())
 		      	}, {
 		      success: function(object) {
