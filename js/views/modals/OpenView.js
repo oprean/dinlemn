@@ -23,7 +23,7 @@ define([
 		
 		onShow : function() {
 			var ww = $(window).width();
-			this.$('.bbm-modal').css('width', ww/2);
+			this.$('.bbm-modal').css('max-width', ww/2);
 			Backbone.Validation.bind(this);
 		},
 		

@@ -3,16 +3,19 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
+  'modules/Constants',
   'modules/Utils',
   'collections/Products',
   'models/Calendar',
+  'models/WProduct',
   'text!templates/editor-layout.html',
   'layouts/CalendarLayout',
   'views/ControlsView',
   'views/modals/OpenView',
+  'views/modals/SaveView',
   'modules/Events',
   'moment',
-], function($, _, Backbone, Marionette, Utils, Products, Calendar, productEditorTpl, CalendarLayout, ControlsView, OpenView, vent, moment){
+], function($, _, Backbone, Marionette, Constants, Utils, Products, Calendar, WProduct, productEditorTpl, CalendarLayout, ControlsView, OpenView, SaveView, vent, moment){
   var EditorLayout = Backbone.Marionette.LayoutView.extend({
 	template : _.template(productEditorTpl),
 	regions : {
@@ -84,24 +87,41 @@ define([
 	},
 
 	saveas : function() {
+		var openView = new SaveView({model:this.model});
+		vent.trigger('showModal', openView);
+	},
+
+	saveasOld : function() {
+		var self = this;
 		console.log('save product to parse');
-		console.log(Utils.thumb($('#product-container')));
-		var WoodItProduct = Parse.Object.extend("WoodItProduct");
-		var product = new WoodItProduct();
-		      product.save({
-				author : Parse.User.current().get('username'),
-				date : moment().format('MMMM Do YYYY h:mm:ss a'),
-				name : '1234',
-				thumb : Utils.thumb($('#product-container')),
-				blueprint: JSON.stringify(this.model.toJSON())
-		      	}, {
-		      success: function(object) {
-		        console.log('save product to parse');
-		      },
-		      error: function(model, error) {
-		        console.log(error);
-		      }
-		    });
+		html2canvas($('#product-container'), {
+			onrendered: function(canvas) {         	
+				var scale = (100 * Constants.thumbSize) / Math.max(canvas.width, canvas.height);
+				var tw = (canvas.width * scale) / 100;
+				var th = (canvas.height * scale) / 100;
+				var thumbCanvas = document.createElement("canvas");
+				
+				thumbCanvas.setAttribute('width',tw);
+				thumbCanvas.setAttribute('height',th);
+				var ctx = thumbCanvas.getContext('2d');
+				ctx.drawImage(canvas,0,0,canvas.width, canvas.height,0,0,tw,th);
+				console.log(thumbCanvas.toDataURL());
+				var product = new WProduct();
+				product.save({
+					author : Parse.User.current().get('username'),
+					date : moment().format('MMMM Do YYYY h:mm:ss a'),
+					name : '1234',
+					thumb : thumbCanvas.toDataURL(),
+					blueprint: JSON.stringify(self.model.toJSON())
+				}, {
+					success: function(object) {
+					console.log('product sucessfully saved to parse');
+				},
+					error: function(model, error) {
+					console.log(error);
+				}});
+			},
+		});
 		this.model.save();
 	},
 

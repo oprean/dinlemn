@@ -6,6 +6,7 @@ define([
 	var Product = Backbone.Model.extend({
 		defaults : {
 			name : 'local.last.save',
+			description : '',
 			author : 'Guest',
 			type : 'calendar',
 			date : null,

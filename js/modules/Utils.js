@@ -16,10 +16,22 @@ define([
                 thumbCanvas.setAttribute('height',th);
                 var ctx = thumbCanvas.getContext('2d');
                 ctx.drawImage(canvas,0,0,canvas.width, canvas.height,0,0,tw,th);
-                thumbData = thumbCanvas.toDataURL();
+                $('#hidden-thumbnail').html(thumbCanvas.toDataURL());
+                //thumbData = thumbCanvas.toDataURL();
               },
 		    });
-
+		    
+		    //this might not be best solution ...
+			var retry = setInterval(function() {
+				thumbData = $('#hidden-thumbnail').html();
+				console.log(thumbData); 
+				if (thumbData.length > 0) {
+					$('#hidden-thumbnail').html(null);
+					clearInterval(retry);
+				}	
+			}, Constants.thumbRetry);
+			
+			console.log(thumbData);
 		    return thumbData;
 		}
 	};
