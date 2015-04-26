@@ -104,7 +104,8 @@ ul.items li{
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    background: url("../img/disk/default.jpg") no-repeat right top;
+    /*background: url("../img/disk/default.jpg") no-repeat right top;*/
+    background: url("../img/plaque/purty_wood.png") no-repeat right top;
     background-size: cover;
 }
 

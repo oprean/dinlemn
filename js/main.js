@@ -8,7 +8,6 @@ require.config({
 		
 		"backbone":"lib/backbone-min",
 		"backbone.marionette":"lib/backbone.marionette.min",
-		"backbone.nested-models":"lib/backbone-nested-models.min",
 		"backbone.localStorage":"lib/backbone.localStorage.min",
 		"backbone.validation":"lib/backbone-validation-min",		
 		
@@ -69,7 +68,6 @@ require([
   'modules/Constants',
   'modules/Events',
   'modules/backbone.validation.bootstrap',
-  //'backbone.nested-models',
   'jquery.bootstrap',
   'html2canvas',
   'backbone.modal',

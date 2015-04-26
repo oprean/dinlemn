@@ -56,9 +56,14 @@ define([
 		
 		this.listenTo(vent, 'editor.reload', function(model){
 			self.model = new Calendar(JSON.parse(model.get('blueprint')));
-			//console.log(model.get('blueprint'));
-			self.productLayout = this.getProductLayout(model);
-			this.showChildView('product', this.productLayout);
+			self.productLayout = self.getProductLayout(model);
+			self.showChildView('product', self.productLayout);
+			
+			localModel = this.products.findWhere({name: 'local.last.save'});
+			if (localModel != undefined) localModel.destroy();
+			self.model.set({name: 'local.last.save'});
+			self.products.add(self.model);
+			self.model.save();
 		});
 				
 		this.controlsView = new ControlsView();
