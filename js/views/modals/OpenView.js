@@ -5,19 +5,24 @@ define([
   'collections/WProducts',
   'layouts/ProductsGridLayout',
   'modules/Constants',
-  'text!templates/open.html'
-], function($, _, Backbone, WProducts, ProductsGridLayout, Constants, openTpl){
+  'text!templates/open.html',
+  'modules/Events',
+], function($, _, Backbone, WProducts, ProductsGridLayout, Constants, openTpl, vent){
 	var OpenView = Backbone.Modal.extend({
 		template: _.template(openTpl),
 		submitEl: '.btn-submit',
 		cancelEl: '.btn-cancel',
 
 		initialize : function() {
+			var self = this;
 			this.products = new WProducts();
 			this.products.fetch({
 				success: function(collection) {
 					new ProductsGridLayout({products:collection});					
 				}
+			});
+			this.listenTo(vent, 'product.selected', function(model){
+				self.model = model;
 			});
 		},
 		
@@ -27,15 +32,8 @@ define([
 			Backbone.Validation.bind(this);
 		},
 		
-		onRender: function() {
-			console.log('render');
-		},
-
-		beforeSubmit : function() {
-		},
-		
 		submit: function() {
-			this.fillModel(this.realModel);
+			vent.trigger('editor.reload', this.model);
 		}				
 	});
 

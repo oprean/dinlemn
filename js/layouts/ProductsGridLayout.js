@@ -3,8 +3,9 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
-  'views/ProductPreview'
-], function($, _, Backbone, Marionette,ProductPreview){
+  'views/ProductPreview',
+  'modules/Events',
+], function($, _, Backbone, Marionette,ProductPreview, vent){
 	var ProductsGridLayout = Backbone.Marionette.LayoutView.extend({
 		el:'.product-grid',
 		regions : {
@@ -25,6 +26,7 @@ define([
 			    console.log(this.model);
 			    var productPreview = new ProductPreview({model:this.model});
 			    self.showChildView('preview', productPreview);
+			    vent.trigger('product.selected', this.model);
 			  }
 			});
 		

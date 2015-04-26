@@ -53,6 +53,13 @@ define([
 		this.listenTo(vent, 'editor.open', function(){
 			self.open();
 		});
+		
+		this.listenTo(vent, 'editor.reload', function(model){
+			self.model = new Calendar(JSON.parse(model.get('blueprint')));
+			//console.log(model.get('blueprint'));
+			self.productLayout = this.getProductLayout(model);
+			this.showChildView('product', this.productLayout);
+		});
 				
 		this.controlsView = new ControlsView();
 		this.productLayout = this.getProductLayout();
@@ -89,40 +96,6 @@ define([
 	saveas : function() {
 		var openView = new SaveView({model:this.model});
 		vent.trigger('showModal', openView);
-	},
-
-	saveasOld : function() {
-		var self = this;
-		console.log('save product to parse');
-		html2canvas($('#product-container'), {
-			onrendered: function(canvas) {         	
-				var scale = (100 * Constants.thumbSize) / Math.max(canvas.width, canvas.height);
-				var tw = (canvas.width * scale) / 100;
-				var th = (canvas.height * scale) / 100;
-				var thumbCanvas = document.createElement("canvas");
-				
-				thumbCanvas.setAttribute('width',tw);
-				thumbCanvas.setAttribute('height',th);
-				var ctx = thumbCanvas.getContext('2d');
-				ctx.drawImage(canvas,0,0,canvas.width, canvas.height,0,0,tw,th);
-				console.log(thumbCanvas.toDataURL());
-				var product = new WProduct();
-				product.save({
-					author : Parse.User.current().get('username'),
-					date : moment().format('MMMM Do YYYY h:mm:ss a'),
-					name : '1234',
-					thumb : thumbCanvas.toDataURL(),
-					blueprint: JSON.stringify(self.model.toJSON())
-				}, {
-					success: function(object) {
-					console.log('product sucessfully saved to parse');
-				},
-					error: function(model, error) {
-					console.log(error);
-				}});
-			},
-		});
-		this.model.save();
 	},
 
 	onBeforeShow : function() {
