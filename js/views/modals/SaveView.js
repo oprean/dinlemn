@@ -46,6 +46,13 @@ define([
 		submit: function() {
 			console.log('save product to parse');
 			var product = new WProduct();
+			
+			var productACL = new Parse.ACL(Parse.User.current());
+			if (!this.$('#private').is(":checked")) {
+				productACL.setPublicReadAccess(true);				
+			}
+			product.setACL(productACL);
+			
 			product.save({
 				author : this.model.get('author'),
 				date : moment().format('MMMM Do YYYY h:mm:ss a'),

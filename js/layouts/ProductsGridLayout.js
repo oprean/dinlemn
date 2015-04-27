@@ -23,13 +23,36 @@ define([
 			    click: 'preview',
 			  },
 			  preview: function() {
-			    console.log(this.model);
 			    var productPreview = new ProductPreview({model:this.model});
 			    self.showChildView('preview', productPreview);
 			    vent.trigger('product.selected', this.model);
 			  }
 			});
 		
+			Backgrid.ActionsCell = Backgrid.Cell.extend({
+			  className: "actions-cell",
+			  events : {
+			  	'click .del' : 'delete'
+			  },
+			  
+			  delete : function() {
+			  	this.model.destroy();
+			  },
+			  
+			  render : function() {
+			  	this.$el.html('<button type="button" title="Delete item" class="del icon-btn pull-right"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>');
+			  	return this;
+			  }			
+			});
+			
+			Backgrid.UpdatedCell = Backgrid.Cell.extend({
+			  className: "updated-cell",
+			  render : function() {
+			  	this.$el.html(moment(this.model.updatedAt).format('YYYY-MM-DD'));
+			  	return this;
+			  }			
+			});
+			
 			this.columns = [
 			  {
 			    name: "name",
@@ -46,11 +69,18 @@ define([
 			    cell: "string",
 			  },
 			  {
-			    name: "date",
-			    label: "Date",
+			    name: "updatedAt",
+			    label: "Updated",
 			    editable: false,
 			    sortable: false,
-			    cell: "string",
+			    cell: "updated",
+			  },
+			  {
+			    name: "actions",
+			    label: "",
+			    editable: false,
+			    sortable: false,
+			    cell: "actions",
 			  },
 			];
 			
