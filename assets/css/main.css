@@ -1,3 +1,7 @@
+body {
+/*	font-family: "Tangerine" !important;
+	font-weight: 100 !important;*/
+}
 /******************* containers *********************/
 #plaque-container {
 	text-align: center;
@@ -154,4 +158,12 @@ button.icon-btn {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     padding: 5px;	
+}
+
+.navbar-brand {
+	font-family: 'Tangerine' !important;
+	font-style: normal;
+	font-weight: 100;
+	font-size: 36px;
+	/*text-shadow: 4px 4px 4px #aaa;*/
 }
