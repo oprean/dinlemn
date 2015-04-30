@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'modules/Constants',
-  'text!templates/item-edit.html'
+  'text!templates/modals/item-edit.html'
 ], function($, _, Backbone, Constants, editItemTpl){
 	var EditItemView = Backbone.Modal.extend({
 		template: _.template(editItemTpl),

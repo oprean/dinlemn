@@ -8,7 +8,7 @@ define([
   'collections/Products',
   'models/Calendar',
   'models/WProduct',
-  'text!templates/editor-layout.html',
+  'text!templates/layouts/editor-layout.html',
   'layouts/CalendarLayout',
   'views/ControlsView',
   'views/modals/OpenView',

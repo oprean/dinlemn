@@ -9,7 +9,7 @@ define([
   'models/Item',
   'collections/Columns',
   'collections/Items',
-  'text!templates/calendar-layout.html',
+  'text!templates/layouts/calendar-layout.html',
   'views/PlaqueView',
   'views/ColumnsView',
   'modules/Events',

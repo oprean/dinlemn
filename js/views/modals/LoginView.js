@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'modules/Constants',
-  'text!templates/login.html',
+  'text!templates/modals/login.html',
   'modules/Events',
 ], function($, _, Backbone, Constants, loginTpl, vent){
 	var LoginView = Backbone.Modal.extend({

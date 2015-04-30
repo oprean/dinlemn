@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'modules/Constants',
-  'text!templates/plaque-edit.html'
+  'text!templates/modals/plaque-edit.html'
 ], function($, _, Backbone, Constants, editPlaqueTpl){
 	var EditPlaqueView = Backbone.Modal.extend({
 		template: _.template(editPlaqueTpl),

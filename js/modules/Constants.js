@@ -1,7 +1,6 @@
 define([
 ], function(){
 	var Constants = {
-		basePath : '/api/ticket',
 		scale : 4,
 		thumbSize : 200,
 		mainMenu: [

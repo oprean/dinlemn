@@ -5,7 +5,7 @@ define([
   'collections/WProducts',
   'layouts/ProductsGridLayout',
   'modules/Constants',
-  'text!templates/open.html',
+  'text!templates/modals/open.html',
   'modules/Events',
 ], function($, _, Backbone, WProducts, ProductsGridLayout, Constants, openTpl, vent){
 	var OpenView = Backbone.Modal.extend({

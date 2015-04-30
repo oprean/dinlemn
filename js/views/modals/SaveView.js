@@ -5,7 +5,7 @@ define([
   'models/WProduct',
   'layouts/ProductsGridLayout',
   'modules/Constants',
-  'text!templates/save.html'
+  'text!templates/modals/save.html'
 ], function($, _, Backbone, WProduct, ProductsGridLayout, Constants, saveTpl){
 	var SaveView = Backbone.Modal.extend({
 		template: _.template(saveTpl),
