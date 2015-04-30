@@ -23,7 +23,8 @@ define([
 			vent.trigger('editor.preview');
 		},
 		
-		new : function() {
+		new : function(e) {
+			e.preventDefault();
 			vent.trigger('editor.new');
 		},
 		
@@ -32,11 +33,13 @@ define([
 			vent.trigger('editor.open');
 		},
 		
-		save : function() {
+		save : function(e) {
+			e.preventDefault();
 			vent.trigger('editor.save');
 		},
 		
-		saveas : function() {
+		saveas : function(e) {
+			e.preventDefault();
 			vent.trigger('editor.saveas');
 		},
 		
