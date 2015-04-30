@@ -3,10 +3,11 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
+  'layouts/HomeLayout',
   'layouts/EditorLayout',
   'layouts/GalleryLayout',
   'modules/Events',
-], function($, _, Backbone, Marionette, EditorLayout, GalleryLayout, vent){
+], function($, _, Backbone, Marionette, HomeLayout, EditorLayout, GalleryLayout, vent){
 	var Controller = Marionette.Controller.extend({
 	  initialize: function() {
 		this.listenTo(vent, 'showModal', function(modalView){
@@ -16,7 +17,7 @@ define([
 	  
 	  home: function() {
 	  	console.log('home');
-		app.mainRegion.show(new GalleryLayout());
+		app.mainRegion.show(new HomeLayout());
 	  },
 	  
 	  editor: function() {

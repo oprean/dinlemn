@@ -5,9 +5,9 @@ define([
   'backbone.marionette',
   'modules/Constants',
   'views/modals/EditItemView',
-  'text!templates/item-default.html',
-  'text!templates/item-round.html',
-  'text!templates/item-rect.html',
+  'text!templates/calendar/item-default.html',
+  'text!templates/calendar/item-round.html',
+  'text!templates/calendar/item-rect.html',
   'modules/Events'
 ], function($, _, Backbone, Marionette, Constants, EditItemView, itemDefaultTpl, itemRoundTpl, itemRectTpl, vent){
 	var ItemView = Backbone.Marionette.ItemView.extend({

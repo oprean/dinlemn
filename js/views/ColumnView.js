@@ -4,7 +4,7 @@ define([
   'backbone',
   'backbone.marionette',
   'views/ItemView',
-  'text!templates/column.html',
+  'text!templates/calendar/column.html',
   'models/Item',
   'modules/Constants',
   'modules/Events',

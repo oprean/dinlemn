@@ -5,7 +5,7 @@ define([
   'backbone.marionette',
   'collections/WProducts',
   'views/GalleryView',
-  'text!templates/home-layout.html',
+  'text!templates/layouts/home-layout.html',
   'modules/Constants',
   'modules/Utils',
   'modules/Events',

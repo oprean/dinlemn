@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
-  'text!templates/plaque.html',
+  'text!templates/calendar/plaque.html',
   'models/Plaque',
   'models/Header',
   'collections/Items',
