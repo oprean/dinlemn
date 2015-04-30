@@ -4,6 +4,13 @@ define([
 		basePath : '/api/ticket',
 		scale : 4,
 		thumbSize : 200,
+		mainMenu: [
+			{text:'Shop', href:'#shop'},
+			{text:'Editor', href:'#editor'},
+			{text:'Gallery', href:'#gallery'},
+			{text:'About', href:'#about'},
+			{text:'Contact', href:'#contact'},
+		],
 		woodTypes : [
 			'purty_wood',
 			'retina_wood',

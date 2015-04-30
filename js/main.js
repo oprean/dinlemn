@@ -61,10 +61,9 @@ require([
   'underscore',
   'backbone',
   'backbone.marionette',
-  'views/NavbarView',
-  'views/CarouselView',
-  'layouts/EditorLayout',
-  'modules/Controller',
+  'modules/Router',
+  'views/TopHeaderView',
+  'views/FooterView',
   'modules/Constants',
   'modules/Events',
   'modules/backbone.validation.bootstrap',
@@ -74,12 +73,12 @@ require([
   'backbone.marionette.modals',
   'backgrid',
   'parse',
-    ], function ($, _, Backbone, Marionette, NavbarView, CarouselView, EditorLayout, Controller, Constants, vent) {    
-        var app = new Backbone.Marionette.Application();
+    ], function ($, _, Backbone, Marionette, Router, TopHeaderView, FooterView, Constants, vent) {    
+        window.app = new Backbone.Marionette.Application();
 		app.addRegions({
-			navbarRegion : "#navbar-container",
-			carouselRegion : "#carousel-container",
-			editorRegion: "#editor-container",
+			headerRegion : "#header-container",
+			mainRegion: "#main-container",
+			footerRegion: "#footer-container",
 			modalsRegion: {
 				selector: '#modals-container',
 				regionClass: Backbone.Marionette.Modals
@@ -88,11 +87,10 @@ require([
 		
 		app.addInitializer(function(){
 			Parse.initialize(Constants.parse.AppID, Constants.parse.JsKey);
+			app.router = new Router();
 			if( ! Backbone.History.started) Backbone.history.start();
-			app.navbarRegion.show(new NavbarView());
-			//app.carouselRegion.show(new CarouselView());
-			app.editorRegion.show(new EditorLayout());
-			var controller = new Controller(app);
+			app.headerRegion.show(new TopHeaderView());
+			app.footerRegion.show(new FooterView());
 		});
 		
 		app.start();

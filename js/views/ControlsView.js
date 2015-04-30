@@ -27,7 +27,8 @@ define([
 			vent.trigger('editor.new');
 		},
 		
-		open : function() {
+		open : function(e) {
+			e.preventDefault();
 			vent.trigger('editor.open');
 		},
 		
