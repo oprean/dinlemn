@@ -11,11 +11,14 @@ define([
 	  appRoutes: {
 	    '': 'home',
 	    'home': 'home',
-	  	'gallery': 'gallery',
 	  	'about': 'about',
 	  	'contact': 'contact',
 	  	'editor': 'editor',
-	    'product(/:id)': 'product',
+	  		  		    
+	    'shop': 'shop',
+	    'shop(/product/:id)': 'shopProduct',
+	  	'gallery': 'gallery',
+	  	'gallery(/item:id)': 'galleryItem',
 	  }
 	});
   return Router;

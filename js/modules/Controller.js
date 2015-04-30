@@ -5,9 +5,12 @@ define([
   'backbone.marionette',
   'layouts/HomeLayout',
   'layouts/EditorLayout',
+  'layouts/AboutLayout',
+  'layouts/ContactLayout',
+  'layouts/ShopLayout',
   'layouts/GalleryLayout',
   'modules/Events',
-], function($, _, Backbone, Marionette, HomeLayout, EditorLayout, GalleryLayout, vent){
+], function($, _, Backbone, Marionette, HomeLayout, EditorLayout, AboutLayout, ContactLayout, ShopLayout, GalleryLayout, vent){
 	var Controller = Marionette.Controller.extend({
 	  initialize: function() {
 		this.listenTo(vent, 'showModal', function(modalView){
@@ -27,20 +30,31 @@ define([
 	  
 	  about: function() {
 	  	console.log('about');
+		app.mainRegion.show(new AboutLayout());
 	  },
 	  
 	  contact: function() {
 	  	console.log('contact');
+		app.mainRegion.show(new ContactLayout());
 	  },
 	  
-	  product: function(id) {
-	  	console.log('product');
+	  shop: function(id) {
+	  	console.log('shop');
+		app.mainRegion.show(new ShopLayout());
+	  },
+	  
+	  shopProduct: function(id) {
+	  	console.log('shop product');
 	  },
 	  
 	  gallery: function() {
 	  	console.log('gallery');
 		app.mainRegion.show(new GalleryLayout());
-	  }
+	  },
+	  
+	  galleryItem: function(id) {
+	  	console.log('gallery item');
+	  },
 	});
 	
 	return Controller;

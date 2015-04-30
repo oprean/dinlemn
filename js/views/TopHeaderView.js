@@ -18,7 +18,7 @@ define([
 		
 		initialize : function() {
 			var self = this;
-			this.selected = null;
+			this.selected = window.location.hash;
 			this.listenTo(vent, 'user.logout', function(){
 				self.render();
 			});	

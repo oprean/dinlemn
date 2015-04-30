@@ -3,13 +3,13 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
-  'text!templates/layouts/home-layout.html',
+  'text!templates/layouts/contact-layout.html',
   'modules/Constants',
   'modules/Utils',
   'modules/Events',
-], function($, _, Backbone, Marionette, homeLayoutTpl, Constants, Utils, vent){
-  var HomeLayout = Backbone.Marionette.LayoutView.extend({
-	template : _.template(homeLayoutTpl),
+], function($, _, Backbone, Marionette, contactLayoutTpl, Constants, Utils, vent){
+  var ContactLayout = Backbone.Marionette.LayoutView.extend({
+	template : _.template(contactLayoutTpl),
 	regions : {
 		gallery : '.gallery-container',
 	},
@@ -21,5 +21,5 @@ define([
 	},
   });
 
-  return HomeLayout;
+  return ContactLayout;
 });
