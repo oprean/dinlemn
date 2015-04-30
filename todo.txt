@@ -1,12 +1,69 @@
+WoodItProduct columns:
+name, author, blueprint
+address, delivered
+
+TODOs
+=====
 - more shapes: https://css-tricks.com/examples/ShapesOfCSS/
 - save to localStorage (http://stackoverflow.com/questions/13294216/exporting-backbone-js-collection-to-plain-text-on-hard-disk-importing-back)
 - trigger save when
 - item sorting (http://acquisio.github.io/backbone-marionette-sortable-view/)
 - change work background
-- simple/facebook login
+- simple sign in/login
+- facebook sign in/login
 - build calendar from fb friends
 - order form
 - carousel
 - navbar
 - gallery
 - about
+- save thumbnails on the server file system
+- upload images to server file system (we need this to have the images visible on the thumb generator)
+- prerender.io to make the stuff SEO friendly ...
+
+Site sections:
+==============
+Gallery:
+-------- 
+we show final, delivered/to be delivered products (the beautifull ones) 
+- Each product can be viewed, they can be bought as they are (if they are on stock) or they can be customized and ordered
+
+Product:
+--------
+- can browse image gallery
+- add comments to it
+- customize & order
+- order
+
+Order:
+------
+- fill in all the forms (validation required here!)
+(here is attached the blueprint and the a thumbnail)
+
+Shop:
+----
+we show the best looking result of a each specific type of product, and they can click to customize or browse a gallery with only that type of product
+- when clicking on customize, the editor will come! 
+clicking on a specific type of product, a gallery can be browsed with only that type of product
+
+About:
+------
+Mission statement: created to create;
+Return policy
+Order procedure
+Delivery time
+Paymant options
+
+Contact:
+--------
+contact form,
+in the future a google map with timisoara
+
+Admin:
+======
+can see new order,
+stock?
+messages from contact
+moderate comments
+add/delete products
+customize gallery
