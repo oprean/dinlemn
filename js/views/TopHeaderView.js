@@ -40,6 +40,7 @@ define([
 		},
 		
 		login : function(e) {
+			e.preventDefault();
 			var loginView = new LoginView({model:this.model});
 			vent.trigger('showModal', loginView);
 			e.stopPropagation();

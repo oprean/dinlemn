@@ -23,19 +23,31 @@ define([
 		controls : '#controls-container',
 	},
 	
-	initialize : function() {
+	initialize : function(options) {
 		var self = this;
-		this.products = new Products();
-		this.products.fetch();
-		this.model = this.products.findWhere({name: 'local.last.save'});
-		if (this.model === undefined) {
-			console.log('init a new product:');
-			this.model = new Calendar();
-			this.products.add(this.model);
-			this.model.save();
+		this.model = null;
+		if(options.id != undefined) {
+			var product = new WProduct({objectId: options.id});
+			product.fetch({
+				success: function(model){
+					self.model = new Calendar(JSON.parse(model.get('blueprint')));
+					console.log(self.model);
+					self.productLayout = self.getProductLayout(self.model);					
+				}
+			});
 		} else {
-			console.log('loaded from local storage:');
-			console.log(this.model);
+			this.products = new Products();
+			this.products.fetch();
+			this.model = this.products.findWhere({name: 'local.last.save'});
+			if (this.model === undefined) {
+				console.log('init a new product:');
+				this.model = new Calendar();
+				this.products.add(this.model);
+				this.model.save();
+			} else {
+				console.log('loaded from local storage:');
+				console.log(this.model);
+			}	
 		}
 
 		this.listenTo(vent, 'editor.save', function(){
@@ -55,11 +67,12 @@ define([
 		});
 		
 		this.listenTo(vent, 'editor.reload', function(model){
+			// this is when load from OpenView modal
 			self.model = new Calendar(JSON.parse(model.get('blueprint')));
-			self.productLayout = self.getProductLayout(model);
+			self.productLayout = self.getProductLayout();
 			self.showChildView('product', self.productLayout);
 			
-			localModel = this.products.findWhere({name: 'local.last.save'});
+			localModel = self.products.findWhere({name: 'local.last.save'});
 			if (localModel != undefined) localModel.destroy();
 			self.model.set({name: 'local.last.save'});
 			self.products.add(self.model);
@@ -70,7 +83,8 @@ define([
 		this.productLayout = this.getProductLayout();
 	},
 
-	getProductLayout : function() {
+	getProductLayout : function(model) {
+		console.log(model);
 		switch(this.model.get('type')) {
 			case 'calendar':
 				return new CalendarLayout({calendarData:this.model});

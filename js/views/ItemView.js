@@ -17,6 +17,7 @@ define([
 		events : {
 			'click .editable' : 'edit',
 			'blur .editable' : 'save',
+			'keypress .editable' : 'checkKey',
 			'click .del' : 'del',
 			'click .edit' : 'modalEdit',
 			//'mouseover' : 'shake'
@@ -77,6 +78,13 @@ define([
 				this.header.set({width:this.model.get('width')});
 			}
 			//vent.trigger('', editItemView);
+		},
+		
+		checkKey: function(e) {
+			if (e.keyCode == 13) {
+				$(e.target).blur();
+				//$(e.target).next().focus();
+			}
 		},
 		
 		edit : function(e) {

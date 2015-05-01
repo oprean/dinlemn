@@ -13,10 +13,13 @@ define([
 	    'home': 'home',
 	  	'about': 'about',
 	  	'contact': 'contact',
+	  	
 	  	'editor': 'editor',
+	  	'editor(/:id)': 'editor',
 	  		  		    
 	    'shop': 'shop',
 	    'shop(/product/:id)': 'shopProduct',
+	  	
 	  	'gallery': 'gallery',
 	  	'gallery(/item:id)': 'galleryItem',
 	  }

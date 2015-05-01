@@ -20,40 +20,49 @@ define([
 	  
 	  home: function() {
 	  	console.log('home');
+		$('body').css('background', 'inherit');
 		app.mainRegion.show(new HomeLayout());
 	  },
 	  
-	  editor: function() {
-	  	console.log('editor');
-		app.mainRegion.show(new EditorLayout());
+	  editor: function(id) {
+	  	console.log('editor/' + id);
+		$('body').css('background', 'url("assets/img/wall/graphy.png")');
+		app.mainRegion.show(new EditorLayout({id:id}));
 	  },
 	  
 	  about: function() {
 	  	console.log('about');
+		$('body').css('background', 'inherit');
 		app.mainRegion.show(new AboutLayout());
 	  },
 	  
 	  contact: function() {
 	  	console.log('contact');
+		$('body').css('background', 'inherit');
 		app.mainRegion.show(new ContactLayout());
+		
 	  },
 	  
 	  shop: function(id) {
 	  	console.log('shop');
-		app.mainRegion.show(new ShopLayout());
+		$('body').css('background', 'inherit');
+		app.mainRegion.show(new ShopLayout(id));
 	  },
 	  
 	  shopProduct: function(id) {
 	  	console.log('shop product');
+		$('body').css('background', 'inherit');
 	  },
 	  
 	  gallery: function() {
 	  	console.log('gallery');
+		$('body').css('background', 'inherit');
 		app.mainRegion.show(new GalleryLayout());
 	  },
 	  
 	  galleryItem: function(id) {
 	  	console.log('gallery item');
+		$('body').css('background', 'inherit');
 	  },
 	});
 	

@@ -24,6 +24,11 @@ TODOs
 - http://123d.circuits.io/circuits/19376-led-shield#breadboard (created by http://weworkweplay.com/contact/)
 Site sections:
 ==============
+
+Home:
+-----
+http://codepen.io/akademy/pen/FlkzB
+
 Gallery:
 -------- 
 we show final, delivered/to be delivered products (the beautifull ones) 
