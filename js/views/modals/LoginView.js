@@ -16,7 +16,11 @@ define([
 			'click .login-btn' : 'login'
 		},
 		initialize : function() {
+			var self = this;
 			this.mode = 'login';
+			this.listenTo(vent, 'user.login', function(){
+				self.submit();
+			});
 		},
 		
 		signup : function() {
@@ -32,23 +36,18 @@ define([
 			this.$('.signup-form-container').toggle();
 			this.$('.login-form-container').toggle();
 		},
-		
-		onRender : function() {
-		},
-		
+				
 		beforeSubmit : function() {
 			var self = this;
-			var result = false;
 			if (this.mode == 'login') {
 				Parse.User.logIn(this.$('#login-username').val(), this.$('#login-password').val(), {
 				  success: function(user) {
 					vent.trigger('user.login');
-					result = true;
 				  },
 				  error: function(user, error) {
 				  	self.$('.login-help-block').html(error.message);
 				    console.log(error);
-				    result = false;
+
 				  }
 				});	
 			} else {
@@ -59,18 +58,13 @@ define([
 				user.signUp(null, {
 				  success: function(user) {
 					vent.trigger('user.login');
-					result = true;
 				  },
 				  error: function(user, error) {
 				  	self.$('.signup-help-block').html(error.message);
 				    console.log(error);
-				    result = false;
 				  }
 				});		
 			}
-			
-			//return false;
-			return result;
 		},
 		
 		submit: function() {
