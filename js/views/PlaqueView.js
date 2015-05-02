@@ -29,7 +29,8 @@ define([
 		},
 		
 		modelEvents : {
-			'change' : 'render'
+			'change' : 'render',
+			'change:width' : 'changeWidth'
 		},
 		
 		behaviors: { 
@@ -84,6 +85,10 @@ define([
 		editPlaque : function() {
 			var editPlaqueView = new EditPlaqueView({model:this.model});
 			vent.trigger('showModal', editPlaqueView);
+		},
+
+		changeWidth : function() {
+			vent.trigger('plaque.width', this.model.get('width'));
 		},
 
 		save : function(e) {
