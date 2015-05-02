@@ -11,9 +11,14 @@ define([
 		cancelEl: '.btn-cancel',
 
 		initialize : function() {
-			this.model.set({woodTypes : Constants.woodTypes });
 			this.realModel = this.model;
 			this.model = this.realModel.clone();
+		},
+		
+		templateHelpers : function() {
+			return {
+				woodTypes : Constants.woodTypes 
+			};
 		},
 		
 		onShow : function() {

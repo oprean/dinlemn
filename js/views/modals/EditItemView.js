@@ -13,9 +13,14 @@ define([
 			
 		},
 		initialize : function() {
-			this.model.set({woodTypes : Constants.woodTypes });
-			this.model.set({shapeTypes : Constants.shapeTypes });
 			console.log('init modal');
+		},
+		
+		templateHelpers : function() {
+			return {
+				woodTypes : Constants.woodTypes,
+				shapeTypes : Constants.shapeTypes
+			};
 		},
 		
 		onRender : function() {

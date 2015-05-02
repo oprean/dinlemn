@@ -44,6 +44,11 @@
         }
         this.$el.addClass("" + this.prefix + "-wrapper");
         this.modalEl = Backbone.$('<div />').addClass("" + this.prefix + "-modal");
+        
+        if (typeof this.templateHelpers === "function") {
+          	_.extend(data, this.templateHelpers());
+        }
+        
         if (this.template) {
           this.modalEl.html(this.buildTemplate(this.template, data));
         }

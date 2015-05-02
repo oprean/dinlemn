@@ -41,6 +41,7 @@
 							items : new Items()
 						}));
 						this.set({
+							name : options.init, 
 							plaque : new Plaque({title:'_blank_', width:null}),
 							columns : columns
 						}); 
@@ -51,7 +52,8 @@
 						this.randomize();
 						break;
 					default:
-				}	
+				}
+				delete options.init;
 			}
 		},
 		

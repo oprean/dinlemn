@@ -93,7 +93,7 @@ define([
 	
 	new : function(type) {
 		var localModel = this.products.findWhere({name: 'local.last.save'});
-		localModel.destroy();
+		if (localModel != undefined) localModel.destroy();
 		switch (type) {
 			case 'blank-calendar':
 			case 'month-calendar':
