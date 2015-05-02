@@ -2,14 +2,16 @@
   'jquery',
   'underscore',
   'backbone',
+  'I18N/ro_RO/names',
   'models/Product',
   'models/Plaque',
   'models/Column',
   'models/Header',
+  'models/Item',
   'collections/Columns',
   'collections/Items',
   'moment'
-], function($, _, Backbone, Product, Plaque, Column, Header, Columns, Items, moment){
+], function($, _, Backbone, names, Product, Plaque, Column, Header, Item, Columns, Items, moment){
 	function columnsDefault() {
 		var columns = new Columns();
 		var months = moment.months();
@@ -49,7 +51,7 @@
 					case 'month-calendar':
 						break;
 					case 'random-calendar':
-						this.randomize();
+						this.randomize(options.init);
 						break;
 					default:
 				}
@@ -57,8 +59,35 @@
 			}
 		},
 		
-		randomize : function() {
-			console.log('randomize');
+		randomColumnItems : function() {
+			var items = new Items();
+			for(i=0; i<_.random(0, 4);i++) {
+				var item = new Item({
+					line1: _.random(1, 28),
+					line2: names.firstNameFemale[_.random(0,names.firstNameFemale.length-1)],
+				});
+				items.add(item);
+			} 
+			return items;
+		},
+		
+		randomize : function(name) {
+			var self = this;
+			console.log(names);
+			var columns = new Columns();
+			var months = moment.months();
+			_.each(months, function(month){
+				var column = new Column({
+					header : new Header({title:month}),
+					items : self.randomColumnItems()
+				});
+				columns.add(column);
+			});
+			this.set({
+				name : name, 
+				plaque : new Plaque({width:320}),
+				columns : columns
+			});			
 		}
 	});
 

@@ -86,6 +86,7 @@ require([
 		});
 		
 		app.addInitializer(function(){
+			app.language = window.navigator.userLanguage || window.navigator.language;
 			Parse.initialize(Constants.parse.AppID, Constants.parse.JsKey);
 			app.router = new Router();
 			if( ! Backbone.History.started) Backbone.history.start();
