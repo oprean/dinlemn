@@ -14,6 +14,9 @@ define([
 	  	'about': 'about',
 	  	'contact': 'contact',
 	  	
+	  	'order' : 'order',
+	  	'cart' : 'cart',
+	  	
 	  	'editor': 'editor',
 	  	'editor(/:id)': 'editor',
 	  		  		    

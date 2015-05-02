@@ -22,6 +22,13 @@ TODOs
 - prerender.io to make the stuff SEO friendly ...
 - svg?!? - http://nocircleno.com/blog/svg-with-backbone-js/
 - http://123d.circuits.io/circuits/19376-led-shield#breadboard (created by http://weworkweplay.com/contact/)
+
+Bugs:
+=====
+set columns-container width on init/load
+customize gallery item
+save item (not save as)
+
 Site sections:
 ==============
 

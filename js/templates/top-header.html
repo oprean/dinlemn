@@ -25,6 +25,7 @@
         <% } else {%>
         	<li><a class="btn-logout" href="#">Logout ( <%= Parse.User.current().get('username') %> )</a></li>
         <% } %>
+        <li><a href="#cart"><span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span>(0)</a></li>
       </ul>
     </div>
   </div><!-- /.container-fluid -->

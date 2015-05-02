@@ -7,10 +7,14 @@ define([
   'layouts/EditorLayout',
   'layouts/AboutLayout',
   'layouts/ContactLayout',
+  'layouts/OrderLayout',
+  'layouts/CartLayout',
   'layouts/ShopLayout',
   'layouts/GalleryLayout',
   'modules/Events',
-], function($, _, Backbone, Marionette, HomeLayout, EditorLayout, AboutLayout, ContactLayout, ShopLayout, GalleryLayout, vent){
+], function($, _, Backbone, Marionette, 
+	HomeLayout, EditorLayout, AboutLayout, ContactLayout, OrderLayout, CartLayout, ShopLayout, GalleryLayout, 
+	vent){
 	var Controller = Marionette.Controller.extend({
 	  initialize: function() {
 		this.listenTo(vent, 'showModal', function(modalView){
@@ -40,6 +44,20 @@ define([
 	  	console.log('contact');
 		$('body').css('background', 'inherit');
 		app.mainRegion.show(new ContactLayout());
+		
+	  },
+	  
+	  order: function() {
+	  	console.log('order');
+		$('body').css('background', 'inherit');
+		app.mainRegion.show(new OrderLayout());
+		
+	  },
+
+	  cart: function() {
+	  	console.log('cart');
+		$('body').css('background', 'inherit');
+		app.mainRegion.show(new CartLayout());
 		
 	  },
 	  
