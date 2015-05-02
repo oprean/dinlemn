@@ -16,6 +16,16 @@ define([
 			'tileable_wood_texture',
 			'wood_pattern'
 		],
+		
+		wallTypes : [
+			'graphy',
+			'concrete',
+			'fabric_plaid',
+			'subtle_stripes',
+			'tileable_wood_texture',
+			'webtreats_wood-pattern2-512',
+			'webtreats_wood-pattern5-512'
+		],
 		shapeTypes : [
 			'round',
 			'rectangular',

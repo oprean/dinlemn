@@ -1,16 +1,27 @@
+<button type="button" id="new" class="btn btn-primary btn-sm">New</button>
 <div class="btn-group">
   <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     File <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">
     <li id="new"><a href="#">New</a></li>
-    <li id="open"><a href="#">Open...</a></li>
-    <li id="saveas"><a href="#">Save as...</a></li>
-    <!--li id="export2png"><a href="#">Export as PNG ...</a></li>
-    <li id="export2json"><a href="#">Export as JSON ...</a></li>
-    <li id="importJson"><a href="#">Import from JSON ...</a></li-->
+  	<% _.each(menu, function(item){ %>
+  		<li id="<%= item.id %>">
+  			<a href="<%= item.href %>"><%= item.text %></a>
+  		</li>
+  	<% })%>
   </ul>
 </div>
-<button type="button" id="preview" class="btn btn-primary btn-sm pull-right">Preview</button>
 <!--button type="button" id="order" class="btn btn-primary btn-sm">Order</button-->
-<button type="button" id="save" class="btn btn-primary btn-sm">Quick <span aria-hidden="true" class="glyphicon glyphicon-floppy-disk"></span></button>
+<button type="button" id="preview" class="btn btn-primary btn-sm">Preview</button>
+<div id="wall-settings-container" style="display: inline">
+	<select id="wall" class="input-sm">
+		<option value="">change wall</option>
+	  	<% _.each(walls, function(wall){ %>
+	  		<option value="<%= wall %>"><%= wall %></option>
+	  	<% })%>
+	</select>
+</div>
+<button type="button" id="save" class="btn btn-primary btn-sm pull-right">
+	Quick <span aria-hidden="true" class="glyphicon glyphicon-floppy-disk"></span>
+</button>

@@ -19,7 +19,8 @@ define([
 			var self = this;
 			this.mode = 'login';
 			this.listenTo(vent, 'user.login', function(){
-				self.submit();
+				console.log('you are logged in!');
+				self.trigger('modal:destroy');
 			});
 		},
 		
@@ -65,10 +66,12 @@ define([
 				  }
 				});		
 			}
+			
+			return false;
 		},
 		
 		submit: function() {
-			console.log('you are logged in!');
+			console.log('you are logged in!');			
 		}	
 			
 	});

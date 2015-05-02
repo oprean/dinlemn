@@ -16,7 +16,31 @@ define([
 			'click #export2json' : 'export2json',
 			'click #preview' : 'preview',
 			'click #save' : 'save',
-			'click #saveas' : 'saveas'
+			'click #saveas' : 'saveas',
+			'change #wall' : 'changeWall',
+		},
+		
+		initialize : function() {
+			this.fileMenu = [
+				{id: 'open', text:'Open...', href:'#'},
+				{id: 'save', text:'Save', href:'#'},
+				{id: 'saveas', text:'Save as...', href:'#'},
+				{id: 'export2png', text:'Export as PNG...', href:'#'},
+				{id: 'export2json', text:'Export as JSON...', href:'#'},
+				{id: 'importJson', text:'Import from PNG...', href:'#'},
+			];
+			this.walls = Constants.wallTypes;
+		},
+
+		templateHelpers : function() {
+			return {
+				menu: this.fileMenu,
+				walls: this.walls
+			};
+		},
+		
+		changeWall : function(e) {
+			$('body').css('background', 'url("assets/img/wall/' + $(e.target).val() + '.png")');
 		},
 		
 		preview : function() {
