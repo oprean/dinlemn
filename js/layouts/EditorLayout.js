@@ -25,6 +25,8 @@ define([
 	initialize : function(options) {
 		var self = this;
 		this.model = null;
+		this.products = new Products();
+		this.products.fetch();
 		if(options.id != undefined) {
 			var product = new WProduct({objectId: options.id});
 			product.fetch({
@@ -35,8 +37,6 @@ define([
 				}
 			});
 		} else {
-			this.products = new Products();
-			this.products.fetch();
 			this.model = this.products.findWhere({name: 'local.last.save'});
 			if (this.model === undefined) {
 				console.log('init a new product:');
@@ -65,7 +65,7 @@ define([
 			self.open();
 		});
 		
-		this.listenTo(vent, 'editor.reload', function(model){
+		this.listenTo(vent, 'editor.load', function(model){
 			// this is when load from OpenView modal
 			self.model = new Calendar(JSON.parse(model.get('blueprint')));
 			self.productLayout = self.getProductLayout();

@@ -33,7 +33,7 @@ define([
 		},
 		
 		submit: function() {
-			vent.trigger('editor.reload', this.model);
+			vent.trigger('editor.load', this.model);
 		}				
 	});
 

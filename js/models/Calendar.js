@@ -3,6 +3,7 @@
   'underscore',
   'backbone',
   'I18N/ro_RO/names',
+  //'I18N/en_US/names',
   'models/Product',
   'models/Plaque',
   'models/Column',
@@ -55,8 +56,11 @@
 						break;
 					default:
 				}
+				this.unset('init');
 				delete options.init;
 			}
+			
+			console.log(this);
 		},
 		
 		randomColumnItems : function() {
