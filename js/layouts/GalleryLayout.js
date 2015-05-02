@@ -12,6 +12,7 @@ define([
 ], function($, _, Backbone, Marionette, WProducts, GalleryView, galleryLayoutTpl, Constants, Utils, vent){
   var GalleryLayout = Backbone.Marionette.LayoutView.extend({
 	template : _.template(galleryLayoutTpl),
+	className : 'row',
 	regions : {
 		gallery : '.gallery-container',
 	},
@@ -27,6 +28,17 @@ define([
 			}
 		});
 	},
+
+	/*onRender: function () {
+		console.log('onRender');
+		// Get rid of that pesky wrapping-div.
+		// Assumes 1 child element present in template.
+		this.$el = this.$el.children();
+		// Unwrap the element to prevent infinitely 
+		// nesting elements during re-render.
+		this.$el.unwrap();
+		this.setElement(this.$el);
+	},*/
 
 	onBeforeShow : function() {
 	},

@@ -10,7 +10,6 @@ define([
 	var ControlsView = Backbone.Marionette.ItemView.extend({
 		template : _.template(controlsTpl),
 		events : {
-			'click #new' : 'new',
 			'click #open' : 'open',
 			'click #export2png' : 'export2png',
 			'click #export2json' : 'export2json',
@@ -18,6 +17,7 @@ define([
 			'click #save' : 'save',
 			'click #saveas' : 'saveas',
 			'change #wall' : 'changeWall',
+			'click .new-product' : 'newItem'
 		},
 		
 		initialize : function() {
@@ -29,12 +29,23 @@ define([
 				{id: 'export2json', text:'Export as JSON...', href:'#'},
 				{id: 'importJson', text:'Import from PNG...', href:'#'},
 			];
+			this.newMenu = [
+				{id: null, role: 'presentation', cssclass: 'new-product dropdown-header', data: null, text:'Calendars', href:'#'},
+				{id: null, role: null, cssclass: 'new-product', data: 'blank-calendar', text:'Blank', href:'#'},
+				{id: null, role: null,  cssclass: 'new-product', data: 'month-calendar', text:'Months', href:'#'},
+				{id: null, role: null,  cssclass: 'new-product', data: 'random-calendar', text:'Random', href:'#'},
+				{id: null, role: 'presentation', cssclass: 'new-product dropdown-header', data: null, text:'Jewellery', href:'#'},
+				{id: null, role: null,  cssclass: 'new-product', data: 'ring', text:'Ring', href:'#'},
+				{id: null, role: null,  cssclass: 'new-product', data: 'earrings', text:'Earrings', href:'#'},
+				{id: null, role: null,  cssclass: 'new-product', data: 'pendants', text:'Pendants', href:'#'},
+			];
 			this.walls = Constants.wallTypes;
 		},
 
 		templateHelpers : function() {
 			return {
-				menu: this.fileMenu,
+				filemenu: this.fileMenu,
+				newmenu: this.newMenu,
 				walls: this.walls
 			};
 		},
@@ -47,9 +58,9 @@ define([
 			vent.trigger('editor.preview');
 		},
 		
-		new : function(e) {
+		newItem : function(e) {
 			e.preventDefault();
-			vent.trigger('editor.new');
+			vent.trigger('editor.new', $(e.target).data('id'));
 		},
 		
 		open : function(e) {

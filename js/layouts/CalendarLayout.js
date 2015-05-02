@@ -23,7 +23,7 @@ define([
 	},
 	
 	initialize : function(options) {
-		console.log('init calendar layout');
+		//console.log('init calendar layout');
 		this.model = options.calendarData;	
 		this.buildModel();
 		var self = this;
@@ -40,16 +40,16 @@ define([
 	},
 
 	buildModel : function() {
-		console.log('build calendar model');
+		//console.log('build calendar model');
 		if (this.model.get('plaque').cid === undefined) {
 			var plaqueData = this.model.get('plaque');
-			console.log(plaqueData); 
+			//console.log(plaqueData); 
 			this.model.set({'plaque' : new Plaque(plaqueData)});
 		}
 		if (this.model.get('columns').cid === undefined) {
 			var columnsData = this.model.get('columns');
 			var columns = new Columns();
-			console.log(columnsData);
+			//console.log(columnsData);
 			_.each(columnsData, function(column){
 				var items = new Items();
 				_.each(column.items, function(item){

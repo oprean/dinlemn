@@ -8,7 +8,7 @@ define([
 			title : 'Family Birthdays',
 			wood : 'purty_wood',
 			image : null,
-			width : 320,
+			width : null,
 			height : null,
 		},
 		

@@ -14,8 +14,7 @@ define([
   'views/modals/OpenView',
   'views/modals/SaveView',
   'modules/Events',
-  'moment',
-], function($, _, Backbone, Marionette, Constants, Utils, Products, Calendar, WProduct, productEditorTpl, CalendarLayout, ControlsView, OpenView, SaveView, vent, moment){
+], function($, _, Backbone, Marionette, Constants, Utils, Products, Calendar, WProduct, productEditorTpl, CalendarLayout, ControlsView, OpenView, SaveView, vent){
   var EditorLayout = Backbone.Marionette.LayoutView.extend({
 	template : _.template(productEditorTpl),
 	regions : {
@@ -31,8 +30,8 @@ define([
 			product.fetch({
 				success: function(model){
 					self.model = new Calendar(JSON.parse(model.get('blueprint')));
-					console.log(self.model);
-					self.productLayout = self.getProductLayout(self.model);					
+					//console.log(self.model);
+					self.productLayout = self.getProductLayout();					
 				}
 			});
 		} else {
@@ -58,8 +57,8 @@ define([
 			self.saveas();
 		});
 		
-		this.listenTo(vent, 'editor.new', function(){
-			self.new();
+		this.listenTo(vent, 'editor.new', function(type){
+			self.new(type);
 		});
 		
 		this.listenTo(vent, 'editor.open', function(){
@@ -72,7 +71,7 @@ define([
 			self.productLayout = self.getProductLayout();
 			self.showChildView('product', self.productLayout);
 			
-			localModel = self.products.findWhere({name: 'local.last.save'});
+			var localModel = self.products.findWhere({name: 'local.last.save'});
 			if (localModel != undefined) localModel.destroy();
 			self.model.set({name: 'local.last.save'});
 			self.products.add(self.model);
@@ -84,7 +83,6 @@ define([
 	},
 
 	getProductLayout : function(model) {
-		console.log(model);
 		switch(this.model.get('type')) {
 			case 'calendar':
 				return new CalendarLayout({calendarData:this.model});
@@ -93,9 +91,21 @@ define([
 		}
 	},
 	
-	new : function() {
-		currentModel = this.products.findWhere({name: 'local.last.save'});
-		currentModel.destroy();
+	new : function(type) {
+		var localModel = this.products.findWhere({name: 'local.last.save'});
+		localModel.destroy();
+		switch (type) {
+			case 'blank-calendar':
+			case 'month-calendar':
+			case 'random-calendar':
+				this.model = new Calendar({init:type});
+				break;
+			default:
+				this.model = new Calendar();
+		}
+		this.products.add(this.model);
+		this.model.save();
+		this.showChildView('product', new CalendarLayout({calendarData:this.model}));
 	},
 	
 	open : function() {

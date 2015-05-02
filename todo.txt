@@ -1,6 +1,13 @@
 WoodItProduct columns:
-name, author, blueprint
-address, delivered
++ objectId int
++ name string,
++ description string 
++ author string, 
++ blueprint string(json)
+- address string(json), 
+- delivered bool,
+- customizable bool
+- type
 
 TODOs
 =====

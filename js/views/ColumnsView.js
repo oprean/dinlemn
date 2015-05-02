@@ -20,10 +20,10 @@ define([
 		},*/
 		
 		initialize : function(options) {
-			console.log('init columns view');
+			//console.log('init columns view');
 			var self = this;
 			this.collection = options.dataModel.get('columns');			
-			console.log(this.collection);
+			//console.log(this.collection);
 			this.listenTo(vent, 'column.del', function(column){
 				self.collection.remove(column.data);
 				self.render();

@@ -1,11 +1,21 @@
-<button type="button" id="new" class="btn btn-primary btn-sm">New</button>
+<div class="btn-group">
+  <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    New <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+  	<% _.each(newmenu, function(item){ %>
+  		<li id="<%= item.id %>">
+  			<a class="<%= item.cssclass %>" role="<%= item.role %>" data-id="<%= item.data %>" href="<%= item.href %>"><%= item.text %></a>
+  		</li>
+  	<% })%>
+  </ul>
+</div>
 <div class="btn-group">
   <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     File <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">
-    <li id="new"><a href="#">New</a></li>
-  	<% _.each(menu, function(item){ %>
+  	<% _.each(filemenu, function(item){ %>
   		<li id="<%= item.id %>">
   			<a href="<%= item.href %>"><%= item.text %></a>
   		</li>
