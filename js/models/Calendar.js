@@ -2,8 +2,6 @@
   'jquery',
   'underscore',
   'backbone',
-  //'nls/ro_ro/names',
-  //'nls/en_us/names',
   'i18n!nls/names',
   'models/Product',
   'models/Plaque',
@@ -60,8 +58,6 @@
 				this.unset('init');
 				delete options.init;
 			}
-			
-			console.log(this);
 		},
 		
 		randomColumnItems : function() {
@@ -78,6 +74,7 @@
 		
 		randomize : function(name) {
 			var self = this;
+			console.log(names);
 			var columns = new Columns();
 			var months = moment.months();
 			_.each(months, function(month){

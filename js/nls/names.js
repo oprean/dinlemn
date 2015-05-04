@@ -3486,5 +3486,7 @@ define({
 	    "Zieme",
 	    "Zulauf"
 	  ]
-	}
+	},
+    "ro": true,
+    "en": true,
 });
