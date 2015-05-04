@@ -14,6 +14,9 @@ require.config({
 		"moment":"lib/moment.min",
 
 		"text":"lib/text",
+		"i18n":"lib/i18n",
+		"polyglot":"lib/polyglot.min",
+		
 		//"html2canvas" : "lib/html2canvas.min",
 		"html2canvas" : "lib/html2canvas-stable",
 		
@@ -25,6 +28,7 @@ require.config({
 		
 		"parse" : "lib/parse-1.4.0.min",
 	},
+	
 	"shim":{
 		"jquery.bootstrap": {
 			"deps": ["jquery"]
@@ -66,14 +70,16 @@ require([
   'views/FooterView',
   'modules/Constants',
   'modules/Events',
+  'i18n!nls/labels',
   'modules/backbone.validation.bootstrap',
   'jquery.bootstrap',
   'html2canvas',
   'backbone.modal',
   'backbone.marionette.modals',
   'backgrid',
+  'polyglot',
   'parse',
-    ], function ($, _, Backbone, Marionette, Router, TopHeaderView, FooterView, Constants, vent) {    
+    ], function ($, _, Backbone, Marionette, Router, TopHeaderView, FooterView, Constants, vent, translations) {    
         window.app = new Backbone.Marionette.Application();
 		app.addRegions({
 			headerRegion : "#header-container",
@@ -87,7 +93,10 @@ require([
 		
 		app.addInitializer(function(){
 			app.language = window.navigator.userLanguage || window.navigator.language;
+			console.log(app.language);
 			Parse.initialize(Constants.parse.AppID, Constants.parse.JsKey);
+			console.log(translations);
+			window.polyglot = new Polyglot({phrases: translations});
 			app.router = new Router();
 			if( ! Backbone.History.started) Backbone.history.start();
 			app.headerRegion.show(new TopHeaderView());
