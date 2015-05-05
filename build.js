@@ -1,13 +1,13 @@
-({
+/*({
     mainConfigFile : "js/main.js",
     baseUrl : "js",
     name: "main",
     out: "dist/main.js",
     removeCombined: true,
     findNestedDependencies: true
-})
+})*/
 
-/*({
+({
     mainConfigFile : "js/main.js",
     baseUrl: "js",
     removeCombined: true,
@@ -22,14 +22,19 @@
 				"jqueryui",
 				"underscore",
 				"backbone",
-				"marionette",
+				"backbone.marionette",
 				"backbone.localStorage",
-				"moment",
 				"backbone.validation",
+				"moment",
 				"text",
+				"i18n",
+				"polyglot",	
 				"html2canvas",
 				"backbone.modal",
+				"backbone.marionette.modals",
+				"backgrid",
+				"parse",
             ]
         }
     ]
-})*/
+})
