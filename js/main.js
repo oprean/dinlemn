@@ -1,5 +1,5 @@
 require.config({
-	//urlArgs: new Date().getTime().toString(),
+	urlArgs: new Date().getTime().toString(),
 	"paths":{
 		"jquery" : "lib/jquery-2.1.3.min",
  		"jquery.bootstrap": "lib/bootstrap.min",
@@ -17,7 +17,6 @@ require.config({
 		"i18n":"lib/i18n",
 		"polyglot":"lib/polyglot.min",
 		
-		//"html2canvas" : "lib/html2canvas.min",
 		"html2canvas" : "lib/html2canvas-stable",
 		
 		"backbone.modal" : "lib/backbone.modal",
@@ -67,6 +66,7 @@ require([
   'modules/Router',
   'views/TopHeaderView',
   'views/FooterView',
+  'modules/Utils',
   'modules/Constants',
   'modules/Events',
   'i18n!nls/labels',
@@ -78,7 +78,7 @@ require([
   'backgrid',
   'polyglot',
   'parse',
-    ], function ($, _, Backbone, Marionette, Router, TopHeaderView, FooterView, Constants, vent, translations) {    
+    ], function ($, _, Backbone, Marionette, Router, TopHeaderView, FooterView, Utils, Constants, vent, translations) {    
         window.app = new Backbone.Marionette.Application();
 		app.addRegions({
 			headerRegion : "#header-container",
@@ -92,9 +92,9 @@ require([
 		
 		app.addInitializer(function(){
 			app.language = window.navigator.userLanguage || window.navigator.language;
-			console.log(app.language);
+			app.env = Utils.bootstrapEnv();
+			console.log('lang: ' + app.language + 'env: ' + app.env);
 			Parse.initialize(Constants.parse.AppID, Constants.parse.JsKey);
-			console.log(translations);
 			window.polyglot = new Polyglot({phrases: translations});
 			app.router = new Router();
 			if( ! Backbone.History.started) Backbone.history.start();
