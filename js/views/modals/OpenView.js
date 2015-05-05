@@ -7,6 +7,7 @@ define([
   'modules/Constants',
   'text!templates/modals/open.html',
   'modules/Events',
+  'backbone.modal',
 ], function($, _, Backbone, WProducts, ProductsGridLayout, Constants, openTpl, vent){
 	var OpenView = Backbone.Modal.extend({
 		template: _.template(openTpl),

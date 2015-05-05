@@ -13,6 +13,7 @@
     removeCombined: true,
     findNestedDependencies: true,
     dir: "dist",
+    //optimize: "none",
     modules: [
         {
             name: "main",

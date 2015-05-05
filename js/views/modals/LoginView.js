@@ -6,6 +6,7 @@ define([
   'text!templates/modals/login.html',
   'text!templates/modals/signup.html',
   'modules/Events',
+  'backbone.modal',
 ], function($, _, Backbone, Constants, loginTpl, signupTpl, vent){
 	var LoginView = Backbone.Modal.extend({
 		template: _.template(loginTpl),
