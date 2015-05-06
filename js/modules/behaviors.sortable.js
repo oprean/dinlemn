@@ -7,7 +7,7 @@ define([
   'modules/Events',
   'jqueryui',
 ], function($, _, Backbone, Marionette, vent){
-	console.log('load behaviour');
+	//console.log('load behaviour');
 	var Sortable = Marionette.Behavior.extend({ 
 	    onRender:function(){
 	        var  collection=this.view.collection // Close the collection

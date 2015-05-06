@@ -74,7 +74,6 @@
 		
 		randomize : function(name) {
 			var self = this;
-			console.log(names);
 			var columns = new Columns();
 			var months = moment.months();
 			_.each(months, function(month){
