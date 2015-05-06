@@ -12,7 +12,7 @@ define([
 ], function($, _, Backbone, Marionette, Constants, EditItemView, itemDefaultTpl, itemRoundTpl, itemRectTpl, vent){
 	var ItemView = Backbone.Marionette.ItemView.extend({
 		template : _.template(itemDefaultTpl),
-		className : 'item-container',
+		className : 'item-container animated swing',
 		tagName: 'li',
 		events : {
 			'click .editable' : 'edit',
