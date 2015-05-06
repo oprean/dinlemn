@@ -31,7 +31,7 @@ define([
 	},
 
 	onBeforeShow : function() {
-		this.showChildView('jumbotron', this.jumbotronView);
+		//this.showChildView('jumbotron', this.jumbotronView);
 		this.showChildView('randomCalendar', this.randomCalendar);
 		
 		this.$('.icon-btn').css('display', 'none');
