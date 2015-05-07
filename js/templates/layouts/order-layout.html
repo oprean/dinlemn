@@ -1,34 +1,322 @@
-<div class="visible-lg-block" style="height: 200px;"></div>
-<div class="container">
-	<div class="row">
-		<div class="col-sm-4">
-			<h3>Drop me a line!</h3>
-			<hr>
-			<address>
-				<strong>Email:</strong><a href="mailto:#"> oprean@gmail.com</a>
-			</address>
-		</div>
+<!-- start #page -->
+<section class="tinted">
+	<div class="container no-vertical-padding">
+		<div class="page-title clearfix">
+			<div class="pull-right mt15">
 
-		<div class="col-sm-8">
-			<form id="contact" method="post" class="form" role="form">
-				<div class="row">
-					<div class="col-xs-6 col-md-6 form-group">
-						<input class="form-control" id="name" name="name" placeholder="Name" type="text" required autofocus />
-					</div>
-					<div class="col-xs-6 col-md-6 form-group">
-						<input class="form-control" id="email" name="email" placeholder="Email" type="email" required />
-					</div>
-				</div>
-				<textarea class="form-control" id="message" name="message" placeholder="Message" rows="5"></textarea>
-				<br />
-				<div class="row">
-					<div class="col-xs-12 col-md-12 form-group">
-						<button class="btn btn-primary pull-right" type="submit">
-							Submit
-						</button>
-					</div>
-				</div>
-			</form>
+			</div>
+
+			<h1>Your Cart</h1>
+
 		</div>
+		<!-- .page-title -->
 	</div>
-</div>
+
+</section>
+
+<section class="last-section ">
+
+	<div class="container minimal-padding" style="margin-bottom: 20px;">
+
+		<main role="main">
+
+			<div class="row">
+				<div class="col-md-12 alert alert-success" style="display: none;"></div>
+			</div>
+
+			<div id="empty-cart" style="display: none;">
+				<h2>Yikes, there is nothing in your cart. <a href="/">Lets go shopping!</a></h2>
+			</div>
+
+			<div class="row" id="tindie_cart" data-cart-pk="71638">
+				<div class="col-md-6" id="shipping">
+
+					<form id="add-cart" class="form-cart" method="post">
+						<input name="csrfmiddlewaretoken" value="w64f6SaFHqk3dAdd$fPRkWCTvthoXwEnFSDjd6t95uAesq91szSETQB2YIbg=" type="hidden">
+						<div data-bind="with: shippingInfo">
+							<h4>Who is this for?</h4>
+							<hr>
+							<div class="row">
+								<div class="col-md-6">
+									<div id="div_id_shipping_detail_first_name" class="form-group">
+										<div class="controls ">
+											<input name="shipping_detail_first_name" required="" id="id_shipping_detail_first_name" data-bind="value: firstName, bootstrapErrors: firstName" placeholder="First Name" class="form-control textinput textInput form-control" maxlength="100" type="text">
+											<span style="display: none;" class="help-block"></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div id="div_id_shipping_detail_last_name" class="form-group">
+										<div class="controls ">
+											<input name="shipping_detail_last_name" required="" id="id_shipping_detail_last_name" data-bind="value: lastName, bootstrapErrors: lastName" placeholder="Last Name" class="form-control textinput textInput form-control" maxlength="100" type="text">
+											<span style="display: none;" class="help-block"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="div_id_billing_detail_email" class="form-group">
+								<div class="controls ">
+									<input name="billing_detail_email" required="" data-bind="value: email, bootstrapErrors: email" placeholder="Email" class="form-control textinput textInput form-control" id="id_billing_detail_email" type="text">
+									<span style="display: none;" class="help-block"></span>
+								</div>
+							</div>
+							<div id="div_id_shipping_detail_phone" class="form-group">
+								<div class="controls ">
+									<input name="shipping_detail_phone" required="" id="id_shipping_detail_phone" data-bind="value: phone, bootstrapErrors: phone" placeholder="Phone #" class="textinput textInput form-control" maxlength="20" type="text">
+									<span style="display: none;" class="help-block"></span>
+								</div>
+							</div><h4>Where is this being delivered?</h4>
+							<hr>
+							<div id="div_id_shipping_detail_street" class="form-group">
+								<div class="controls ">
+									<input name="shipping_detail_street" required="" id="id_shipping_detail_street" data-bind="value: street, bootstrapErrors: street" placeholder="Delivery Address" class="textinput textInput form-control" maxlength="100" type="text">
+									<span style="display: none;" class="help-block"></span>
+								</div>
+							</div>
+							<div id="div_id_shipping_detail_street_2" class="form-group">
+								<div class="controls ">
+									<input name="shipping_detail_street_2" autocomplete="off" data-bind="value: street2, bootstrapErrors: street2" id="id_shipping_detail_street_2" class="form-control textinput textInput form-control" maxlength="100" type="text">
+									<span style="display: none;" class="help-block"></span>
+								</div>
+							</div>
+							<div id="div_id_shipping_detail_street_3" class="form-group">
+								<div class="controls ">
+									<input name="shipping_detail_street_3" autocomplete="off" data-bind="value: street3, bootstrapErrors: street3" id="id_shipping_detail_street_3" class="form-control textinput textInput form-control" maxlength="100" type="text">
+									<span style="display: none;" class="help-block"></span>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div id="div_id_shipping_detail_city" class="form-group">
+										<div class="controls ">
+											<input name="shipping_detail_city" required="" id="id_shipping_detail_city" data-bind="value: city, bootstrapErrors: city" placeholder="City" class="textinput textInput form-control" maxlength="100" type="text">
+											<span style="display: none;" class="help-block"></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6" data-bind="visible: country() !== &quot;US&quot;">
+									<div id="div_id_shipping_detail_state" class="form-group">
+										<div class="controls ">
+											<input name="shipping_detail_state" data-bind="value: state, bootstrapErrors: state" placeholder="Province/Region" class="textinput textInput form-control" id="id_shipping_detail_state" type="text">
+											<span style="display: none;" class="help-block"></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6" style="display: none" data-bind="visible: country() === &quot;US&quot;">
+									<div id="div_id_shipping_detail_us_state" class="form-group">
+										<div class="controls ">
+											<div class="select-container">
+												<select name="shipping_detail_us_state" data-bind="value: usState, bootstrapErrors: usState" placeholder="State/Region" class="select form-control" id="id_shipping_detail_us_state">
+													<option value=""></option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AS">American Samoa</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="AA">Armed Forces Americas</option><option value="AE">Armed Forces Europe</option><option value="AP">Armed Forces Pacific</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District of Columbia</option><option value="FM">Federated States of Micronesia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="GU">Guam</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MH">Marshall Islands</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="MP">Northern Mariana Islands</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PW">Palau</option><option value="PA">Pennsylvania</option><option value="PR">Puerto Rico</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VI">Virgin Islands</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option>
+												</select><span style="display: none;" class="help-block"></span><i class="icon-select-arrows"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div id="div_id_shipping_detail_postcode" class="form-group">
+										<div class="controls ">
+											<input name="shipping_detail_postcode" id="id_shipping_detail_postcode" data-bind="value: postcode, bootstrapErrors: postcode" placeholder="Postal Code" class="form-control textinput textInput form-control" maxlength="10" type="text">
+											<span style="display: none;" class="help-block"></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div id="div_id_country" class="form-group">
+										<div class="controls ">
+											<div class="select-container">
+												<select name="country" data-bind="value: country, bootstrapErrors: country" class="form-control select form-control" id="id_country">
+													<option value=""></option><option value="AF">Afghanistan</option><option value="AX">Åland Islands</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AS">American Samoa</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AQ">Antarctica</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BJ">Benin</option><option value="BM">Bermuda</option><option value="BT">Bhutan</option><option value="BO">Bolivia</option><option value="BQ">Bonaire, Sint Eustatius and Saba</option><option value="BA">Bosnia and Herzegovina</option><option value="BW">Botswana</option><option value="BV">Bouvet Island</option><option value="BR">Brazil</option><option value="IO">British Indian Ocean Territory</option><option value="BN">Brunei</option><option value="BG">Bulgaria</option><option value="BF">Burkina Faso</option><option value="BI">Burundi</option><option value="CV">Cabo Verde</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="KY">Cayman Islands</option><option value="CF">Central African Republic</option><option value="TD">Chad</option><option value="CL">Chile</option><option value="CN">China</option><option value="CX">Christmas Island</option><option value="CC">Cocos (Keeling) Islands</option><option value="CO">Colombia</option><option value="KM">Comoros</option><option value="CG">Congo</option><option value="CD">Congo (the Democratic Republic of the)</option><option value="CK">Cook Islands</option><option value="CR">Costa Rica</option><option value="CI">Côte d'Ivoire</option><option value="HR">Croatia</option><option value="CU">Cuba</option><option value="CW">Curaçao</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DJ">Djibouti</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="GQ">Equatorial Guinea</option><option value="ER">Eritrea</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="FK">Falkland Islands  [Malvinas]</option><option value="FO">Faroe Islands</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="TF">French Southern Territories</option><option value="GA">Gabon</option><option value="GM">Gambia (The)</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GG">Guernsey</option><option value="GN">Guinea</option><option value="GW">Guinea-Bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="HM">Heard Island and McDonald Islands</option><option value="VA">Holy See  [Vatican City State]</option><option value="HN">Honduras</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IR">Iran</option><option value="IQ">Iraq</option><option value="IE">Ireland</option><option value="IM">Isle of Man</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JE">Jersey</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KI">Kiribati</option><option value="KW">Kuwait</option><option value="KG">Kyrgyzstan</option><option value="LA">Laos</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LR">Liberia</option><option value="LY">Libya</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macao</option><option value="MK">Macedonia (the former Yugoslav Republic of)</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MQ">Martinique</option><option value="MR">Mauritania</option><option value="MU">Mauritius</option><option value="YT">Mayotte</option><option value="MX">Mexico</option><option value="FM">Micronesia (the Federated States of)</option><option value="MD">Moldovia</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MS">Montserrat</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="MM">Myanmar</option><option value="NA">Namibia</option><option value="NR">Nauru</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NE">Niger</option><option value="NG">Nigeria</option><option value="NU">Niue</option><option value="NF">Norfolk Island</option><option value="KP">North Korea</option><option value="MP">Northern Mariana Islands</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PW">Palau</option><option value="PS">Palestine, State of</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PN">Pitcairn</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="QA">Qatar</option><option value="RE">Réunion</option><option value="RO" selected="selected">Romania</option><option value="RU">Russia</option><option value="RW">Rwanda</option><option value="BL">Saint Barthélemy</option><option value="SH">Saint Helena, Ascension and Tristan da Cunha</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="MF">Saint Martin (French part)</option><option value="PM">Saint Pierre and Miquelon</option><option value="VC">Saint Vincent and the Grenadines</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="ST">Sao Tome and Principe</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option value="SG">Singapore</option><option value="SX">Sint Maarten (Dutch part)</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="SO">Somalia</option><option value="ZA">South Africa</option><option value="GS">South Georgia and the South Sandwich Islands</option><option value="KR">South Korea</option><option value="SS">South Sudan</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SD">Sudan</option><option value="SR">Suriname</option><option value="SJ">Svalbard and Jan Mayen</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="SY">Syria</option><option value="TW">Taiwan</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania</option><option value="TH">Thailand</option><option value="TL">Timor-Leste</option><option value="TG">Togo</option><option value="TK">Tokelau</option><option value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TM">Turkmenistan</option><option value="TC">Turks and Caicos Islands</option><option value="TV">Tuvalu</option><option value="UG">Uganda</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="US">United States</option><option value="UM">United States Minor Outlying Islands</option><option value="UY">Uruguay</option><option value="UZ">Uzbekistan</option><option value="VU">Vanuatu</option><option value="VE">Venezuela</option><option value="VN">Vietnam</option><option value="VG">Virgin Islands (British)</option><option value="VI">Virgin Islands (U.S.)</option><option value="WF">Wallis and Futuna</option><option value="EH">Western Sahara</option><option value="YE">Yemen</option><option value="ZM">Zambia</option><option value="ZW">Zimbabwe</option>
+												</select><span style="display: none;" class="help-block"></span><i class="icon-select-arrows"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div id="div_id_additional_instructions" class="form-group">
+										<div class="controls ">
+											<input name="additional_instructions" data-bind="value: additionalInstructions, bootstrapErrors: additionalInstructions" placeholder="Additional Instructions" class="form-control textinput textInput form-control" id="id_additional_instructions" type="text">
+											<span style="display: none;" class="help-block"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<div class="col-md-6 tinted-box">
+
+					<div class="alert alert-info" data-bind="visible: showShippingNotifyNotice" style="display: none" id="id_notify_email_msg">
+						Oh no! The seller doesn't ship to your country! Let's fix that.
+						<span style="display: none;" data-bind="visible: loggedIn">You will be emailed when you can order them.</span>
+						<span data-bind="visible: !loggedIn()">Enter your email address if you'd like to be notified when we are able to ship them to you. <span class="control-group" data-bind="css: {'has-error': notifyEmail() &amp;&amp; !notifyEmail.isValid() }, validationOptions: {insertMessages: false}">
+								<div id="id_notify_email_block">
+									<div class="input-group">
+										<input class="form-control" data-bind="value: notifyEmail" data-shipping-requests="[]" id="id_notify_email" type="email">
+										<div class="input-group-btn">
+											<button class="btn btn-info" data-bind="click: submitNotifyEmail">
+												Request Shipping!
+											</button>
+										</div>
+									</div>
+									<span style="display: none;" class="help-block" data-bind="validationMessage: notifyEmail"></span>
+								</div> </span> </span>
+						Sadly you'll need to remove all items that can't be shipped from your cart.
+					</div>
+
+					<h4>Order Summary</h4>
+
+					<!-- start li -->
+					<div id="id_store_58343" class="store-cart" data-bind="with: store_carts()[0]">
+
+						<table class="table store-cart-table" id="id_store_table-58343">
+							<thead>
+								<tr>
+									<th><a href="/stores/freto/"><img src="https://d3s5r33r268y59.cloudfront.net/66231/profiles/thumbs/2014-04-10T14:05:45.770Z-PetitStudio.png.40x40_q85_pad.png" class="rounded-image avatar-image" height="20" width="20"></a><span class="align-middle"><a href="/stores/freto/">Petit Studio</a></span>
+									<div class="hidden-xs pull-right">
+										<button class="btn btn-danger btn-sm" data-bind="visible: !canShip(), click: $root.removeStore" style="display: none;">
+											Remove All Items
+										</button>
+									</div>
+									<div class="visible-xs mt10">
+										<button class="btn btn-danger btn-sm" data-bind="visible: !canShip(), click: $root.removeStore" style="display: none;">
+											Remove All Items
+										</button>
+									</div></th>
+									<th class="text-center unit-price-header">Unit Price</th>
+									<th class="text-center">Quantity</th>
+									<th class="text-center">Price</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr class="store-" id="69679-item-row" data-url="/products/freto/pi-camera-hdmi-cable-extension/" data-bind="with: items()[0]">
+									<td>
+									<div data-bind="style: { opacity: $parent.canShip() ? 1 : 0.3 }" style="opacity: 1" class="clearfix">
+										<div class="pull-left mr10">
+
+											<a href="/products/freto/pi-camera-hdmi-cable-extension/"><img src="https://d3s5r33r268y59.cloudfront.net/66231/products/thumbs/2015-04-12T07:15:22.906Z-threeView.JPG.114x76_q85_pad_rcrop.jpg" height="76" width="114"></a>
+
+											<br>
+											<small> <a href="#" data-bind="click: $root.removeItem, visible: !$.isNumeric(quantity()) || quantity() > 0"><i class="icon-delete">Remove</i></a> <a href="#" data-bind="click: $root.restoreItem, visible: $.isNumeric(quantity()) &amp;&amp; quantity() <= 0" style="display: none">Restore</a> </small>
+										</div>
+										<div style="display: inline-block; width: 8em">
+											<!-- shim to pop the text down if we are too narrow -->
+										</div>
+										<div>
+											<a href="/products/freto/pi-camera-hdmi-cable-extension/">Pi Camera HDMI Cable Extension</a>
+
+										</div>
+									</div>
+									<div>
+										<small data-bind="visible: isBackorder" class="backorder-notice" data-is-backorder="false" style="display: none"> (Backorder - you are only billed if it comes back into stock within 90 days) <a href="#" data-toggle="modal" data-target="#backorder-modal"><i class="icon-question-mark"></i></a> </small>
+									</div><div data-bind="foreach: oversoldErrors(), visible: oversoldErrors().length" data-oversold-errors="[]" class="oversold-error" style="display: none"></div><div data-bind="visible: quantity_message, text: quantity_message" class="help-block alert has-error mt10 mb0" style="display:none"></div></td>
+
+									<td id="69679-inline_unit_price" class="unit-price text-center">
+									<div class="align-input" data-bind="currencyText: unit_price, style: { opacity: $parent.canShip() ? 1 : 0.3 }" style="opacity: 1">
+										$14.95
+									</div></td>
+
+									<td class="text-center money-width">
+									<div data-bind="style: { opacity: $parent.canShip() ? 1 : 0.3 }" style="opacity: 1">
+										<div data-bind="visible: !$.isNumeric(quantity()) || quantity() > 0 &amp;&amp; $parent.canShip()">
+											<input pattern="[0-9]*" data-bind="value: quantity" value="1" id="69679-quantity" data-pk="69679" class="form-control input-sm cart-quantity" data-numeric="" type="text">
+											<span style="display: none;" class="help-block"></span>
+										</div>
+										<button class="btn btn-xs btn-success" data-bind="click: $root.restoreItem, visible: $.isNumeric(quantity()) &amp;&amp; quantity() <= 0" style="display: none">
+											Restore
+										</button>
+									</div></td>
+
+									<td class="text-center money-width ">
+									<div class="align-input" data-bind="style: { opacity: $parent.canShip() ? 1 : 0.3 }" style="opacity: 1">
+										<span id="69679-inline_total_price" class="price" data-bind="currencyText: price">$14.95</span>
+									</div></td>
+								</tr>
+
+								<tr class="shipping">
+									<td>
+									<div class="align-input">
+										<span data-original-title="Items are shipped directly from the Seller." class="ships-from-icon" data-toggle="tooltip" title=""><i class="icon-marker-1"></i></span>
+										Ships from
+										Ashikaga,
+										Japan
+									</div></td>
+									<td colspan="3">
+									<div data-bind="visible: shouldShowShippingInfo()">
+										<span id="58343-shipping_rates_block">
+											<div class="select-container" data-bind="visible: shippingOptions().length > 1" style="">
+												<select id="58343-shipping_rate_options" data-bind="options: shippingOptions, value: shippingSelected, optionsText: 'rate_description', optionsValue: 'rate_id'" class="shipping-rate-options form-control mb0" data-options="[{&quot;rate_id&quot;: 101033, &quot;rate_amount&quot;: &quot;3.00&quot;, &quot;rate_description&quot;: &quot;$3.00 - Japan Post Air Mail - Seven days&quot;}, {&quot;rate_id&quot;: 101032, &quot;rate_amount&quot;: &quot;15.00&quot;, &quot;rate_description&quot;: &quot;$15.00 - EMS 3 days and Tracking Provided - 1 to 5 pieces&quot;}]" data-initial-selection="101033" data-store-cart-pk="58343">
+													<option value="101033">$3.00 - Japan Post Air Mail - Seven days</option><option value="101032">$15.00 - EMS 3 days and Tracking Provided - 1 to 5 pieces</option>
+												</select>
+												<i class="icon-select-arrows"></i>
+											</div> </span>
+										<span style="display: none;" id="58343-shipping_rate_single" data-bind="visible: shippingOptions().length === 1, text: shippingOptions().length ? shippingOptions()[0].rate_description : ''">$3.00 - Japan Post Air Mail - Seven days</span>
+									</div><div class="alert alert-warning shipping-error align-center" data-bind="visible: shippingError(), text: shippingError" style="display: none;"></div></td>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+
+					<div id="totals-payment">
+
+						<table class="table cart-totals-table">
+							<tbody>
+								<tr>
+									<td> Sub total: </td>
+									<td class="align-right money-width"><strong id="sub_total" data-bind="currencyText: subTotal">$14.95</strong></td>
+								</tr>
+
+								<tr>
+									<td> Shipping: </td>
+									<td class="align-right"><strong id="shipping_total" data-bind="currencyText: shippingTotal">$3.00</strong></td>
+								</tr>
+
+								<tr>
+									<td>
+									<div class="pull-left">
+										Discount:<span style="display: none;" data-bind="visible: discountCode, text: discountCodeDisplay" data-code="" id="discount-code"> ()</span>
+									</div>
+									<div class="pull-right control-group discount-input" data-bind="visible: !discountCode(), css: {'has-error': discountError}">
+										<div class="input-group mb0">
+											<input class="form-control input-sm" data-bind="value: newDiscountCode" size="7" type="text">
+											<div class="input-group-btn">
+												<button class="btn btn-primary btn-sm" data-bind="click: addDiscountCode">
+													Apply
+												</button>
+											</div>
+										</div>
+										<span style="display: none;" class="help-block" data-bind="text: discountError, visible: discountError"></span>
+									</div>
+									<div data-bind="visible: discountCode" class="pull-right" style="display: none">
+										<button class="btn btn-info btn-xs" data-bind="click: removeDiscountCode" title="Remove Discount">
+											<i class="icon-delete"></i>
+										</button>
+									</div></td>
+									<td class="align-input money-width"><strong id="discount_total" data-bind="currencyText: discountTotal">$0.00</strong></td>
+								</tr>
+
+								<tr>
+									<td> Payment Total: </td>
+									<td class="align-right money-width"><strong id="total_price" data-bind="currencyText: fullTotal">$17.95</strong></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</div>
+			<!-- end #cart -->
+
+		</main>
+
+	</div>
+</section>
+<!-- end .tinted -->

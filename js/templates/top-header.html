@@ -25,7 +25,41 @@
         <% } else {%>
         	<li><a class="btn-logout" href="#">Logout ( <%= Parse.User.current().get('username') %> )</a></li>
         <% } %>
-        <li><a href="#cart"><span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span>(0)</a></li>
+ 		<li class="dropdown">
+          <a href="#cart" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-shopping-cart"></span>(2)<span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-cart" role="menu">
+              <li>
+                  <span class="nav-item-cart">
+                    <span class="item-left">
+                        <img src="http://lorempixel.com/50/50/" alt="" />
+                        <span class="item-info">
+                            <span>Item name</span>
+                            <span>23$</span>
+                        </span>
+                    </span>
+                    <span class="item-right">
+                        <button class="btn btn-xs btn-danger pull-right">x</button>
+                    </span>
+                </span>
+              </li>
+              <li>
+                  <span class="nav-item-cart">
+                    <span class="item-left">
+                        <img src="http://lorempixel.com/50/50/" alt="" />
+                        <span class="item-info">
+                            <span>Item name</span>
+                            <span>23$</span>
+                        </span>
+                    </span>
+                    <span class="item-right">
+                        <button class="btn btn-xs btn-danger pull-right">x</button>
+                    </span>
+                </span>
+              </li>
+              <li class="divider"></li>
+              <li><a class="text-center" href="#cart">View Cart</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div><!-- /.container-fluid -->

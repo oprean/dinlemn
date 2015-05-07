@@ -17,12 +17,26 @@ define([
 		jumbotron : '.jumbotron-container',
 		randomCalendar : '.random-calendar-container',
 	},
+	events : {
+		'body scroll' : 'slideShow' 
+	},
 	
 	initialize : function() {
+		_.bindAll(this, 'slideShow');
+		$(window).scroll(this.slideShow);
+		
 		this.jumbotronView = new JumbotronView();
 		this.randomCalendar = new CalendarLayout({
 			calendarData:new Calendar({init:'random-calendar'})
 		});
+	},
+
+	slideShow : function() {
+		var scroll = $(window).scrollTop(); 
+		$('.scroll-val').text(scroll);
+		if (scroll > 100) {
+			this.showChildView('randomCalendar', this.randomCalendar);			
+		}
 	},
 
 	onRender : function() {
@@ -31,7 +45,7 @@ define([
 	},
 
 	onBeforeShow : function() {
-		//this.showChildView('jumbotron', this.jumbotronView);
+		this.showChildView('jumbotron', this.jumbotronView);
 		this.showChildView('randomCalendar', this.randomCalendar);
 		
 		this.$('.icon-btn').css('display', 'none');
