@@ -27,7 +27,7 @@ define([
 		
 		this.jumbotronView = new JumbotronView();
 		this.randomCalendar = new CalendarLayout({
-			calendarData:new Calendar({init:'random-calendar'})
+			calendarData:new Calendar({init:'home-calendar'})
 		});
 	},
 
@@ -50,7 +50,7 @@ define([
 		
 		this.$('.icon-btn').css('display', 'none');
 		this.$('.edit-mode-only').css('display', 'none');
-		this.$('select').css('display', 'none');
+		this.$('.select-texture-control').css('display', 'none');
 	},
   });
 

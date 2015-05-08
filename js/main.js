@@ -95,11 +95,11 @@ require([
 				regionClass: Backbone.Marionette.Modals
 			}
 		});
-		
+			
 		app.addInitializer(function(){
-			app.language = window.navigator.userLanguage || window.navigator.language;
+			app.locale = window.navigator.userLanguage || window.navigator.language;
 			app.env = Utils.bootstrapEnv();
-			//console.log('lang: ' + app.language + 'env: ' + app.env);
+			console.log('lang: ' + app.locale + 'env: ' + app.env);
 			Parse.initialize(Constants.parse.AppID, Constants.parse.JsKey);
 			window.polyglot = new Polyglot({phrases: translations});
 			app.router = new Router();

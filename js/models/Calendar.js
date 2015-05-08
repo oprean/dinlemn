@@ -52,6 +52,7 @@
 					case 'month-calendar':
 						break;
 					case 'random-calendar':
+					case 'home-calendar':
 						this.randomize(options.init);
 						break;
 					default:
@@ -73,20 +74,29 @@
 			return items;
 		},
 		
-		randomize : function() {
+		randomize : function(type) {
 			var self = this;
+			moment.locale(app.locale);
 			var columns = new Columns();
-			var months = moment.months();
+			var months, width;
+			if (type != 'home-calendar') {
+				width = 320;
+				months = moment.months();
+			} else {
+				width = 160;
+				var startWith = _.random(0, 5);
+				months = moment.months().slice(startWith, startWith+6);
+			}
 			_.each(months, function(month){
 				var column = new Column({
-					header : new Header({title:month}),
-					items : self.randomColumnItems()
+					header : new Header({title:month.ucfirst()}),
+					items : self.randomColumnItems(type)
 				});
 				columns.add(column);
 			});
 			this.set({
 				name : Constants.quickSaveName, 
-				plaque : new Plaque({width:320}),
+				plaque : new Plaque({width:width}),
 				columns : columns
 			});			
 		}

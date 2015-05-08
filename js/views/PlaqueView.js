@@ -54,7 +54,7 @@ define([
 			this.listenTo(vent, 'editor.preview', function(){
 				this.$('.icon-btn').toggle();
 				this.$('.edit-mode-only').toggle();
-				this.$('select').toggle();
+				this.$('.select-texture-control').toggle();
 			});
 		},
 		

@@ -35,6 +35,8 @@ $.widget("ui.selectTexture", {
 		});                 
 		$(this.element).append(this._buttons); 
 		$(this.element).css('display',this.options.display);
+		$(this.element).addClass('select-texture-control');
+		
 	},
 	
 	_setOption: function(option, value) {

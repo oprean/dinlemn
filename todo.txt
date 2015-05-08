@@ -42,6 +42,7 @@ set columns-container width on init/load
 customize gallery item
 save item (not save as)
 validate on EditItemView
+names array conflict with locale
 
 Site sections:
 ==============

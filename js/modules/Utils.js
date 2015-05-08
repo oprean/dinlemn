@@ -3,6 +3,11 @@ define([
   'underscore',
   'modules/Constants',
 ], function($, _, Constants){
+	
+	String.prototype.ucfirst = function() {
+	    return this.charAt(0).toUpperCase() + this.slice(1);
+	};
+	
 	var Utils = {
 		upload : function(fileInputId, fileIndex) {
 			// take the file from the input
