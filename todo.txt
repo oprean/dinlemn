@@ -31,6 +31,10 @@ TODOs
 - prerender.io to make the stuff SEO friendly ...
 - svg?!? - http://nocircleno.com/blog/svg-with-backbone-js/
 - http://123d.circuits.io/circuits/19376-led-shield#breadboard (created by http://weworkweplay.com/contact/)
+- use slim on the server: 
+	http://coenraets.org/blog/2011/12/restful-services-with-jquery-php-and-the-slim-framework/
+	http://scottnelle.com/616/connecting-slim-framework-mysql/
+- for rings: https://developer.mozilla.org/en-US/docs/Web/CSS/Tools/Border-radius_generator
 
 Bugs:
 =====
