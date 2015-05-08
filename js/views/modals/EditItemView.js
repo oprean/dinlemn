@@ -5,9 +5,8 @@ define([
   'modules/Utils',
   'modules/Constants',
   'text!templates/modals/item-edit.html',
-  'dropzone',
   'backbone.modal',
-], function($, _, Backbone, Utils, Constants, editItemTpl, dropzone){
+], function($, _, Backbone, Utils, Constants, editItemTpl){
 	var EditItemView = Backbone.Modal.extend({
 		template: _.template(editItemTpl),
 		submitEl: '.btn-submit',
@@ -42,10 +41,6 @@ define([
 			};
 		},
 		
-		onRender : function() {
-			$("#image-file").dropzone({ url: "/file/post" });
-		},
-		
 		submit: function() {
 			console.log('submit');
 			this.model.set({
@@ -58,7 +53,7 @@ define([
 				height : $('#height').val(),
 			});
 			//this.$('#item-edit-form').submit();
-			Utils.upload('image-file',0);
+			//Utils.upload('image-file',0);
 		}	
 			
 	});
