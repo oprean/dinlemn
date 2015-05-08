@@ -4,6 +4,7 @@ require.config({
 		"jquery" : "lib/jquery-2.1.3.min",
  		"jquery.bootstrap": "lib/bootstrap.min",
 		"jqueryui":"lib/jquery-ui.min",
+		"jqueryui.custom":"modules/jquery-ui.custom",
 		"underscore":"lib/lodash.min",
 		
 		"backbone":"lib/backbone-min",
@@ -30,6 +31,9 @@ require.config({
 	"shim":{
 		"jquery.bootstrap": {
 			"deps": ["jquery"]
+		},
+		"jqueryui.custom": {
+			"deps": ["jqueryui"]
 		},
 		"html2canvas": {
 			"deps": ["jquery"],
@@ -71,6 +75,8 @@ require([
   'modules/Events',
   'i18n!nls/labels',
   'modules/backbone.validation.bootstrap',
+  'jqueryui',
+  'jqueryui.custom',
   'jquery.bootstrap',
   'html2canvas',
   'backbone.modal',

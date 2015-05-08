@@ -2,6 +2,7 @@
   'jquery',
   'underscore',
   'backbone',
+  'modules/Constants',
   'i18n!nls/names',
   'models/Product',
   'models/Plaque',
@@ -11,7 +12,7 @@
   'collections/Columns',
   'collections/Items',
   'moment'
-], function($, _, Backbone, names, Product, Plaque, Column, Header, Item, Columns, Items, moment){
+], function($, _, Backbone, Constants, names, Product, Plaque, Column, Header, Item, Columns, Items, moment){
 	function columnsDefault() {
 		var columns = new Columns();
 		var months = moment.months();
@@ -43,7 +44,7 @@
 							items : new Items()
 						}));
 						this.set({
-							name : options.init, 
+							name : Constants.quickSaveName, 
 							plaque : new Plaque({title:'_blank_', width:null}),
 							columns : columns
 						}); 
@@ -72,7 +73,7 @@
 			return items;
 		},
 		
-		randomize : function(name) {
+		randomize : function() {
 			var self = this;
 			var columns = new Columns();
 			var months = moment.months();
@@ -84,7 +85,7 @@
 				columns.add(column);
 			});
 			this.set({
-				name : name, 
+				name : Constants.quickSaveName, 
 				plaque : new Plaque({width:320}),
 				columns : columns
 			});			

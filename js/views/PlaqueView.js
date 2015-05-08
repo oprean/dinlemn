@@ -25,7 +25,8 @@ define([
 			'blur h1' : 'save',
 			'click #addColumn' : 'addColumn',
 			'click #editPlaque' : 'editPlaque',
-			'change #selectWood' : 'selectWood'
+			'change #selectWood' : 'selectWood',
+			'click .select-wood .texture' : 'selectWood',
 		},
 		
 		modelEvents : {
@@ -63,7 +64,12 @@ define([
 			};
 		},
 		
-		onRender : function() {
+		onRender : function() {			
+			this.$('.select-wood').selectTexture({
+				basePath: 'assets/img/plaque/',
+				textures: Constants.woodTypes
+			});
+			
 			if (this.model.get('image')!= null && this.model.get('image')!= '') {
 				this.$el.css('background-image', 'url("' + this.model.get('image') + '")');
 				this.$el.css('background-size', 'cover');			
@@ -105,8 +111,7 @@ define([
 		},
 		
 		selectWood : function(e) {
-			this.model.set('wood', $(e.target).val());
-			this.render();
+			this.model.set('wood', $(e.target).data('texture'));
 		}
 	});
 	

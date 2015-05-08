@@ -2,12 +2,13 @@ define([
   'jquery',
   'underscore',
   'backbone',
-], function($, _, Backbone){
+  'modules/Constants',
+], function($, _, Backbone, Constants){
 	var Product = Backbone.Model.extend({
 		defaults : {
-			name : 'local.last.save',
+			name : Constants.quickSaveName,
 			description : '',
-			author : 'Guest',
+			author : Constants.guestName,
 			type : 'calendar',
 			date : null,
 		}

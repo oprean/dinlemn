@@ -1,8 +1,11 @@
 define([
 ], function(){
+	// TODO change constans name to UPERCASE
 	var Constants = {
 		scale : 4,
 		thumbSize : 200,
+		guestName : 'Guest',
+		quickSaveName : 'local.last.save',
 		mainMenu: [
 			{text:'Shop', href:'#shop'},
 			{text:'Editor', href:'#editor'},

@@ -16,7 +16,7 @@ define([
 			'click #preview' : 'preview',
 			'click #save' : 'save',
 			'click #saveas' : 'saveas',
-			'change #wall' : 'changeWall',
+			'click .select-wall .texture' : 'changeWall',
 			'click .new-product' : 'newItem'
 		},
 		
@@ -27,7 +27,7 @@ define([
 				{id: 'saveas', text:'Save as...', href:'#'},
 				{id: 'export2png', text:'Export as PNG...', href:'#'},
 				{id: 'export2json', text:'Export as JSON...', href:'#'},
-				{id: 'importJson', text:'Import from PNG...', href:'#'},
+				{id: 'importJson', text:'Import from JSON...', href:'#'},
 			];
 			this.newMenu = [
 				{id: null, role: 'presentation', cssclass: 'new-product dropdown-header', data: null, text:'Calendars', href:'#'},
@@ -39,19 +39,25 @@ define([
 				{id: null, role: null,  cssclass: 'new-product', data: 'earrings', text:'Earrings', href:'#'},
 				{id: null, role: null,  cssclass: 'new-product', data: 'pendants', text:'Pendants', href:'#'},
 			];
-			this.walls = Constants.wallTypes;
 		},
-
+		
+		onRender : function() {
+			this.$('.select-wall').selectTexture({
+				basePath: 'assets/img/wall/',
+				textures: Constants.wallTypes
+			});
+		},
+		
 		templateHelpers : function() {
 			return {
 				filemenu: this.fileMenu,
 				newmenu: this.newMenu,
-				walls: this.walls
+				walls: Constants.wallTypes
 			};
 		},
 		
 		changeWall : function(e) {
-			$('body').css('background', 'url("assets/img/wall/' + $(e.target).val() + '.png")');
+			$('body').css('background', 'url("assets/img/wall/' + $(e.target).data('texture') + '.png")');
 		},
 		
 		preview : function() {

@@ -37,7 +37,7 @@ define([
 				}
 			});
 		} else {
-			this.model = this.products.findWhere({name: 'local.last.save'});
+			this.model = this.products.findWhere({name: Constants.quickSaveName});
 			if (this.model === undefined) {
 				console.log('init a new product:');
 				this.model = new Calendar();
@@ -71,9 +71,9 @@ define([
 			self.productLayout = self.getProductLayout();
 			self.showChildView('product', self.productLayout);
 			
-			var localModel = self.products.findWhere({name: 'local.last.save'});
+			var localModel = self.products.findWhere({name: Constants.quickSaveName});
 			if (localModel != undefined) localModel.destroy();
-			self.model.set({name: 'local.last.save'});
+			self.model.set({name: Constants.quickSaveName});
 			self.products.add(self.model);
 			self.model.save();
 		});
@@ -92,7 +92,7 @@ define([
 	},
 	
 	new : function(type) {
-		var localModel = this.products.findWhere({name: 'local.last.save'});
+		var localModel = this.products.findWhere({name: Constants.quickSaveName});
 		if (localModel != undefined) localModel.destroy();
 		switch (type) {
 			case 'blank-calendar':
@@ -116,7 +116,9 @@ define([
 	save : function() {
 		console.log('save product to local storage');
 		this.model.set({
-			author : Parse.User.current().get('username'),
+			author : Parse.User.current()
+				?Parse.User.current().get('username')
+				:Constants.guestName,
 			date : moment().format('MMMM Do YYYY h:mm:ss a'),
 		});
 		this.model.save();

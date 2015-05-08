@@ -1,9 +1,5 @@
 <form class="form-inline">
-<select id="selectWood" class="form-control input-sm pull-left">
-	<% _.each(woodTypes, function(w) { %>
-		<option <%= ((w==wood)?'selected':'') %>> <%= w %></option>
-	<% }) %>
-</select>
+<div class="select-wood pull-left"></div>
 <button id="addColumn" title="Add new column" type="button" class="icon-btn pull-right"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></button>
 <button id="editPlaque" title="Edit plaque" type="button" class="icon-btn pull-right"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
 </form>

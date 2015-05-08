@@ -9,7 +9,6 @@ body {
 }
 
 /******************* containers *********************/
-
 #main-container {
 
 }
@@ -236,6 +235,20 @@ button.icon-btn {
 	right: 5px;
 }
 
+.btn-texture {
+	border: 1px dotted #FFFFFF;
+	/*padding-right: 5px;*/
+}
+
+/*
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 80px;
+    height: 80px;
+    padding-top: 0;
+}
+*/
+
 /*navbar shopping cart*/
 ul.dropdown-cart{
     min-width:250px;
@@ -256,7 +269,6 @@ ul.dropdown-cart li .nav-item-cart:after{
     clear: both;
     height: 0;
 }
-
 ul.dropdown-cart li .item-left{
     float:left;
 }
