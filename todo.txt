@@ -37,6 +37,7 @@ Bugs:
 set columns-container width on init/load
 customize gallery item
 save item (not save as)
+validate on EditItemView
 
 Site sections:
 ==============
