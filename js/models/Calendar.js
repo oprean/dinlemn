@@ -64,10 +64,11 @@
 		
 		randomColumnItems : function() {
 			var items = new Items();
+			var firstNames = (names.firstNameFemale + '|' + names.firstNameMale).split('|');
 			for(i=0; i<_.random(0, 4);i++) {
 				var item = new Item({
 					line1: _.random(1, 28),
-					line2: names.firstNameFemale[_.random(0,names.firstNameFemale.length-1)],
+					line2: firstNames[_.random(0,firstNames.length-1)],
 				});
 				items.add(item);
 			} 

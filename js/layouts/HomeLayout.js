@@ -35,7 +35,7 @@ define([
 		var scroll = $(window).scrollTop(); 
 		$('.scroll-val').text(scroll);
 		if (scroll > 100) {
-			this.showChildView('randomCalendar', this.randomCalendar);			
+			//this.showChildView('randomCalendar', this.randomCalendar);			
 		}
 	},
 

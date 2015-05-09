@@ -5,7 +5,8 @@ define([
   'backbone.marionette',
   'views/ProductPreview',
   'modules/Events',
-], function($, _, Backbone, Marionette,ProductPreview, vent){
+  'moment'
+], function($, _, Backbone, Marionette,ProductPreview, vent, moment){
 	var ProductsGridLayout = Backbone.Marionette.LayoutView.extend({
 		el:'.product-grid',
 		regions : {

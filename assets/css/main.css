@@ -237,17 +237,20 @@ button.icon-btn {
 
 .btn-texture {
 	border: 1px dotted #FFFFFF;
-	/*padding-right: 5px;*/
 }
 
 /*
+.navbar-default {
+    opacity: 0.5;
+}
+
 .navbar-brand,
 .navbar-nav li a {
     line-height: 80px;
     height: 80px;
     padding-top: 0;
-}
-*/
+}*/
+
 
 /*navbar shopping cart*/
 ul.dropdown-cart{
