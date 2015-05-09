@@ -14,7 +14,8 @@ define([
   'views/modals/OpenView',
   'views/modals/SaveView',
   'modules/Events',
-], function($, _, Backbone, Marionette, Constants, Utils, Products, Calendar, WProduct, productEditorTpl, CalendarLayout, ControlsView, OpenView, SaveView, vent){
+  'moment'
+], function($, _, Backbone, Marionette, Constants, Utils, Products, Calendar, WProduct, productEditorTpl, CalendarLayout, ControlsView, OpenView, SaveView, vent, moment){
   var EditorLayout = Backbone.Marionette.LayoutView.extend({
 	template : _.template(productEditorTpl),
 	regions : {
@@ -32,8 +33,8 @@ define([
 			product.fetch({
 				success: function(model){
 					self.model = new Calendar(JSON.parse(model.get('blueprint')));
-					//console.log(self.model);
-					self.productLayout = self.getProductLayout();					
+					self.productLayout = self.getProductLayout();	
+					self.showChildView('product', self.productLayout);				
 				}
 			});
 		} else {
@@ -79,7 +80,7 @@ define([
 		});
 				
 		this.controlsView = new ControlsView();
-		this.productLayout = this.getProductLayout();
+		if (this.model)	this.productLayout = this.getProductLayout();
 	},
 
 	getProductLayout : function(model) {
@@ -131,7 +132,7 @@ define([
 
 	onBeforeShow : function() {
 		this.showChildView('controls', this.controlsView);
-		this.showChildView('product', this.productLayout);
+		if (this.model)	this.showChildView('product', this.productLayout);
 	},
   });
 
