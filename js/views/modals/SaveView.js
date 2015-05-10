@@ -6,8 +6,9 @@ define([
   'layouts/ProductsGridLayout',
   'modules/Constants',
   'text!templates/modals/save.html',
+  'moment',
   'backbone.modal',
-], function($, _, Backbone, WProduct, ProductsGridLayout, Constants, saveTpl){
+], function($, _, Backbone, WProduct, ProductsGridLayout, Constants, saveTpl, moment){
 	var SaveView = Backbone.Modal.extend({
 		template: _.template(saveTpl),
 		submitEl: '.btn-submit',
@@ -45,6 +46,7 @@ define([
 		},
 		
 		submit: function() {
+			var self = this;
 			console.log('save product to parse');
 			var product = new WProduct();
 			
@@ -64,6 +66,16 @@ define([
 			}, {
 				success: function(object) {
 				console.log('product sucessfully saved to parse');
+				console.log(object);
+				$.post(
+					'php/upload_post.php',
+					{
+						image: self.$('.thumb').attr('src'),
+						id:object.id
+					},
+					function(data){
+						console.log('image succesfuly saved to server');
+					});
 			},
 				error: function(model, error) {
 				console.log(error);
