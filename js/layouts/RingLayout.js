@@ -11,10 +11,10 @@ define([
   'modules/Events',
 ], function($, _, Backbone, Marionette, Ring, ringLayoutTpl, RingView, OptionsView, Constants, vent){
   var RingLayout = Backbone.Marionette.LayoutView.extend({
-	template : _.template(calendarLayoutTpl),
+	template : _.template(ringLayoutTpl),
 	regions : {
-		ring : '#ring-container',
-		options : '#options-container'
+		ring : '.ring-container',
+		//options : '.options-container'
 	},
 	
 	initialize : function(options) {
@@ -22,25 +22,18 @@ define([
 		//console.log('init ring layout');
 		this.model = options.ringData;	
 		console.log(this.model);
-		if (this.model.cid === undefined) {
-			this.buildModel();
-		} 
 
 		this.ringView = new RingView({
 			dataModel : this.model
 		});
-		this.optionsView = new OptionsView({
+		/*this.optionsView = new OptionsView({
 			dataModel : this.model
-		});
-	},
-
-	buildModel : function() {
-		console.log('build ring model');
+		});*/
 	},
 	
 	onBeforeShow : function() {
 		this.showChildView('ring', this.ringView);
-		this.showChildView('options', this.optionsView);
+		//this.showChildView('options', this.optionsView);
 	},
   });
 

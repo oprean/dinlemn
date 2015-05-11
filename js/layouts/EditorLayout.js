@@ -7,15 +7,17 @@ define([
   'modules/Utils',
   'collections/Products',
   'models/Calendar',
+  'models/Ring',
   'models/WProduct',
   'text!templates/layouts/editor-layout.html',
   'layouts/CalendarLayout',
+  'layouts/RingLayout',
   'views/ControlsView',
   'views/modals/OpenView',
   'views/modals/SaveView',
   'modules/Events',
   'moment'
-], function($, _, Backbone, Marionette, Constants, Utils, Products, Calendar, WProduct, productEditorTpl, CalendarLayout, ControlsView, OpenView, SaveView, vent, moment){
+], function($, _, Backbone, Marionette, Constants, Utils, Products, Calendar, Ring, WProduct, productEditorTpl, CalendarLayout, RingLayout, ControlsView, OpenView, SaveView, vent, moment){
   var EditorLayout = Backbone.Marionette.LayoutView.extend({
 	template : _.template(productEditorTpl),
 	regions : {
@@ -100,13 +102,17 @@ define([
 			case 'month-calendar':
 			case 'random-calendar':
 				this.model = new Calendar({init:type});
+				this.showChildView('product', new CalendarLayout({calendarData:this.model}));
 				break;
+			case 'ring':
+				this.model = new Ring({init:type});
+				this.showChildView('product', new RingLayout({ringData:this.model}));
 			default:
 				this.model = new Calendar();
+				this.showChildView('product', new CalendarLayout({calendarData:this.model}));
 		}
 		this.products.add(this.model);
 		this.model.save();
-		this.showChildView('product', new CalendarLayout({calendarData:this.model}));
 	},
 	
 	open : function() {

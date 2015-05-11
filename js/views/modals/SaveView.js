@@ -67,7 +67,7 @@ define([
 				success: function(object) {
 				console.log('product sucessfully saved to parse');
 				console.log(object);
-				$.post(
+				/*$.post(
 					'php/upload_post.php',
 					{
 						image: self.$('.thumb').attr('src'),
@@ -75,7 +75,7 @@ define([
 					},
 					function(data){
 						console.log('image succesfuly saved to server');
-					});
+					});*/
 			},
 				error: function(model, error) {
 				console.log(error);

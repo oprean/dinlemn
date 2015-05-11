@@ -29,6 +29,14 @@ define([
 			'webtreats_wood-pattern2-512',
 			'webtreats_wood-pattern5-512'
 		],
+		
+		profileTypes: [
+			'Softflat',
+			'Reverse D',
+			'D Profile',
+			'Courting'
+		],
+		
 		shapeTypes : [
 			'round',
 			'rectangular',
