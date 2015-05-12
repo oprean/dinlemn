@@ -107,6 +107,7 @@ define([
 			case 'ring':
 				this.model = new Ring({init:type});
 				this.showChildView('product', new RingLayout({ringData:this.model}));
+				break;
 			default:
 				this.model = new Calendar();
 				this.showChildView('product', new CalendarLayout({calendarData:this.model}));

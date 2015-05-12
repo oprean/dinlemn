@@ -10,19 +10,17 @@ define([
 
 ], function($, _, Backbone, Marionette, ringTpl, Ring, Constants, vent){
 	var RingView = Backbone.Marionette.ItemView.extend({
-		className : 'ring',
+		className : 'ring-zone',
 		template :  _.template(ringTpl),
 		events : {
 		},
 		
 		modelEvents : {
 			'change' : 'render',
-			'change:width' : 'changeWidth'
 		},
 		
-
-		
 		initialize : function(options) {
+			this.model = new Ring();
 			var self = this;
 		},
 		
@@ -38,8 +36,13 @@ define([
 				textures: Constants.woodTypes
 			});
 
-			if (this.model.get('width')!=null && this.model.get('width')!=0) 
-				this.$el.css('width', this.model.get('width') * Constants.scale);
+			if (this.model.get('size')!=null && this.model.get('size')!=0) {
+				this.$('.the-ring').css('width', this.model.get('size') * Constants.rscale);
+				this.$('.the-ring').css('height', this.model.get('size') * Constants.rscale);
+				this.$('.inside-ring').css('width', (this.model.get('size')-3) * Constants.rscale);				
+				this.$('.inside-ring').css('height', (this.model.get('size')-3) * Constants.rscale);
+			}
+
 
 		},
 		

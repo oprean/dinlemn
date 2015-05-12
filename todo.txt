@@ -36,6 +36,7 @@ TODOs
 	http://scottnelle.com/616/connecting-slim-framework-mysql/
 - for rings: https://developer.mozilla.org/en-US/docs/Web/CSS/Tools/Border-radius_generator
 on mobile, replace modal windows with normal views ...
+https://github.com/seiyria/bootstrap-slider
 
 Bugs:
 =====

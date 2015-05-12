@@ -2,7 +2,8 @@ define([
 ], function(){
 	// TODO change constans name to UPERCASE
 	var Constants = {
-		scale : 4,
+		scale : 4, // for calendars
+		rscale : 20, // for rings
 		thumbSize : 200,
 		guestName : 'Guest',
 		quickSaveName : 'local.last.save',

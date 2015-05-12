@@ -25,6 +25,7 @@ body {
   border-top: 1px solid #ccc;
 }
 
+/*calendars*/
 #plaque-container {
 	text-align: center;
 }
@@ -138,6 +139,46 @@ ul.items li{
 [contenteditable=true] {
 	background-color:rgba(0, 0, 0, 0.3)
 	/*background-color:rgba(255, 255, 255, 0.5)*/
+}
+
+
+/* rings */
+.the-ring {
+	text-align: center;
+	margin-right:auto;
+	margin-left:auto;
+    
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    /*border: 1px solid #312D3A;*/
+    background: url("../img/plaque/purty_wood.png") no-repeat right top;
+    
+	-moz-box-shadow: 0px 0px 5px #000000;
+    -webkit-box-shadow: 0px 0px 5px #000000;
+    box-shadow: 0px 0px 5px #000000;
+    
+}
+
+.inside-ring {
+	text-align: center;
+	margin-right:auto;
+	margin-left:auto;
+	
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    /*border: 1px solid #312D3A;*/
+    /*background: url("../img/wall/graphy.png") right top;*/
+   background-color: #FFFFFF;
+    
+	-moz-box-shadow: inset 0px 0px 5px #000000;
+    -webkit-box-shadow: inset 0px 0px 5px #000000;
+    box-shadow: inset 0px 0px 5px #000000;
 }
 
 button.icon-btn {
