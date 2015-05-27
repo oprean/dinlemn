@@ -29,6 +29,7 @@ TODOs
 - upload images to server file system (we need this to have the images visible on the thumb generator)
 - woody mascota drop shadon png
 - prerender.io to make the stuff SEO friendly ...
+- http://bootsnipp.com/snippets/featured/magnifying-glass-for-images (zoom to see details)
 - svg?!? - http://nocircleno.com/blog/svg-with-backbone-js/
 - http://123d.circuits.io/circuits/19376-led-shield#breadboard (created by http://weworkweplay.com/contact/)
 - use slim on the server: 
@@ -37,6 +38,10 @@ TODOs
 - for rings: https://developer.mozilla.org/en-US/docs/Web/CSS/Tools/Border-radius_generator
 on mobile, replace modal windows with normal views ...
 https://github.com/seiyria/bootstrap-slider
+
+authentication
+http://stackoverflow.com/questions/26108746/authentication-in-slim-is-a-combined-middleware-singleton-and-hook-approach-sm
+http://www.appelsiini.net/2014/slim-database-basic-authentication
 
 Bugs:
 =====
